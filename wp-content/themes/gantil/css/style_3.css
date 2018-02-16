@@ -1,0 +1,311 @@
+@font-face {
+	font-family: arial narrow;
+	font-style: normal;
+	font-weight: normal;
+	src: local(arial narrow), url('OratorStd.woff') format('woff');
+}
+@font-face {
+font-family: 'Bank Gothic Light BT';
+font-style: normal;
+font-weight: normal;
+src: local('Bank Gothic Light BT'), url('TT0589M_.woff') format('woff');
+}
+
+html, body{height:100%; width:100%;position:relative; /*height:100%; width:100%;*/ background:#fff}
+
+.breadcrumb {padding: 8px 15px; font-family:arial narrow;font-weight:normal; border-radius: 0;     margin-bottom: 0 !important;    list-style: none;    background-color:#000;  /*  border-radius: 4px;*/}
+.breadcrumb a{color:#de00a0}
+
+/* главная (вход) */
+
+#main .header{background:#342158; padding:0 20px; color:#fff; font-family:arial narrow;font-weight:normal;font-size:22px; }
+#main .navbar-default {     background:none;      border:0; }
+#main .navbar {    position: relative;    min-height: 50px;    margin-bottom: 0;    border: 1px solid transparent;}
+#main .nav>li>a {color: #fff;  text-transform:uppercase; padding:20px 25px 0; }
+#main .nav>li>a:hover {color: #fff;}
+#main .brand {    float: left;	font-family:'Bank Gothic Light BT';font-weight:normal;font-size:35px}
+#main .brand span{margin-left:20px}
+#main .nav>li.lang{padding:0 0 0 18px}
+#main .nav>li>a.flag{float:left; padding:15px 5px; margin:0 5px }
+.navbar-collapse{border:0}
+.navbar-toggle{margin-right:0}
+.navbar-default .navbar-toggle {    border-color: #c608b2;}
+.navbar-default .navbar-toggle .icon-bar {    background-color: #fff;}
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {    background-color: #342158;}
+
+.top{background:#3c3c3c}
+
+.formAuth{/*background:#eff3f6; */ padding-bottom:5px; position:relative; top:0;  /*width:100%; */margin: 0 0 10px 0; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;}
+#inner .VR-title{/*display:block; margin-top:10%; */color:#fff; line-height:55px; /*height:30%;*/position:absolute;  bottom:10%; font-family:Arial, Helvetica, sans-serif; font-size:48px; /*font-weight:bold;*/ text-transform:uppercase}
+.cell-1{height:33%; width:100%;/* background:#009966*/ position:relative}
+.cell-2{height:63%; width:100%;/* background:#999900*/ position:relative}
+
+.formTitle, input{font-family: arial narrow; font-weight:normal; font-size:22px;  color:#9c9c9c !important;}
+.formTitle{text-align:center;  font-size: 28px !important; color:#fff !important; text-transform:uppercase; margin-top:10px }
+input.form-control{ background:#fff;  font-size:32px !important; text-align:center; 
+	border:2px solid #c608b2; /*border-left:10px solid #19c6ff;*/
+	-webkit-border-top-right-radius: 25px; -webkit-border-bottom-right-radius: 25px;  -webkit-border-top-left-radius: 25px; -webkit-border-bottom-left-radius: 25px;
+	-moz-border-radius-topright: 25px; -moz-border-radius-bottomright: 25px; -moz-border-radius-topleft: 25px; -moz-border-radius-bottomleft: 25px; 
+	border-top-right-radius: 25px; border-bottom-right-radius: 25px; border-top-left-radius: 25px; border-bottom-left-radius: 25px;
+}
+.checkbox{text-align:center}
+.checkbox span{color:#000; font-size:22px; /*margin-left:25px;*/ /*font-family: "open sans"; font-weight:bold*/ font-family: 'Open Sans', sans-serif; font-weight:600;}
+.checkbox input{width:27px; height:27px}
+
+/* Скрываем реальный чекбокс */
+.checkbox1{    display: none;}
+ 
+/* Задаем внешний вид для нашего кастомного чекбокса. Все обязательные свойства прокомментированы, остальные же свойства меняйте по вашему усмотрению */
+.checkbox-custom {position: relative; width: 26px; height: 26px; border: 2px solid #bc00cd; border-radius: 13px;}
+ 
+/* Кастомный чекбокс и лейбл центрируем по вертикали. Если вам это не требуется, то вы можете убрать свойство vertical-align: middle из данного правила, но свойство display: inline-block обязательно должно быть */
+.checkbox-custom, .label {    display: inline-block;    vertical-align: middle;}
+ 
+/* Если реальный чекбокс у нас отмечен, то тогда добавляем данный признак и к нашему кастомному чекбоксу  */
+.checkbox1:checked + .checkbox-custom::before {    content: "";       display: block;     position: absolute; 
+    /* Задаем расстояние от верхней, правой, нижней и левой границы */
+    top: 0;    right: 0;    bottom: 0;    left: 0; 
+    background: #fff;     /* Добавляем фон. Если требуется, можете поставить сюда картинку в виде "галочки", которая будет символизировать, что чекбокс отмечен */
+    border-radius: 13px;
+}
+.rememberme{text-transform:uppercase; color:#fff !important; font-family: arial narrow !important; font-weight:normal !important;}
+	
+button.vrc-btn{background:#c608b2 !important; color:#fff !important; font-family: arial narrow !important; font-weight:normal !important; border:0 !important; -webkit-border-radius: 25px; -moz-border-radius: 25px; border-radius: 25px;  font-size:28px !important; text-transform:uppercase; text-align:center; width:100%; }
+button.vrc-btn, input.form-control{height:48px !important;} 
+
+.auth-res-msg{/*margin:15px 48px*/}
+.form-horizontal{font-family: arial narrow !important; font-weight:normal !important;}
+.form-horizontal .alert-info {    color: #ffffff;     background: none;      border: 0; }
+.form-horizontal .alert{text-align:center}
+
+.alert-success  {
+    background: none;
+    /*border: 0;*/
+	border-color:#fff;
+    color: #fff;
+    text-decoration: none;
+}
+.show-stat-link:hover{text-decoration:none}
+
+/* /главная (вход) */
+
+/* слайдер */
+.slider1{padding-top:20px}
+.slider1 img{max-width:100%}
+.slider1 .slick-prev {    left: 5px;    z-index: 50;}
+.slider1 .slick-next {    right: 25px;  z-index: 50;}
+.slider1 .slick-prev:before, .slider1  .slick-next:before {    font-family: 'slick';    font-size: 40px;    line-height: 1;    opacity: .75;    color: white;    -webkit-font-smoothing: antialiased;    -moz-osx-font-smoothing: grayscale;}
+.slider1 .slick-dots li div {font-size: 0;    line-height: 0;    display: block;    width: 15px;    height: 15px;    padding: 5px;    cursor: pointer;    color: transparent;    border: 0;    outline: none;    background: #000;
+-webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; border:1px solid #bc00cd }
+.slider1 .slick-dots li.slick-active div{background:#bc00cd}
+/* /слайдер */
+
+/* store, news */
+h3{text-align:center; text-transform:uppercase; font-size:29px; font-family: arial narrow; font-weight:normal; color:#fff; padding:20px 0; margin:0}
+.store{background:#000}
+.store > div, .news > div{padding:0 35px 20px}
+.store-item{background:#000;/* margin:0 10px*/padding:10px }
+.store-item > div{background:#cdcdcd;/* margin:0 10px*/padding:10px }
+.item-title{font-family:Arial; font-weight:bold; font-size:25px; color:#303030; text-align:center; text-transform:uppercase}
+.item-text{font-family:Arial; font-weight:normal; font-size:22px; line-height:1em; margin-top:10px; color:#303030; text-align:center}
+.item-img img{width:100%; height:auto}
+.item-cost{text-align:right; color:#bc00cd; font-size:22px; font-family:Arial; font-weight:normal;}
+.slider2 .slick-arrow, .slider3 .slick-arrow{ height:88px !important}
+.slider2 .slick-prev:before, .slider2  .slick-next:before,
+.slider3 .slick-prev:before, .slider3  .slick-next:before{content:none}
+
+.news{background:#3c3c3c}
+.news .store-item{background:none;/* margin:0 10px*/padding:10px }
+.news .item-title{text-transform:none}
+/* /store, news */
+
+/* footer */
+.footer{background:#342158; padding:0 20px; color:#fff; font-family:arial narrow;font-weight:normal;font-size:22px;}
+.footer > div{padding:20px 0; text-align:center}
+/* /footer */
+
+
+/* статистика */
+#main{max-width:1220px; margin:auto; padding:0; position:relative; z-index:2; background:#000}
+#main .VR-title{color:#fff ; display:block; text-align:center; line-height:55px; font-family: Arial, Helvetica, sans-serif; letter-spacing: 1.2px; font-size:46px; margin:20px 0 30px; /*font-weight:bold;*/ text-transform:uppercase;/* background:#CC3300*/}
+
+.header-block{/*margin-top:35px*/}
+
+.vr-stat-box{background:#eff3f6;margin: 0 0 10px 0; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;}
+.vr-stat-box-title{text-align: left;    text-transform: uppercase;    font-size: 29px;    font-family: arial narrow;    font-weight: normal;    color: #fff;    padding: 0; background:#000;    margin: 0;}
+.header .vr-stat-box-title{margin-left:20px; }
+.vr-attr-name{font-size: 29px;    font-family: arial narrow;    font-weight: normal;    color: #fff; }
+
+.vr-data{margin-top:35px}
+.vr-stat-param-title{font-size: 30px; letter-spacing:-1px;  font-family:arial narrow;font-weight:normal;   color: #fff; line-height: 84px;   /*font-family:"open sans semibold", calibri; font-family: 'Open Sans', sans-serif; font-weight:600;*/ text-align:right}
+.vr-stat-data{display:block; height:66px; /*font-family:"open sans semibold";font-family: 'Open Sans', sans-serif; font-weight:600;*/font-family:arial narrow;font-weight:normal;  line-height:66px; width:100%; max-width:160px; background:#fff; margin:9px 0; border:1px solid #de00a0;  border-left:10px solid #de00a0;
+	-webkit-border-top-right-radius: 3px; -webkit-border-bottom-right-radius: 3px;  -webkit-border-top-left-radius: 0; -webkit-border-bottom-left-radius: 0;
+	-moz-border-radius-topright: 3px; -moz-border-radius-bottomright: 3px; -moz-border-radius-topleft: 0; -moz-border-radius-bottomleft: 0; 
+	border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-top-left-radius: 0; border-bottom-left-radius: 0; color:#000; font-size:40px; /*font-family:arial; */text-align:center;}
+.vr-stat-data-common{text-align:center;font-family: 'Open Sans', sans-serif; font-weight:600; }
+.vr-stat-more{font-family:arial narrow;font-weight:normal;  background:#de00a0 !important; color:#fff !important; border:0;   width: 150px;  margin: 14px 0;  font-size: 18px !important;    text-transform: none;    height: 55px !important;}
+.vr-stat-more a{color:#fff; text-decoration:none}
+.vr-stat-more a:hover{color:#fff; text-decoration:none}
+
+
+
+
+.pic{position:relative}
+.pic img{position:absolute; max-width:100%;/* margin-top:40px*/}
+
+.icons{max-width:900px}
+.vr-pop-game{margin-top:45px}
+.vr-pop-game .vr-stat-param-title{text-align:left; margin-left:45px;}
+.vr-pop-game-item{/*background:#FFCCFF;*/ text-align:center; /*min-width:120px*/ position:relative}
+.vr-pop-game-item img{max-width:100%; height:auto}
+.percent{height:35px; overfolow:hidden; line-height:35px;}
+.percent, .vr-game-name{display:block; text-align:center; font-size: 25px;    color: #fff; font-family:arial narrow;font-weight:normal;  /*font-family:"open sans semibold", calibri; font-family: 'Open Sans', sans-serif; font-weight:600;*/}
+.vr-game-name{line-height:1em; padding:10px 0;}
+.vr-game-time{color:#999999;  font-size: 18px;  font-family:arial narrow;font-weight:normal;}
+.new{color:#ba2385; text-transform:uppercase; line-height:35px; font-size:17px}
+
+.frame{display: block;
+    position: absolute;
+    top: 35px;
+    z-index: 2;
+    width: 120px;
+    /* margin: auto; */
+    left: 50%;
+    margin-left: -60px;}
+	
+.stat-graph{background:#3c3c3c; margin-top:10px}
+.graph img{max-width:100%}
+
+/* /статистика */
+
+
+.stat-table{margin:20px 0}
+.stat-table th{background:#de00a0; color:#fff; font-size: 18px;  font-family:arial narrow;font-weight:normal; padding:5px; text-align:center}
+.stat-table td{padding:5px 10px; color:#fff; font-size: 18px;  font-family:arial narrow;font-weight:normal;}
+.stat-table table{border:#ccc}
+
+@media only screen and (max-width: 1200px) 
+{
+	.vr-stat-box-title {    font-size: 28px;}
+	.vr-attr-name {    font-size: 20px;}
+}
+
+@media only screen and (max-width: 992px) 
+{
+	.vr-stat-box-title, .vr-attr-name, .vr-pop-game .vr-stat-param-title {display:block; text-align:center}
+	.vr-pop-game .vr-stat-param-title{margin-left:0}
+	.vr-stat-param-title {    font-size: 26px;}
+	.vr-stat-param-title-long {line-height:normal; margin-top:10px}
+	
+}
+
+@media only screen and (max-width: 768px) 
+{
+	
+
+	.vr-stat-param-title {text-align:center; line-height:normal}
+	.vr-stat-data{margin:9px auto}
+	.vr-stat-more{display:block;  margin: 14px auto;}
+}
+
+@media only screen and (max-width: 588px) 
+{
+	#main .brand {font-size: 25px;	}
+	#main .brand img {width:50px}
+}
+
+
+@media only screen and (max-width: 530px) 
+{
+	
+	#main .VR-title{font-size:40px}
+	.vr-stat-box-title {    font-size: 30px;}
+	.vr-attr-name, .vr-game-name, .percent/*, .vr-pop-game .vr-stat-param-title*/ {    font-size: 16px;}
+	.new{font-size:12px; }
+	.frame{display:none}
+}
+
+
+@media only screen and (max-width: 480px) 
+{
+
+	#main .brand {font-size: 16px;	}
+	#main .brand img {width:30px; margin-top:10px}
+
+	#main .VR-title{font-size:30px; line-height: 35px;}
+	.vr-data{margin-top:10px}
+	.vr-stat-box-title {   line-height:1em}
+	.vr-attr-name{line-height:1em; text-align: center;
+    display: block;
+    margin-top: 10px; }
+	.vr-stat-param-title{font-size:22px}
+	
+	.stat-table-common table th{font-size:14px !important}
+.stat-table-common td, .stat-table-common th{padding:5px 3px !important}
+.stat-table-common .gc-location{font-size:10px}
+	
+}
+@media only screen and (max-width: 420px) 
+{
+	.new{font-size:12px; line-height:14px}
+}
+
+@media only screen and (max-width: 375px) 
+{
+	#main .VR-title{font-size:26px; margin: 10px 0 20px;}
+	.vr-stat-more{width: 100%; font-size:20px !important}
+	.vr-stat-data{font-size:30px !important}
+	.vr-stat-box-title {    font-size: 26px;}
+	
+}
+
+
+@media only screen and (max-width: 768px) and (orientation: landscape) 
+{
+	#inner .VR-title{font-size: 28px !important; line-height: 40px; padding:10px 0 0 0; position:relative}
+	.cell-1, .cell-2{height:auto}
+	.checkbox span {font-size: 20px;}
+	.checkbox input {    width: 20px;    height: 20px;}
+	.formTitle {        font-size: 30px !important;}
+	button.vrc-btn, input.form-control {    height: 35px !important;    font-size: 20px !important;;}
+	button.vrc-btn{font-size: 16px !important;}
+	.formAuth {       height: auto;        padding: 10px 0; margin: 0 0 10px 0;}
+}
+
+@media only screen and (max-width: 480px) and (orientation: portrait) 
+{
+	#inner .VR-title{font-size: 35px !important; line-height: 40px; padding:20px 0; position:relative}
+	.cell-1{height:auto}
+}
+
+@media only screen and (max-width: 375px) and (orientation: portrait) 
+{
+	/*.checkbox span {font-size: 25px;}*/
+	.formTitle {        font-size: 40px !important;}
+	button.vrc-btn, input.form-control {    height: 40px !important; font-size: 25px !important;}
+	.formAuth {       height: auto;        padding: 10px 0;}	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

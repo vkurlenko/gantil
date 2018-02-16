@@ -1,0 +1,38 @@
+/* CSS Document */
+@font-face {
+        font-family: "IntroRegular";
+        src: url("/wp-content/themes/gantil/css/font-Intro/IntroRegular.eot");
+        src: url("/wp-content/themes/gantil/css/font-Intro/IntroRegular.eot?#iefix")format("embedded-opentype"),
+        url("/wp-content/themes/gantil/css/font-Intro/IntroRegular.woff") format("woff"),
+        url("/wp-content/themes/gantil/css/font-Intro/IntroRegular.ttf") format("truetype");
+        font-style: normal;
+        font-weight: normal;
+}
+@font-face {
+            font-family: "IntroInline";
+            src: url("/wp-content/themes/gantil/css/font-Intro/IntroInline.eot");
+            src: url("/wp-content/themes/gantil/css/font-Intro/IntroInline.eot?#iefix")format("embedded-opentype"),
+            url("/wp-content/themes/gantil/css/font-Intro/IntroInline.woff") format("woff"),
+            url("/wp-content/themes/gantil/css/font-Intro/IntroInline.ttf") format("truetype");
+            font-style: normal;
+            font-weight: normal;
+    }
+@font-face {
+            font-family: "IntroCondensedLight";
+            src: url("/wp-content/themes/gantil/css/font-Intro/IntroCondensedLight.eot");
+            src: url("/wp-content/themes/gantil/css/font-Intro/IntroCondensedLight.eot?#iefix")format("embedded-opentype"),
+            url("/wp-content/themes/gantil/css/font-Intro/IntroCondensedLight.woff") format("woff"),
+            url("/wp-content/themes/gantil/css/font-Intro/IntroCondensedLight.ttf") format("truetype");
+            font-style: normal;
+            font-weight: normal;
+    }
+
+@font-face {
+            font-family: "IntroCondensedBlack";
+            src: url("/wp-content/themes/gantil/css/font-Intro/IntroCondensedBlack.eot");
+            src: url("/wp-content/themes/gantil/css/font-Intro/IntroCondensedBlack.eot?#iefix")format("embedded-opentype"),
+            url("/wp-content/themes/gantil/css/font-Intro/IntroCondensedBlack.woff") format("woff"),
+            url("/wp-content/themes/gantil/css/font-Intro/IntroCondensedBlack.ttf") format("truetype");
+            font-style: normal;
+            font-weight: normal;
+    }

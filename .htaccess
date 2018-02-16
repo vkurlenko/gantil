@@ -1,0 +1,47 @@
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
+
+
+
+Redirect 301 /salon_kolom/ /salons/salon_kolom/
+Redirect 301 /salon_leninsky/ /salons/salon_leninsky/
+Redirect 301 /salon_bratis/ /salons/salon_bratis/
+Redirect 301 /salon_sokol/ /salons/salon_sokol/
+Redirect 301 /salon_shodnya/ /salons/salon_shodnya/
+Redirect 301 /salon_dom_krasoty/ /salons/salon_dom_krasoty/
+
+#Redirect 301 /services/ /product-category/service/
+Redirect 301 /product-category/service/imidzhkonsultirovanie/ /services/imageconsult/
+Redirect 301 /claim/ /product-category/service/
+
+# Redirect 301 /service_one/ /product-category/service/
+
+
+Redirect 301 /77/23/ /product-category/butik/
+Redirect 301 /48/ /galleries/
+
+Redirect 301 /category/actions/ /actions/
+Redirect 301 /category/newss/ /newss/
+
+Redirect 301 /news_list/ /newss/
+Redirect 301 /news_one/ /newss/
+
+Redirect 301 /action_by_list/ /actions/
+#Redirect 301 /action_one/ /actions/
+
+Redirect 301 /auth/ /my-account/
+
+Redirect 301 /price/ /prices/price-service/
+#Redirect 301 /prices/ /prices/price-service/
+Redirect 301 /price_one/ /prices/price-service/
+Redirect 301 /philosophy/ /about/
+

@@ -1,0 +1,1 @@
+<div class="col-md-3 col-sm-3 col-xs-4 logo"><a href="/"><img src="/wp-content/uploads/2017/05/logo-new_bl.png"></a></div>

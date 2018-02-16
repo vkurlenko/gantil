@@ -1,0 +1,234 @@
+/*@font-face{
+	font-family:"open sans";
+	src:url("/font/open_sans_light.ttf");
+}
+
+@font-face{
+	font-family:"open sans semibold";
+	src:url("/font/open_sans_semibold.ttf");
+}*/
+
+html, body{position:relative; /*height:100%; width:100%;*/ background:#0099FF}
+
+.breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 0 !important;
+    list-style: none;
+    background-color:#eff3f6;
+  /*  border-radius: 4px;*/
+}
+
+/* главная (вход) */
+#inner{margin:auto; max-width:565px;  height:100%; position:relative; z-index:2; padding:0 10px }
+
+.formAuth{background:#eff3f6;  /*min-height:430px;*/ padding-bottom:5px; position:relative; top:0;  width:100%; margin: 0 0 10px 0; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;}
+#inner .VR-title{/*display:block; margin-top:10%; */color:#fff; line-height:55px; /*height:30%;*/position:absolute;  bottom:10%; font-family:Arial, Helvetica, sans-serif; font-size:48px; /*font-weight:bold;*/ text-transform:uppercase}
+.cell-1{height:33%; width:100%;/* background:#009966*/ position:relative}
+.cell-2{height:63%; width:100%;/* background:#999900*/ position:relative}
+
+.formTitle, input{font-family: 'Open Sans', sans-serif; font-weight:100;/*"open sans";*/ color:#666 !important;}
+.formTitle{text-align:center;  font-size: 46px !important; color:#797979 }
+input.form-control{ background:#fff;  font-size:32px !important; text-align:center; 
+	border:0; border-left:10px solid #19c6ff;
+	-webkit-border-top-right-radius: 5px; -webkit-border-bottom-right-radius: 5px;  -webkit-border-top-left-radius: 0; -webkit-border-bottom-left-radius: 0;
+	-moz-border-radius-topright: 5px; -moz-border-radius-bottomright: 5px; -moz-border-radius-topleft: 0; -moz-border-radius-bottomleft: 0; 
+	border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 0; border-bottom-left-radius: 0;
+}
+
+.checkbox span{color:#000; font-size:22px; margin-left:25px; /*font-family: "open sans"; font-weight:bold*/ font-family: 'Open Sans', sans-serif; font-weight:600;}
+.checkbox input{/*-webkit-box-shadow: inset 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    inset 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+	box-shadow:         inset 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+	-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;*/
+	width:27px; height:27px
+}
+.rememberme{}
+	
+button.vrc-btn{background:#19c6ff !important; color:#fff !important; font-family:Arial !important; border:0 !important; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;  font-size:28px !important; text-transform:uppercase; text-align:center; width:100%; }
+button.vrc-btn, input.form-control{height:75px !important;} 
+
+.auth-res-msg{margin:15px 48px}
+
+.bg{position:fixed; height:100%; width:100%; z-index:1; top:0 }
+
+.show-stat{font-weight:bold; padding:0 0 20px 0}
+.show-stat-link{font-weight:bold}
+.show-stat-link:hover{text-decoration:none}
+
+/* /главная (вход) */
+
+/* статистика */
+#main{max-width:1220px; margin:auto; padding:10px; position:relative; z-index:2; /*background:#009999*/}
+#main .VR-title{color:#fff ; display:block; text-align:center; line-height:55px; font-family: Arial, Helvetica, sans-serif; letter-spacing: 1.2px; font-size:46px; margin:20px 0 30px; /*font-weight:bold;*/ text-transform:uppercase;/* background:#CC3300*/}
+
+.header-block{/*margin-top:35px*/}
+.vr-stat-box{background:#eff3f6;margin: 0 0 10px 0; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;}
+.vr-stat-box-title{font-size: 35px;  line-height:40px;   color: #666;   /* font-family:"open sans", calibri light;*/font-family: 'Open Sans', sans-serif; font-weight:300;}
+.header .vr-stat-box-title{margin-left:20px}
+.vr-attr-name{font-size: 23px;  line-height:44px;   color: #666;    /*font-family:"open sans semibold", calibri;*/font-family: 'Open Sans', sans-serif; font-weight:600;}
+
+.vr-data{margin-top:35px}
+.vr-stat-param-title{font-size: 30px; letter-spacing:-1px;     color: #797979; line-height: 84px;   /*font-family:"open sans semibold", calibri;*/ font-family: 'Open Sans', sans-serif; font-weight:600; text-align:right}
+.vr-stat-data{display:block; height:66px; /*font-family:"open sans semibold";*/ font-family: 'Open Sans', sans-serif; font-weight:600; line-height:66px; width:100%; max-width:160px; background:#fff; margin:9px 0; border:1px solid #b8b7b6;  border-left:10px solid #19c6ff;
+	-webkit-border-top-right-radius: 3px; -webkit-border-bottom-right-radius: 3px;  -webkit-border-top-left-radius: 0; -webkit-border-bottom-left-radius: 0;
+	-moz-border-radius-topright: 3px; -moz-border-radius-bottomright: 3px; -moz-border-radius-topleft: 0; -moz-border-radius-bottomleft: 0; 
+	border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-top-left-radius: 0; border-bottom-left-radius: 0; color:#000; font-size:40px; /*font-family:arial; */text-align:center;}
+.vr-stat-data-common{text-align:center;font-family: 'Open Sans', sans-serif; font-weight:600; }
+.vr-stat-more{  background:#19c6ff !important; color:#fff !important; border:0;   width: 150px;  margin: 14px 0;  font-size: 26px !important;    text-transform: none;    height: 55px !important;}
+.vr-stat-more a{color:#fff; text-decoration:none}
+.vr-stat-more a:hover{color:#fff; text-decoration:none}
+
+
+
+
+.pic{position:relative}
+.pic img{position:absolute; max-width:100%; margin-top:40px}
+
+.icons{max-width:900px}
+.vr-pop-game{margin-top:45px}
+.vr-pop-game .vr-stat-param-title{text-align:left; margin-left:45px;}
+.vr-pop-game-item{/*background:#FFCCFF;*/ text-align:center; /*min-width:120px*/ position:relative}
+.vr-pop-game-item img{max-width:100%; height:auto}
+.percent{height:35px; overfolow:hidden; line-height:35px;}
+.percent, .vr-game-name{display:block; text-align:center; font-size: 25px;    color: #666;   /*font-family:"open sans semibold", calibri;*/ font-family: 'Open Sans', sans-serif; font-weight:600;}
+.vr-game-name{line-height:1em; padding:10px 0;}
+.vr-game-time{color:#999999}
+.new{color:#ba2385; text-transform:uppercase; line-height:35px; font-size:17px}
+
+.frame{display: block;
+    position: absolute;
+    top: 35px;
+    z-index: 2;
+    width: 120px;
+    /* margin: auto; */
+    left: 50%;
+    margin-left: -60px;}
+	
+.graph img{max-width:100%}
+
+/* /статистика */
+
+
+.stat-table{margin:20px 0}
+.stat-table th{background:#19c6ff; color:#fff; font-size: 20px !important; font-family:'Open sans'; padding:5px; text-align:center}
+.stat-table td{padding:5px 10px}
+.stat-table table{border:#ccc}
+
+@media only screen and (max-width: 1200px) 
+{
+	.vr-stat-box-title {    font-size: 28px;}
+	.vr-attr-name {    font-size: 20px;}
+}
+
+@media only screen and (max-width: 992px) 
+{
+	.vr-stat-box-title, .vr-attr-name, .vr-pop-game .vr-stat-param-title {display:block; text-align:center}
+	.vr-pop-game .vr-stat-param-title{margin-left:0}
+	.vr-stat-param-title {    font-size: 26px;}
+	.vr-stat-param-title-long {line-height:normal; margin-top:10px}
+	
+}
+
+@media only screen and (min-width: 768px)  and (max-width: 840px)
+{
+	/*.vr-stat-param-title-long {line-height:normal; margin-top:10px}*/
+	
+}
+
+@media only screen and (max-width: 768px) 
+{
+	.vr-stat-param-title {text-align:center; line-height:normal}
+	.vr-stat-data{margin:9px auto}
+	.vr-stat-more{display:block;  margin: 14px auto;}
+}
+
+
+@media only screen and (max-width: 530px) 
+{
+	#main .VR-title{font-size:40px}
+	.vr-stat-box-title {    font-size: 30px;}
+	.vr-attr-name, .vr-game-name, .percent/*, .vr-pop-game .vr-stat-param-title*/ {    font-size: 16px;}
+	.new{font-size:12px; }
+	.frame{display:none}
+}
+
+
+@media only screen and (max-width: 480px) 
+{
+	#main .VR-title{font-size:30px; line-height: 35px;}
+	.vr-data{margin-top:10px}
+	.vr-stat-box-title {   line-height:1em}
+	.vr-attr-name{line-height:1em; text-align: center;
+    display: block;
+    margin-top: 10px; }
+	.vr-stat-param-title{font-size:22px}
+	
+	.stat-table-common table th{font-size:14px !important}
+.stat-table-common td, .stat-table-common th{padding:5px 3px !important}
+.stat-table-common .gc-location{font-size:10px}
+	
+}
+@media only screen and (max-width: 420px) 
+{
+	.new{font-size:12px; line-height:14px}
+}
+
+@media only screen and (max-width: 375px) 
+{
+	#main .VR-title{font-size:26px; margin: 10px 0 20px;}
+	.vr-stat-more{width: 100%; font-size:20px !important}
+	.vr-stat-data{font-size:30px !important}
+	.vr-stat-box-title {    font-size: 26px;}
+	
+}
+
+
+@media only screen and (max-width: 768px) and (orientation: landscape) 
+{
+	#inner .VR-title{font-size: 28px !important; line-height: 40px; padding:10px 0 0 0; position:relative}
+	.cell-1, .cell-2{height:auto}
+	.checkbox span {font-size: 20px;}
+	.checkbox input {    width: 20px;    height: 20px;}
+	.formTitle {        font-size: 30px !important;}
+	button.vrc-btn, input.form-control {    height: 35px !important;    font-size: 20px !important;;}
+	button.vrc-btn{font-size: 16px !important;}
+	.formAuth {       height: auto;        padding: 10px 0; margin: 0 0 10px 0;}
+}
+
+@media only screen and (max-width: 480px) and (orientation: portrait) 
+{
+	#inner .VR-title{font-size: 35px !important; line-height: 40px; padding:20px 0; position:relative}
+	.cell-1{height:auto}
+}
+
+@media only screen and (max-width: 375px) and (orientation: portrait) 
+{
+	/*.checkbox span {font-size: 25px;}*/
+	.formTitle {        font-size: 40px !important;}
+	button.vrc-btn, input.form-control {    height: 40px !important; font-size: 25px !important;}
+	.formAuth {       height: auto;        padding: 10px 0;}	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
