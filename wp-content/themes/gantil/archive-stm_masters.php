@@ -22,12 +22,7 @@ get_header();
 
                                     <h1>Мастера</h1>
                                     
-                                    <?
-                                    // $post = get_post();
-
-                                    // printArray($post);
-                                    ?>
-
+                                    
                                     <!-- submenu -->
                                     <!-- <ul class="submenu">
                                     <?php  
@@ -142,10 +137,12 @@ get_header();
 
                                         $arr = array();                                        
 
+                                        $arr_skip = array('salon', 'spec', 'color', 'rating');
                                         foreach( $myterms as $term )
                                         {
-                                            if($term->slug == 'salon' || $term->slug == 'spec') continue;                                              
-
+                                           // if($term->slug == 'salon' || $term->slug == 'spec') continue;                                              
+                                            if (in_array($term->slug, $arr_skip))
+                                                continue;
 
                                             $arr[$term->parent][] = $term->slug;
                                         }
@@ -155,63 +152,76 @@ get_header();
 
 
                                         /*  
-                                        для каждой комбинации {салон, специальность} выберем мастеров в случайной последовательности и сведем их в отдельные массивы,
+                                        для каждой комбинации {салон, специальность, рейтинг} выберем мастеров в случайной последовательности и сведем их в отдельные массивы,
                                         которые склеим в один большой массив 
                                         */
-                                        $posts = array();
-                                                                              
+                                        $posts = array();                                                                              
 
 
-
-                                        foreach($arr[25] as $k)
+                                        foreach ($arr[25] as $k)
                                         {                                            
                                             // если в сессии есть выбранная специальность, то пропустим все кроме нее
-                                            if(isset($_SESSION['spec']) && $_SESSION['spec'] != 'all' && $_SESSION['spec'] != $k)
+                                            if (isset($_SESSION['spec']) && $_SESSION['spec'] != 'all' && $_SESSION['spec'] != $k)
                                                 continue;
 
-                                            $b = array();
+                                            
 
-                                            foreach($arr[26] as $v)
+                                            foreach ($arr[26] as $v)
                                             {
                                                 // если в сессии есть выбранный салон, то пропустим все кроме него                                         
                                                 
-                                                if(isset($_SESSION['salon']) && $_SESSION['salon'] != 'all' && $_SESSION['salon'] != $v)
+                                                if (isset($_SESSION['salon']) && $_SESSION['salon'] != 'all' && $_SESSION['salon'] != $v)
                                                     continue;
-
-                                                $param = array(
-                                                    'posts_per_page' => 1000,
-                                                    'post_type' => ST_Masters::POST_TYPE,
-                                                    'orderby'   => 'rand',  
-                                                    'order'     => 'DESC' ,
-                                                    'tax_query' => array(
-                                                        'relation' => 'AND',
-                                                        array(
-                                                            'taxonomy' => ST_Masters::CATEGORY_TAXONOMY_SLUG,
-                                                            'field'    => 'slug',
-                                                            'terms'    => $k // салон 
-                                                        ),
-                                                        array(
-                                                            'taxonomy' => ST_Masters::CATEGORY_TAXONOMY_SLUG,
-                                                            'field'    => 'slug',
-                                                            'terms'    => $v // специальность
-                                                            
-                                                        )
-                                                    ),    
-                                                );
-
-                                                $a = get_posts($param);
-
                                                 
+                                                $b = array();
+
+                                                foreach ($arr[499] as $n) 
+                                                {
+
+                                                    $param = array(
+                                                        'posts_per_page' => 1000,
+                                                        'post_type' => ST_Masters::POST_TYPE,
+                                                        'orderby'   => 'rand',  
+                                                        'order'     => 'DESC',
+                                                        'tax_query' => array(
+                                                            'relation' => 'AND',
+                                                            array(
+                                                                'taxonomy' => ST_Masters::CATEGORY_TAXONOMY_SLUG,
+                                                                'field'    => 'slug',
+                                                                'terms'    => $k // салон 
+                                                            ),
+                                                            array(
+                                                                'taxonomy' => ST_Masters::CATEGORY_TAXONOMY_SLUG,
+                                                                'field'    => 'slug',
+                                                                'terms'    => $v // специальность                                                                
+                                                            ),
+                                                            array(
+                                                                'taxonomy' => ST_Masters::CATEGORY_TAXONOMY_SLUG,
+                                                                'field'    => 'slug',
+                                                                'terms'    => $n // рейтинг                                                                
+                                                            )
+                                                        ),    
+                                                    );
+
+                                                    $a = get_posts($param);
+                                                    shuffle($a);
+
+                                                                                                  
+                                                    // склеиваем массивы 
+                                                    $b = array_merge($b, $a);  
+                                                    /*shuffle($b);
+*/
+                                                }
+                                                $posts = array_merge($posts, $b);
                                                
-                                                // склеиваем массивы 
-                                                $b = array_merge($b, $a);
-
-                                                
+                                                                                              
                                             }
 
-                                            shuffle($b);
-                                            $posts = array_merge($posts, $b);
-                                        }                                        
+                                            
+                                        }       
+
+                                       /* printArray($posts);
+                                        die;   */                       
                                         /* получили массив мастеров */
 
 
@@ -224,17 +234,11 @@ get_header();
                                         foreach($posts as $pst)
                                         {
                                             $cat = get_the_terms( $pst->ID , ST_Masters::CATEGORY_TAXONOMY_SLUG);                                                 
-
-
-                                            if(user_admin())
-                                            {
-                                                // printArray($cat);   
-                                            }
-                                           
-
+                                            
 
                                             $s = '';
-                                            $master_spec = $salon_name = $master_color = '';
+                                            $master_spec = $salon_name = $master_color = $master_rating = '';
+
                                             foreach($cat as $parent_cat)
                                             {    
 
@@ -251,37 +255,43 @@ get_header();
                                                             $salon_name = $parent_cat->name; 
                                                     }
                                                     else
-                                                        $salon_name = $parent_cat->name;
-
-                                                   
+                                                        $salon_name = $parent_cat->name;                                                   
                                                 }
 
                                                 // цвет смены
                                                 //$master_color = '';
-                                                if($parent_cat->parent == 151 || $parent_cat->parent == 152)  
+                                                if ($parent_cat->parent == 151 || $parent_cat->parent == 152)  
                                                 {
                                                     $master_color = 'watch-'.$parent_cat->slug;  
-                                                }                                                                                           
+                                                }      
+
+                                                // рейтинг
+                                                if($parent_cat->parent == 499)   
+                                                    $master_rating = $parent_cat->name;                                                                                      
                                      
                                             }
 
                                             // фото мастера
                                             $thumbnail = get_the_post_thumbnail( $pst->ID, 'master_thumb', '' );
 
-                                             if(user_admin())
-                                                {
-                                                   // echo $master_color;  
-                                                }
+                                             
                                             ?>
 
                                             <div class="five-column">
                                                 <div class="our-team ">
+                                                   <?php
+                                                   if(user_admin()) {
+                                                    ?>
+                                                    <div><?=$master_rating?></div>
+                                                    <?php
+                                                   } 
+                                                   ?>
                                                     <div class="team-member">
                                                         <a href="<?php echo get_permalink( $pst->ID )?>">
                                                             <?=$thumbnail;?>
                                                         </a>
                                                     </div> 
-                                                    <h5 class="member-name"><?php echo $pst->post_title?></h5>
+                                                    <h5 class="member-name"><?php echo $pst->post_title?> </h5>
                                                     <p class="member-post"></p>
                                                     <p class="member-tags"><?=$master_spec?><br><?=$salon_name?></p>
                                                     <!-- <span class="watch <? echo $master_color;?>"></span> -->
