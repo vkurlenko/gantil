@@ -163,20 +163,18 @@ get_header();
                                             // если в сессии есть выбранная специальность, то пропустим все кроме нее
                                             if (isset($_SESSION['spec']) && $_SESSION['spec'] != 'all' && $_SESSION['spec'] != $k)
                                                 continue;
-
                                             
 
-                                            foreach ($arr[26] as $v)
+                                            foreach ($arr[499] as $v)
                                             {
                                                 // если в сессии есть выбранный салон, то пропустим все кроме него                                         
                                                 
-                                                if (isset($_SESSION['salon']) && $_SESSION['salon'] != 'all' && $_SESSION['salon'] != $v)
-                                                    continue;
-                                                
                                                 $b = array();
 
-                                                foreach ($arr[499] as $n) 
+                                                foreach ($arr[26] as $n) 
                                                 {
+                                                    if (isset($_SESSION['salon']) && $_SESSION['salon'] != 'all' && $_SESSION['salon'] != $v)
+                                                    continue;
 
                                                     $param = array(
                                                         'posts_per_page' => 1000,
