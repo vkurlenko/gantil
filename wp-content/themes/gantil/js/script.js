@@ -308,16 +308,21 @@ jQuery(function($){
 	{
 		var s = $(this).attr('data-salon');
 		//alert(s)
-		$('.cf7-select-salon option').attr('selected', false);
+		//$('.cf7-select-salon option').attr('selected', false);
 
 		$('.cf7-select-salon option').each(function()
 		{
 			var str = $(this).attr('value');
+			//alert(str)
 			if(str.toLowerCase() == s.toLowerCase())
 			{
 				$(this).attr('selected', 'selected');
+				$('.cf7-select-salon').prop("selectedIndex", $(this).index());
+				
 				$('.cf7-salon-name').attr('value', str);
-			}				
+			}	
+			else
+				$(this).attr('selected', false);			
 		})		
 	})
 

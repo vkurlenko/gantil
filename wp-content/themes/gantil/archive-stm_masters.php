@@ -163,18 +163,20 @@ get_header();
                                             // если в сессии есть выбранная специальность, то пропустим все кроме нее
                                             if (isset($_SESSION['spec']) && $_SESSION['spec'] != 'all' && $_SESSION['spec'] != $k)
                                                 continue;
-                                            
+                                            //echo $k.'<br>';
 
                                             foreach ($arr[499] as $v)
                                             {
                                                 // если в сессии есть выбранный салон, то пропустим все кроме него                                         
-                                                
+                                                //echo $v.'<br>';
                                                 $b = array();
 
                                                 foreach ($arr[26] as $n) 
                                                 {
-                                                    if (isset($_SESSION['salon']) && $_SESSION['salon'] != 'all' && $_SESSION['salon'] != $v)
+                                                    if (isset($_SESSION['salon']) && $_SESSION['salon'] != 'all' && $_SESSION['salon'] != $n)
                                                     continue;
+
+                                                    //echo $k.' '.$v.' '.$n.'<br>';
 
                                                     $param = array(
                                                         'posts_per_page' => 1000,
@@ -186,17 +188,17 @@ get_header();
                                                             array(
                                                                 'taxonomy' => ST_Masters::CATEGORY_TAXONOMY_SLUG,
                                                                 'field'    => 'slug',
-                                                                'terms'    => $k // салон 
+                                                                'terms'    => $k //  специальность
                                                             ),
                                                             array(
                                                                 'taxonomy' => ST_Masters::CATEGORY_TAXONOMY_SLUG,
                                                                 'field'    => 'slug',
-                                                                'terms'    => $v // специальность                                                                
+                                                                'terms'    => $v //   рейтинг                                                              
                                                             ),
                                                             array(
                                                                 'taxonomy' => ST_Masters::CATEGORY_TAXONOMY_SLUG,
                                                                 'field'    => 'slug',
-                                                                'terms'    => $n // рейтинг                                                                
+                                                                'terms'    => $n //     салон                                                            
                                                             )
                                                         ),    
                                                     );
@@ -218,8 +220,8 @@ get_header();
                                             
                                         }       
 
-                                       /* printArray($posts);
-                                        die;   */                       
+                                        /*printArray($posts);
+                                        die; */                         
                                         /* получили массив мастеров */
 
 

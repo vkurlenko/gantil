@@ -62,7 +62,15 @@ if(@$post_name && $post_name == 'price')
 				'salon_sokol' => 'На Соколе',
 				'salon_shodnya' => 'На Сходненской',
 				'salon_dom_krasoty' => 'На м.Аэропорт'
+				);
 
+			$arr_replace_2 = array(
+				'salon_leninsky' => 'Жантиль на Ленинском',
+				'salon_kolom' 	=> 'Жантиль на Коломенской',
+				'salon_bratis' => 'Жантиль на Братиславской',
+				'salon_sokol' => 'Жантиль на Соколе',
+				'salon_shodnya' => 'Жантиль на Сходненской',
+				'salon_dom_krasoty' => 'Жантиль м.Аэропорт'
 				);
 
 			// формат вывода
@@ -109,7 +117,7 @@ if(@$post_name && $post_name == 'price')
 			{
 				?>
 				<li class="box-menu-left "><a class="" href="<?php echo get_page_link( $post->ID ); ?>">Подробнее</a></li>
-				<li class="box-menu-right fancybox-inline "><a onclick="return false;" class="order-to-salon " data-salon="<? echo $post->post_title;?>" href="#contact_form_pop_up">Записаться</a></li>
+				<li class="box-menu-right fancybox-inline "><a onclick="return false;" class="order-to-salon " data-salon="<? echo $arr_replace_2[$post->post_name]; //$post->post_title;?>" href="#contact_form_pop_up">Записаться</a></li>
 				
 				<?php 
 				/*if(user_admin())
