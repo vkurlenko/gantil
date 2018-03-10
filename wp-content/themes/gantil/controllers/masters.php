@@ -36,6 +36,10 @@ function getMasters($arr, $filter = false)
 		else
 			$salon = $arr[26];		
 
+		$arr_exclude = array('mastertaiskogomassaga', 'balimaster');
+
+		if (in_array($spec, $arr_exclude))
+			$arr_exclude = '';
 
 		$param = array(
             'posts_per_page' => 1000,
@@ -57,7 +61,7 @@ function getMasters($arr, $filter = false)
                 array(
                     'taxonomy' => ST_Masters::CATEGORY_TAXONOMY_SLUG,
                     'field'    => 'slug',
-                    'terms'    => array('mastertaiskogomassaga', 'balimaster'), //  исключить азиатов                                                            
+                    'terms'    => $arr_exclude, //  исключить азиатов                                                            
                     'operator' => 'NOT IN'
                )     
             ),    
@@ -65,29 +69,30 @@ function getMasters($arr, $filter = false)
 
         $posts = get_posts($param); 
 
-        $param = array(
-            'posts_per_page' => 1000,
-            'post_type' => ST_Masters::POST_TYPE,
-            'orderby'   => 'rand',  
-            'order'     => 'DESC',
-            'tax_query' => array(
-                'relation' => 'AND',
-                array(
-                    'taxonomy' => ST_Masters::CATEGORY_TAXONOMY_SLUG,
-                    'field'    => 'slug',
-                    'terms'    => array('mastertaiskogomassaga', 'balimaster')
-                ),
-                array(
-                    'taxonomy' => ST_Masters::CATEGORY_TAXONOMY_SLUG,
-                    'field'    => 'slug',
-                    'terms'    => $salon //   салон                                                              
-                ) 
-            ),    
-        );
+        if (!isset($_SESSION['spec']) || $_SESSION['spec'] == 'all' ) {
+        	$param = array(
+	            'posts_per_page' => 1000,
+	            'post_type' => ST_Masters::POST_TYPE,
+	            'orderby'   => 'rand',  
+	            'order'     => 'DESC',
+	            'tax_query' => array(
+	                'relation' => 'AND',
+	                array(
+	                    'taxonomy' => ST_Masters::CATEGORY_TAXONOMY_SLUG,
+	                    'field'    => 'slug',
+	                    'terms'    => array('mastertaiskogomassaga', 'balimaster')
+	                ),
+	                array(
+	                    'taxonomy' => ST_Masters::CATEGORY_TAXONOMY_SLUG,
+	                    'field'    => 'slug',
+	                    'terms'    => $salon //   салон                                                              
+	                ) 
+	            ),    
+	        );
 
-        $b = get_posts($param); 
-        $posts = array_merge($posts, $b);
-        
+	        $b = get_posts($param); 
+	        $posts = array_merge($posts, $b);
+        }
 	}
 	else {
 		// нет фильтра => сортировка по рейтингу и рандомно по салонам и специальностям
