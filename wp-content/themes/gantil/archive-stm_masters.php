@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+require 'controllers/masters.php';
 /*
 Template Name: Мастера
 */
@@ -94,15 +96,7 @@ get_header();
                                         // выберем мастеров по специальностям и салона, сохраненным в сессии
                                         $slug = array();
 
-                                        // if(isset($_SESSION['spec']) && $_SESSION['spec'] != 'all')
-                                        //     $slug[] = $_SESSION['spec'];
-
-                                        // if(isset($_SESSION['salon']) && $_SESSION['salon'] != 'all')
-                                        //     $slug[] = $_SESSION['salon'];
-                                        // /выберем мастеров по специальностям и салона, сохраненным в сессии
-
-                                        //printArray($slug);
-                                  
+                                                                          
                                         /* выберем слаги всех салонов и всех специальностей и сведем их в два отдельных массива */
                                         $args = array(
                                             'taxonomy'      => array( ST_Masters::CATEGORY_TAXONOMY_SLUG ), 
@@ -139,96 +133,27 @@ get_header();
 
                                         $arr_skip = array('salon', 'spec', 'color', 'rating');
                                         foreach( $myterms as $term )
-                                        {
-                                           // if($term->slug == 'salon' || $term->slug == 'spec') continue;                                              
+                                        {                                                                                   
                                             if (in_array($term->slug, $arr_skip))
                                                 continue;
 
                                             $arr[$term->parent][] = $term->slug;
                                         }
-                                        //printArray($arr);
                                         
-                                        /* /выберем слаги всех салонов и всех специальностей и сведем их в два отдельных массива */
+                                        
+                                        
+                                        // сформируем список мастеров в зависимости от наличия фильтра                                        
+                                        $posts = getMasters($arr, isFilter());
 
-
-                                        /*  
-                                        для каждой комбинации {салон, специальность, рейтинг} выберем мастеров в случайной последовательности и сведем их в отдельные массивы,
-                                        которые склеим в один большой массив 
-                                        */
-                                        $posts = array();                                                                              
-
-
-                                        foreach ($arr[25] as $k)
-                                        {                                            
-                                            // если в сессии есть выбранная специальность, то пропустим все кроме нее
-                                            if (isset($_SESSION['spec']) && $_SESSION['spec'] != 'all' && $_SESSION['spec'] != $k)
-                                                continue;
-                                            //echo $k.'<br>';
-
-                                            foreach ($arr[499] as $v)
-                                            {
-                                                // если в сессии есть выбранный салон, то пропустим все кроме него                                         
-                                                //echo $v.'<br>';
-                                                $b = array();
-
-                                                foreach ($arr[26] as $n) 
-                                                {
-                                                    if (isset($_SESSION['salon']) && $_SESSION['salon'] != 'all' && $_SESSION['salon'] != $n)
-                                                    continue;
-
-                                                    //echo $k.' '.$v.' '.$n.'<br>';
-
-                                                    $param = array(
-                                                        'posts_per_page' => 1000,
-                                                        'post_type' => ST_Masters::POST_TYPE,
-                                                        'orderby'   => 'rand',  
-                                                        'order'     => 'DESC',
-                                                        'tax_query' => array(
-                                                            'relation' => 'AND',
-                                                            array(
-                                                                'taxonomy' => ST_Masters::CATEGORY_TAXONOMY_SLUG,
-                                                                'field'    => 'slug',
-                                                                'terms'    => $k //  специальность
-                                                            ),
-                                                            array(
-                                                                'taxonomy' => ST_Masters::CATEGORY_TAXONOMY_SLUG,
-                                                                'field'    => 'slug',
-                                                                'terms'    => $v //   рейтинг                                                              
-                                                            ),
-                                                            array(
-                                                                'taxonomy' => ST_Masters::CATEGORY_TAXONOMY_SLUG,
-                                                                'field'    => 'slug',
-                                                                'terms'    => $n //     салон                                                            
-                                                            )
-                                                        ),    
-                                                    );
-
-                                                    $a = get_posts($param);
-                                                    shuffle($a);
-
-                                                                                                  
-                                                    // склеиваем массивы 
-                                                    $b = array_merge($b, $a);  
-                                                    /*shuffle($b);
-*/
-                                                }
-                                                $posts = array_merge($posts, $b);
-                                               
-                                                                                              
-                                            }
-
-                                            
-                                        }       
-
-                                        /*printArray($posts);
-                                        die; */                         
+                                                               
                                         /* получили массив мастеров */
 
 
                                       
 
                                     
-                                        /* вывод мастеров */        
+                                        /* вывод мастеров */    
+
                                         $arr_temp = array();
                                         $i = 1;
                                         foreach($posts as $pst)
