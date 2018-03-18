@@ -242,13 +242,13 @@ jQuery(function($){
 		var master_info = str.split("<br>");
 		var master_salon = $.trim(master_info[1])
 		
-		if(master_salon == 'Жантиль на Ленинском') var email = mail[0];
-		if(master_salon == 'Жантиль на Коломенской') var email = mail[1];
-		if(master_salon == 'Жантиль на Братиславской') var email = mail[2];
-		if(master_salon == 'Жантиль на Щелковской') var email = mail[3];
-		if(master_salon == 'Жантиль на Соколе') var email = mail[4];
-		if(master_salon == 'Жантиль на Сходненской') var email = mail[5];
-		if(master_salon == 'Жантиль м. Аэропорт') var email = mail[6];
+		if(master_salon == 'Жантиль на Ленинском') 		var email = mail[0];
+		if(master_salon == 'Жантиль на Коломенской') 	var email = mail[1];
+		if(master_salon == 'Жантиль на Братиславской') 	var email = mail[2];
+		if(master_salon == 'Жантиль на Щелковской') 	var email = mail[3];
+		if(master_salon == 'Жантиль на Соколе') 		var email = mail[4];
+		if(master_salon == 'Жантиль на Сходненской') 	var email = mail[5];
+		if(master_salon == 'Жантиль м. Аэропорт') 		var email = mail[6];
 		
 		
 		

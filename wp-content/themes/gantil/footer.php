@@ -6,32 +6,21 @@
 
 	<?php wp_footer(); ?>
 
-	
-	<?
-	/*global $_GET;
-
-	
-	if($_GET['go'] == 1)
-		set_users();//update_gallery_date();*/
-
-	?>
-
-	<!--<script src="https://unpkg.com/imask"></script>-->
 	<script src="/wp-content/themes/gantil/js/mask.js"></script>
 	<script>
 	
-	var maskOptions = {
-	  mask: '+{7}(000)000-00-00'
-	};
+		var maskOptions = {
+		  mask: '+{7}(000)000-00-00'
+		};
 
-	var arr = new Array('input-tel', 'tel-698', 'tel-699', 'tel-568', 'billing_phone');
+		var arr = new Array('input-tel', 'tel-698', 'tel-699', 'tel-568', 'billing_phone');
 
-	for(i = 0; i < arr.length; i++)
-	{
-		var element3 = document.getElementById(arr[i]);
-		if(element3)
-			var mask = new IMask(element3, maskOptions);
-	}	
+		for(i = 0; i < arr.length; i++)
+		{
+			var element3 = document.getElementById(arr[i]);
+			if(element3)
+				var mask = new IMask(element3, maskOptions);
+		}	
 
 	</script>
 

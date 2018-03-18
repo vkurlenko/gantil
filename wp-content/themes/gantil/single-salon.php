@@ -160,28 +160,20 @@ get_header();
 	                                        */
 	                                        $posts = array();                                                                
 
-
-
 	                                        foreach($arr[25] as $k)
 	                                        {                                            
-	                                            // если в сессии есть выбранная специальность, то пропустим все кроме нее
-	                                           /* if(isset($_SESSION['spec']) && $_SESSION['spec'] != 'all' && $_SESSION['spec'] != $k)
-	                                                continue;*/
-
 	                                            if(!in_array($k, $arr_adm))
 	                                            	continue;
 
 	                                            $b = array();
 
-	                                            /*foreach($arr[26] as $v)
-	                                            {*/
-	                                                // если в сессии есть выбранный салон, то пропустим все кроме него                                         
-	                                                
-	                                                /*if(isset($_SESSION['salon']) && $_SESSION['salon'] != 'all' && $_SESSION['salon'] != $v)
-	                                                    continue;*/
-													
-													//if(isset($_SESSION['salon']) && $_SESSION['salon'] != 'all')
-	                                                $v = $post->post_name;
+	                                            
+                                                $v = $post->post_name;
+
+                                                foreach($arr[499] as $r) { 
+
+                                                	$n = array();
+
 	                                                $param = array(
 	                                                    'posts_per_page' => 1000,
 	                                                    'post_type' => ST_Masters::POST_TYPE,
@@ -197,18 +189,22 @@ get_header();
 	                                                        array(
 	                                                            'taxonomy' => ST_Masters::CATEGORY_TAXONOMY_SLUG,
 	                                                            'field'    => 'slug',
-	                                                            'terms'    => $v // салон
-	                                                            
+	                                                            'terms'    => $v, // салон	                                                            
+	                                                        ),
+	                                                        array(
+	                                                            'taxonomy' => ST_Masters::CATEGORY_TAXONOMY_SLUG,
+	                                                            'field'    => 'slug',
+	                                                            'terms'    => $r // рейтинг	                                                            
 	                                                        )
 	                                                    ),    
 	                                                );
 
-	                                                $a = get_posts($param);	                                                
-	                                               
-	                                                // склеиваем массивы 
-	                                                $b = array_merge($b, $a);	                                                
-	                                            /*}*/
-	                                            shuffle($b);
+													$n = get_posts($param);
+													// склеиваем массивы 
+                                                	$b = array_merge($b, $n);
+												}                                                	                                                
+                                               
+	                                            //shuffle($b);
 	                                            $posts = array_merge($posts, $b);
 	                                        }                                        
 	                                        /* получили массив мастеров */
@@ -230,7 +226,11 @@ get_header();
 	                                            {    
 	                                                // специальность
 	                                                if($parent_cat->parent == 25)   
-	                                                    $master_spec = $parent_cat->name;	                                                                                              
+	                                                    $master_spec = $parent_cat->name;	   
+
+	                                                // рейтинг
+	                                                if($parent_cat->parent == 499)   
+	                                                    $master_rating = $parent_cat->name;                                                                                            
 	                                            }
 
 	                                            // фото мастера
@@ -241,6 +241,13 @@ get_header();
 
 	                                            <div class="five-column">
 	                                                <div class="our-team ">
+	                                                	<?php
+	                                                   if(user_admin()) {
+	                                                    ?>
+	                                                    <div><?=$master_rating?></div>
+	                                                    <?php
+	                                                   } 
+	                                                   ?>
 	                                                    <div class="team-member">
 	                                                        <!-- <a href="<?php echo get_permalink( $pst->ID )?>"> -->
 	                                                            <?=$thumbnail;?>
@@ -248,14 +255,23 @@ get_header();
 	                                                    </div> 
 	                                                    <h5 class="member-name"><?php echo $pst->post_title?></h5>
 	                                                    <p class="member-post"></p>
-	                                                    <p class="member-tags"><?=$master_spec?><!-- <br><?=$salon_name?> --></p>
-	                                                    <!-- <span class="watch <? echo $master_color;?>"></span> -->
+	                                                    <p class="member-tags"><?=$master_spec?><br><?=$salon_name?></p>
+	                                                    
 	                                                    <p></p>
-	                                                                
-	                                                    <!-- <div class="speaker-topic-title">                                       
-	                                                        <h4><a style="color:#ffffff" onclick="splite_loader(); return false;" href="<?php echo get_permalink( $pst->ID )?>">Записаться</a></h4>
-	                                                    </div> -->
-	        
+	                                                     <div class="speaker-topic-title "> 
+	                                                     	<h4>           
+		                                                     <?php 
+			                                                     if($master_spec == 'Директор')
+			                                                     {
+			                                                     	?>                                      
+			                                                        <li class="fancybox-inline" style="list-style:none"><a style="color:#ffffff" class="director" onclick="return false;" data-salon="<?=$post->post_title?>" data-salonslug="<?=$post->post_name?>" data-person="<?=$pst->post_title?>" href="#contact_form_pop_up_6">Написать письмо</a></li>
+			                                                    	<?
+			                                                     }
+			                                                     else
+			                                                     	echo '&nbsp;';
+		                                                    ?>
+		                                                	</h4>
+	        											</div>
 	                                                 </div>
 	                                             </div>
 
@@ -289,6 +305,22 @@ get_header();
 						<!-- /content -->
 					</div>
 					<!-- /left-block -->
+
+					<script type="text/javascript">
+					$(document).ready(function()
+					{
+
+						$('.director').click(function()
+						{
+							var name = $(this).attr('data-person');
+							var salon = $(this).attr('data-salon');
+							$('#contact_form_pop_up_6').find('#master_name').attr('value', name);
+							$('#contact_form_pop_up_6').find('#master_salon').attr('value', salon);
+							$('#contact_form_pop_up_6').find('#salon_email').attr('value', '<?=get_option("g_options")["email_".$post->post_name]?>');
+
+						})
+					})
+					</script>
 
 	<?php
 get_footer()

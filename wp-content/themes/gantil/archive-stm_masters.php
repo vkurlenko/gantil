@@ -143,7 +143,7 @@ get_header();
                                         
                                         
                                         // сформируем список мастеров в зависимости от наличия фильтра                                        
-                                        $posts = getMasters($arr, isFilter());
+                                        $posts = getMasters2($arr, isFilter());
 
                                                                
                                         /* получили массив мастеров */
@@ -224,7 +224,7 @@ get_header();
                                                                 
                                                     <div class="speaker-topic-title">                                       
                                                         <!-- <h4><a style="color:#ffffff" onclick="splite_loader(); return false;" href="<?php echo get_permalink( $pst->ID )?>">Записаться</a></h4> -->
-                                                        <h4><a style="color:#ffffff" onclick="splite_loader(); return false;" href="#">Записаться</a></h4>
+                                                        <h4><a style="color:#ffffff" onclick="splite_loader(); return false;" href="javascript:return false;">Записаться</a></h4>
                                                         <!-- <a data-salon="" href="#contact_form_pop_up_5" onclick="return false;" class=" arrow">Записаться</a> -->
                                                     </div>
         

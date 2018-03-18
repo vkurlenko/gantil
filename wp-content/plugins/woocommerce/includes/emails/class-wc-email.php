@@ -282,6 +282,11 @@ class WC_Email extends WC_Settings_API {
 
 		if ( 'new_order' === $this->id && $this->object && $this->object->get_billing_email() && ( $this->object->get_billing_first_name() || $this->object->get_billing_last_name() ) ) {
 			$header .= 'Reply-to: ' . $this->object->get_billing_first_name() . ' ' . $this->object->get_billing_last_name() . ' <' . $this->object->get_billing_email() . ">\r\n";
+
+			/* сохраним в файл email заказчика */
+			$f = fopen('order.mail.txt', 'a+');
+			$r = fwrite($f, $this->object->get_billing_email()."\n");
+			/* /сохраним в файл email заказчика */
 		}
 
 		return apply_filters( 'woocommerce_email_headers', $header, $this->id, $this->object );
@@ -370,6 +375,7 @@ class WC_Email extends WC_Settings_API {
 	 * @return bool
 	 */
 	public function is_customer_email() {
+		
 		return $this->customer_email;
 	}
 
