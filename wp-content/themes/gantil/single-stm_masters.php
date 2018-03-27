@@ -133,7 +133,14 @@ get_header();
                                             ?>                                              
                                                             
                                                 
-                                                <button class="master-button" onclick="splite_loader(); return false;">Записаться</button>
+                                                <!-- <button class="master-button" onclick="splite_loader(); return false;">Записаться</button> -->
+                                                <li class="fancybox-inline" style="list-style:none">
+                                                    <h4>
+                                                        <a data-salon="" href="#contact_form_pop_up_5" onclick="return false;" class="arrow" style="color:#fff">
+                                                            <button class="master-button" onclick="splite_loader(); return false;">Записаться</button>
+                                                        </a>
+                                                    </h4>
+                                                </li>
                                                 
     
                                              </div>

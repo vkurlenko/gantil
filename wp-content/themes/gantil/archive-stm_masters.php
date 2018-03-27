@@ -191,13 +191,13 @@ get_header();
                                                 }      
 
                                                 // рейтинг
-                                                if($parent_cat->parent == 499)   
+                                                if($parent_cat->parent == 520)   
                                                     $master_rating = $parent_cat->name;                                                                                      
                                      
                                             }
 
                                             // фото мастера
-                                            $thumbnail = get_the_post_thumbnail( $pst->ID, 'master_thumb', '' );
+                                            $thumbnail = get_the_post_thumbnail( $pst->ID, 'master_thumb', array('alt' => $pst->post_title) );
 
                                              
                                             ?>
@@ -208,6 +208,12 @@ get_header();
                                                    if(user_admin()) {
                                                     ?>
                                                     <div><?=$master_rating?></div>
+
+                                                    <div class="onpage-edit" style="position: absolute;  top: 0; padding:0 5px">
+                                                        <a href="/wp-admin/post.php?post=<?=$pst->ID?>&action=edit" target="blank">
+                                                            <img src="/wp-content/themes/gantil/img/icon/edit.png" title="Редактировать" alt="Редактировать">
+                                                        </a>
+                                                    </div>
                                                     <?php
                                                    } 
                                                    ?>
@@ -224,8 +230,11 @@ get_header();
                                                                 
                                                     <div class="speaker-topic-title">                                       
                                                         <!-- <h4><a style="color:#ffffff" onclick="splite_loader(); return false;" href="<?php echo get_permalink( $pst->ID )?>">Записаться</a></h4> -->
-                                                        <h4><a style="color:#ffffff" onclick="splite_loader(); return false;" href="javascript:return false;">Записаться</a></h4>
-                                                        <!-- <a data-salon="" href="#contact_form_pop_up_5" onclick="return false;" class=" arrow">Записаться</a> -->
+                                                        <!-- <h4><a style="color:#ffffff" onclick="splite_loader(); return false;" href="javascript:return false;">Записаться</a></h4> -->
+                                                        <li class="fancybox-inline" style="list-style:none"><h4><a data-salon="" href="#contact_form_pop_up_5" onclick="return false;" class="arrow" style="color:#fff">Записаться</a></h4></li>
+                                                        <!-- <h4><a style="color:#ffffff" onclick="splite_loader(); return false;" href="javascript:return false;">Записаться</a></h4> -->
+                                                            
+                                                        
                                                     </div>
         
                                                  </div>

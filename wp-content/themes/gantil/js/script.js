@@ -215,18 +215,7 @@ jQuery(function($){
 
  function set_master_info(obj)
  {
- 	//alert($(obj));
-
- 	//alert('work')
-		/*
-		mail_admin_salon_leninsky
-		mail_admin_salon_kolom
-		mail_admin_salon_bratis
-		mail_admin_salon_schelk
-		mail_admin_salon_sokol
-		mail_admin_salon_shodnya
-		mail_admin_salon_dom_krasoty
-		*/
+ 	
 		var mail = new Array(
 			'lnn@gantil.ru, 		4098569@mail.ru',
 			'4996177337@mail.ru, 	klm@gantil.ru',
@@ -241,14 +230,16 @@ jQuery(function($){
 		var str = $(obj).parents('.our-team').find('p').eq(1).html(); 
 		var master_info = str.split("<br>");
 		var master_salon = $.trim(master_info[1])
+
+		//console.log(master_name);
 		
-		if(master_salon == 'Жантиль на Ленинском') 		var email = mail[0];
-		if(master_salon == 'Жантиль на Коломенской') 	var email = mail[1];
-		if(master_salon == 'Жантиль на Братиславской') 	var email = mail[2];
-		if(master_salon == 'Жантиль на Щелковской') 	var email = mail[3];
-		if(master_salon == 'Жантиль на Соколе') 		var email = mail[4];
-		if(master_salon == 'Жантиль на Сходненской') 	var email = mail[5];
-		if(master_salon == 'Жантиль м. Аэропорт') 		var email = mail[6];
+		if(master_salon == 'Жантиль на Ленинском') var email = mail[0];
+		if(master_salon == 'Жантиль на Коломенской') var email = mail[1];
+		if(master_salon == 'Жантиль на Братиславской') var email = mail[2];
+		if(master_salon == 'Жантиль на Щелковской') var email = mail[3];
+		if(master_salon == 'Жантиль на Соколе') var email = mail[4];
+		if(master_salon == 'Жантиль на Сходненской') var email = mail[5];
+		if(master_salon == 'Жантиль м. Аэропорт') var email = mail[6];
 		
 		
 		
@@ -260,13 +251,10 @@ jQuery(function($){
 		$('.wpcf7-form').find('#salon_email').attr('value', email);
 
 		$('#master_info').remove()
-		$('#splite_popup_title').append('<div id="master_info">'+master_name+'<br>'+$.trim(master_salon)+'</div>');
-		//$('#master_info').remove()
-		//$('.wpcf7-form').find('p').eq(4).prepend('<p id="master_info" style="text-align:center"></p>');
-		//$('#master_info').html('<p id=>'+master_name+'<br>'+$.trim(master_salon)+'</p>'+master_photo);
-		//$('#master_info').html('<p id=>'+master_name+'<br>'+$.trim(master_salon)+'</p>');
+		//$('#splite_popup_title').append('<div id="master_info">'+master_name+'<br>'+$.trim(master_salon)+'</div>');
+		//alert('<div id="master_info">'+master_name+'<br>'+$.trim(master_salon)+'</div>')
+		$('#contact_form_pop_up_5 > div > h3').append('<div id="master_info">'+master_name+'<br>'+$.trim(master_salon)+'</div>');
 		
-		//$('.wpcf7-form img').attr('width', 200)
  }
 
  /*function get_video_title(vid)
@@ -300,8 +288,6 @@ jQuery(function($){
 
  $(document).ready(function()
 {
-
-
 
 	/* выбор салона в формах CF7 */
 	$('.order-to-salon').click(function()
@@ -378,7 +364,7 @@ jQuery(function($){
 
 
 /* автоподстановка данных мастера в форме записи */
-	$('.speaker-topic-title > h4 > a, .our-team .master-button').click(function()
+	$('.speaker-topic-title > h4 > a, .speaker-topic-title > li > h4 > a, .our-team .master-button').click(function()
 		{
 			obj = $(this);
 			set_master_info(obj);
