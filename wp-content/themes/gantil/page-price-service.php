@@ -474,7 +474,7 @@ $list = get_c_elem($arr);
 																}
 																else
 																	echo '
-																	<td></td><td class="item-name-hide">'.$m.'</td><td>'.$pr['_variation_description'].'</td>';
+																	<td></td><td class="item-name-hide">'.$m.'</td><td>'.@$pr['_variation_description'].'</td>';
 																?>
 																
 																<td>

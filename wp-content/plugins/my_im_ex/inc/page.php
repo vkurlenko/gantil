@@ -517,21 +517,22 @@ else
                                                                         <a href="/product/<?=$obj->post_name?>/" target="_blank" class="icon-view"><?=$icon_view?></a>
                                                                         <!-- <a href="/product/<?=$obj->post_name?>/"><?=$m?></a> -->
                                                                     </td>
-																	<!-- <td><?=$pr['_variation_description']?></td> -->
+																	<!-- <td><?=@$pr['_variation_description']?></td> -->
 																	<?
 																}
 																else
 																	echo '
 																	<td></td>
 																	<td class="item-name-hide">'.$m.'</td>
-																	<!--<td>'.$pr['_variation_description'].'</td>-->';
+																	<!--<td>'.@$pr['_variation_description'].'</td>-->';
 																?>
 																
 																<td>
 																	<?
 																	// ключевой параметр товара
 																	$a = get_term_by('slug', $main_key, 'pa_main-key' );
-																	echo $a->name;
+                                                                    if($a)
+																	   echo $a->name;
 																	?>
 																</td>
 																
@@ -547,8 +548,12 @@ else
 																		continue;
 																	?>
 																	<td align="center"><? 
-                                                                     
-                                                                    $prlist->getPriceCell($p['vid'], $p['price'], $obj->ID);?></td>
+                                                                    if(@$p['vid'])
+                                                                        $prlist->getPriceCell($p['vid'], $p['price'], $obj->ID);
+                                                                    else
+                                                                        echo '';
+
+                                                                    ?></td>
 																	<?
 																}
 																?>

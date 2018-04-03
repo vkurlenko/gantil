@@ -1,8 +1,5 @@
 <?
 
-
-
-
 class PRLIST
 {
 	// салон
@@ -74,6 +71,23 @@ class PRLIST
 		$arr = get_categories($args);
 
 		return $arr;
+	}
+
+	// определим название салона по его slug (salon_sokol => Салон на Соколе)
+	public function getSalonName($slug)
+	{
+		$name = '';
+
+		$arr = $this->getSalons();
+
+		foreach ($arr as $k => $v) {
+			if ($v->slug == $slug) {
+				$name = $v->name;
+				break;
+			}				
+		}
+
+		return $name;
 	}
 
 
@@ -273,6 +287,7 @@ class PRLIST
 		$sql = "SELECT * FROM `gn_postmeta` where post_id=".$product_id."
 				AND meta_key = '_sku'";
 
+
 		
 		$res = $wpdb->get_results($sql);
 
@@ -286,9 +301,10 @@ class PRLIST
 						WHERE post_parent = ".$product_id.") 
 					AND meta_value = '".$this->salon."') 
 				AND meta_key IN ('_regular_price', 'attribute_pa_main-key', 'attribute_pa_item_spec', 'attribute_pa_item_salon')";
-				//echo $sql;
+				
 		$res = $wpdb->get_results($sql);
-
+		/*printArray($res);
+		echo $res; die;*/
 		
 		$arr1 = $arr2 = array();
 
@@ -313,8 +329,10 @@ class PRLIST
 			);					
 		}
 
+
 		return $arr2;
 	}
+
 
 
 	// получим все вариации продукта (Бутик)
@@ -359,13 +377,76 @@ class PRLIST
 
 		foreach($arr1 as $var => $param)
 		{
-			$arr2[$param['attribute_pa_obem']][$param['attribute_pa_item_salon']] = array(
-				'vid' 	=> $param['variation_id'], 
-				'price' => $param['_regular_price']
-			);					
+			//if(isset($param['attribute_pa_obem']))	{		
+				$arr2[@$param['attribute_pa_obem']][$param['attribute_pa_item_salon']] = array(
+					'vid' 	=> $param['variation_id'], 
+					'price' => $param['_regular_price']
+				);	
+			//}				
 		}
 
 		return $arr2;
+	}
+
+	/*  
+		получим диапазон цен на услугу в зависимости от выбранного салона, если он есть,
+		или диапазон цен по всем салонам (array)
+	*/	
+	public function getPriceRange($product_id, $salon = '')
+	{
+		global $wpdb;
+
+		$sql = "SELECT * FROM `gn_postmeta` 
+				WHERE post_id IN (SELECT post_id 
+					FROM gn_postmeta 
+					WHERE post_id IN (SELECT ID 
+						FROM gn_posts 
+						WHERE post_parent = ".$product_id.")";
+		if($salon)
+			$sql .= "AND meta_value = '".$salon."'";
+
+		$sql .= ") AND meta_key IN ('_regular_price', 'attribute_pa_main-key', 'attribute_pa_item_spec', 'attribute_pa_item_salon')";"
+				AND meta_value = '".$salon."') 
+			AND meta_key IN ('_regular_price', 'attribute_pa_main-key', 'attribute_pa_item_spec', 'attribute_pa_item_salon')";
+		
+		$res = $wpdb->get_results($sql);
+
+		$range = array();
+
+		foreach ($res as $k => $v) {
+			if ($v->meta_key == '_regular_price') {
+				if(!in_array($v->meta_value, $range) && $v->meta_value != '' && $v->meta_value > 0)
+						$range[] = $v->meta_value;
+			}
+		}
+
+		return $range;
+	}
+
+	// получим корневую категорию услуги или товара
+	public function get_top_term( $taxonomy, $post_id = 0 ) 
+	{
+		/*if( isset($post_id->ID) ) 
+			$post_id = $post_id->ID;
+
+		if( ! $post_id )          
+			$post_id = get_the_ID();*/
+
+		$terms = get_the_terms( $post_id, $taxonomy );
+
+		if( ! $terms || is_wp_error($terms) ) return $terms;
+
+		// только первый
+		$term = array_shift( $terms );
+
+		// найдем ТОП
+		$parent_id = $term->parent;
+		while( $parent_id ){
+			$term = get_term_by( 'id', $parent_id, $term->taxonomy );
+			$parent_id = $term->parent;
+		}
+
+		return $term;
 	}
 
 
@@ -386,7 +467,8 @@ class PRLIST
 
 
 	/* полный список категорий корневого раздела (все УСЛУГИ, весь БУТИК) */
-	public function getFullTree( $service_id ){
+	public function getFullTree( $service_id )
+	{
 
 		$arr = array();
 
@@ -436,10 +518,7 @@ class PRLIST
 
 		return $arr;
 	}
-	/* /полный список категорий корневого раздела (все УСЛУГИ, весь БУТИК) */
-
-
-	
+	/* /полный список категорий корневого раздела (все УСЛУГИ, весь БУТИК) */	
 }
 
 

@@ -49,7 +49,7 @@ table.table-normal td, table.table-normal th{padding: 5px}
 .menu-main-first{padding:0 !important;}
 .navbar-header{padding-bottom:5px; padding-top:5px;}
 .navbar-nav{margin:auto;}
-.navbar-default .navbar-nav>li{padding: 0 0 0 10px;}
+.navbar-default .navbar-nav>li{padding: 0 0 0 20px;}
 .navbar-default .navbar-nav>li>a{font-size: 1.7em; /* font-weight: bold; */ color:#000000; padding: 10px 0; text-transform: lowercase;}
 /* .in li>a{ font-weight: bold; text-transform: uppercase;} */
 .navbar-default .navbar-nav>li>a:hover{color: #f30}
@@ -82,7 +82,7 @@ body.down #fix.clone {    top: 0;    left: 0;    right: 0;     z-index: 999; pad
 /* fancybox-form */
 /* #fancybox-wrap{width:90% !important;} */
 #fancybox-content{/* border:0 !important; */}
-.fancybox-form h3{margin: 0;      margin-bottom: 10px;   text-align: center;    padding: 15px 0;    position: relative; background-color: #000000;    color: #FFF;    font-size: 24px;}
+.fancybox-form h3{margin: 0;      margin-bottom: 10px;   text-align: center;    padding: 15px 5px;    position: relative; background-color: #000000;    color: #FFF;    font-size: 24px;}
 .fancybox-form form{padding: 20px !important}
 
 /* submenu */
@@ -321,14 +321,16 @@ h5 {font-size: 20px;    line-height: 1.350;}
 .msnry_item{margin: 5px; display: inline-block; padding: 5px 5px; float:left;  border: 1px solid #eee;  }
 .msnry_item:hover{border:1px solid #fff; box-shadow: inset 0px 0px 5px rgba(44,3,3,0.9);}
 
-.text-850, .text-619, .text-567 {
+.text-850, .text-619, .text-567, #master_name, #master_salon, #salon_email  {
     display: none;
 }
 /* masters */
 
 /* woocommers */
+.price-range{font-weight: bold; font-size: 1.25em}
 
-
+/* .entry-summary .price{display: none;} 
+.entry-summary form .price{display: inline;}   */
 /* /woocommers */
 
 
@@ -418,7 +420,7 @@ h5 {font-size: 20px;    line-height: 1.350;}
 /* menu-service */
 ul.menu-service{padding: 0;    margin: 0;    float: right;    /*margin-right: 10px;*/}
 .menu-service li{float: left;    list-style: none;    padding: 2px 0;    /* border-bottom: 1px solid #000000; */    margin-left: 10px;    /* width: 25%; */}
-.menu-service li a{display: block; padding:8px 0 8px 45px;     font-size: 1.6em;  font-weight: bold;   text-transform: lowercase;    color: #606060; }
+.menu-service li a{display: block; padding:8px 0 8px 50px;     font-size: 1.6em;  font-weight: bold;   text-transform: lowercase;    color: #606060; }
 .menu-service li.soc{margin-left:5px;}
 .menu-service li.soc a{padding-left:5px;}
 .menu-service li.li-lk{ background: url('/wp-content/uploads/2017/08/lk.png') no-repeat 0; }
@@ -582,6 +584,9 @@ table.cart img{width:auto !important;}
 #fancybox-content{}
 
 .wpcf7-form-control-wrap select{margin-bottom: auto !important}
+#splite_popup_box.layout_centered{max-height: 90%; top:5%;}
+#splite_popup_box input{padding: 2px !important;
+    height: auto !important; }
 
 
 /* Large desktop */
@@ -597,14 +602,14 @@ table.cart img{width:auto !important;}
 
  @media (min-width: 1366px) and (max-width: 1599px)  { 
  	.navbar-default .navbar-nav>li{padding:0 10px;}
-	.navbar-default .navbar-nav>li>a{font-size:1.4em}
+	.navbar-default .navbar-nav>li>a{font-size:1.7em}
 
     .grid-service-slider1 .grid-block-button{font-size:16px;}
  }
 
  @media (min-width: 1200px) and (max-width: 1367px)  { 
  	.navbar-default .navbar-nav>li{padding:0 10px;}
-	.navbar-default .navbar-nav>li>a{font-size:1.2em}
+	.navbar-default .navbar-nav>li>a{font-size:1.4em}
 	.menu-service li a{ font-size: 1.1em;}
 	.widget-title{font-size: 1.1em}
 	.widget-text{font-size: .9em}
@@ -774,8 +779,8 @@ table.cart img{width:auto !important;}
 	#video-player{width:100%; height: auto;}
 	.slick-video{width: 100%}
 
-	#splite_popup_box {   left: 5px !important; }
-
+	 #splite_popup_box {   left: 5px !important; } 
+}
 @media (max-width: 525px) { 
 	/*.news-list > .item-3, .news-list > .item-5, .news-list > .item-7, .news-list > .item-9{clear:both;} */
 	.block-callus{margin:0;}
@@ -810,7 +815,7 @@ table.cart img{width:auto !important;}
 	.slick-video{width: 100%}
 
 	.salon-card .salon-address {	    font-size: 1em;	}
-	#splite_popup_box {   left: 5px !important; }
+	/* #splite_popup_box {   left: 5px !important; } */
 	
 }
 
@@ -821,7 +826,7 @@ table.cart img{width:auto !important;}
 	#video-player{width:100%; height: auto;}
 	.slick-video{width: 100%}
 	.psgal, .psgal figure{width:auto !important;}
-	#splite_popup_box {   left: 5px !important; }
+	/* #splite_popup_box {   left: 5px !important; } */
 	
 }
 @media (max-width: 350px) { 
@@ -829,6 +834,6 @@ table.cart img{width:auto !important;}
 	#video-player{width:100%; height: auto;}
 	.slick-video{width: 100%}
 	 #fix .top{max-width:100%}
-	 #splite_popup_box {   left: 5px !important; }
+	/*  #splite_popup_box {   left: 5px !important; } */
 	
 }

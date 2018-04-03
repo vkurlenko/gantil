@@ -16,11 +16,10 @@
 
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/plugin/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/reset.css">
-		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
+		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css?v=2">
 		<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/font.css">
 
-		<!-- <script src="https://use.fontawesome.com/88eba596a5.js"></script> -->
 		<link rel="stylesheet" href="/wp-content/themes/gantil/plugin/font-awesome-4.7.0/css/font-awesome.min.css">
 
 		<link rel="stylesheet" type="text/css" href="/wp-content/themes/gantil/plugin/slick/slick.css"/>					
@@ -36,9 +35,7 @@
 		<script type="text/javascript" src="http://malsup.github.io/min/jquery.form.min.js"></script>
 		
 
-		
-
-		<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>					
+		<!--<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>	-->				
 		<script type="text/javascript" src="/wp-content/themes/gantil/plugin/slick/slick.min.js"></script>
 		<script type="text/javascript" src="/wp-content/themes/gantil/js/script.js"></script>
 	

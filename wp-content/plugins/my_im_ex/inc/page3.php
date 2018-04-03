@@ -15,7 +15,7 @@ $prlist 	= new PRLIST();
 
 $prlist->cid  = 80; // по умолчанию - БУТИК
 
-if($_POST['salon'])
+if(@$_POST['salon'])
     $prlist->salon  = $_POST['salon'];
 else
     $prlist->salon 	= '';
@@ -139,7 +139,7 @@ die;*/
 // получим раздел каталога УСЛУГИ по его ID
 // если его нет в GET, то возьмем первый из массива корневых категорий 
 
-if($_POST['product-category'])
+if(@$_POST['product-category'])
     $prlist->pid  = $_POST['product-category'];
 else
     $prlist->pid  = $arr_root[0]->term_id;
@@ -504,21 +504,22 @@ die;*/
                                                                         <a href="/product/<?=$obj->post_name?>/" target="_blank" class="icon-view"><?=$icon_view?></a>
                                                                         <!-- <a href="/product/<?=$obj->post_name?>/"><?=$m?></a> -->
                                                                     </td>
-																	<!-- <td><?=$pr['_variation_description']?></td> -->
+																	<!-- <td><?=@$pr['_variation_description']?></td> -->
 																	<?
 																}
 																else
 																	echo '
 																	<td></td>
 																	<td class="item-name-hide">'.$m.'</td>
-																	<!--<td>'.$pr['_variation_description'].'</td>-->';
+																	<!--<td>'.@$pr['_variation_description'].'</td>-->';
 																?>
 																
 																<td>
 																	<?
 																	// ключевой параметр товара
 																	$a = get_term_by('slug', $main_key, 'pa_obem' );
-																	echo $a->name;
+																	if(@$a)
+                                                                        echo $a->name;
 																	?>
 																</td>
 																
@@ -534,8 +535,11 @@ die;*/
 																		continue;
 																	?>
 																	<td align="center"><? 
-                                                                     
-                                                                    $prlist->getPriceCell($p['vid'], $p['price'], $obj->ID);?></td>
+                                                                     if(@$p['vid'])
+                                                                        $prlist->getPriceCell($p['vid'], $p['price'], $obj->ID);
+                                                                    else
+                                                                        echo '';
+                                                                    ?></td>
 																	<?
 																}
 																?>
