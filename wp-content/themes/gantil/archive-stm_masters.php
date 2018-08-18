@@ -105,7 +105,7 @@ get_header();
                                             'hide_empty'    => true, 
                                             'object_ids'    => null, // 
                                             'include'       => array(),
-                                            'exclude'       => array(424, 425), // исключим из выборки Администраторов и Директоров
+                                            'exclude'       => array(424, 425, 509), // исключим из выборки Администраторов, Дизайнеров и Директоров
                                             'exclude_tree'  => array(), 
                                             'number'        => '', 
                                             'fields'        => 'all', 

@@ -1,0 +1,17 @@
+#table-prlist tr:hover{background: #fff}
+
+.var-cell{height: 50px; min-width: 50px; position: relative;}
+.var-price{color:#000; font-weight: bold; font-size: 20px}
+.var-edit{text-align: center;}
+.var-id{background: #eee}
+.var-id-span{display: block; font-size: 9px; text-align: left; color:#ccc;}
+
+.icon{position: absolute; display:block;}
+.icon-edit{top:0; right:0; }
+.icon-ok{top:0; right:0;  }
+.icon-warning{top:0; right:0;  }
+.icon-save{bottom:0; right:0;   }
+.icon-cancel{bottom:0; left:0;  }
+.icon-del{top:0; left:0; display:none; }
+.icon-process{top:0; left:0;}
+.icon-view img{width:16px; /* display:block; position:relative; top:0; right:0; */}

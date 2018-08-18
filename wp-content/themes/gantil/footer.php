@@ -6,6 +6,15 @@
 
 	<?php wp_footer(); ?>
 
+	<script src="<?php echo get_template_directory_uri(); ?>/plugin/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/plugin/bootstrap/js/validator.js"></script>
+	<script type="text/javascript" src="http://malsup.github.io/min/jquery.form.min.js"></script>
+	
+
+	<!--<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>	-->				
+	<script type="text/javascript" src="/wp-content/themes/gantil/plugin/slick/slick.min.js"></script>
+	<script type="text/javascript" src="/wp-content/themes/gantil/js/script.js"></script>
+
 	<script src="/wp-content/themes/gantil/js/mask.js"></script>
 	<script>
 	
@@ -54,12 +63,27 @@
 		//$('form.variations_form  select').change(function()
 		{
 
-			console.log('ok')
+			//console.log($('#pa_item_salon').val())
+			$('#pa_item_salon option').each(function(){
+				if($(this).attr('value') == $('#pa_item_salon').val())
+					if($(this).attr('value') != ''){
+						$('.salon-name').html('Цена в <span></span>:');
+						$('.salon-name span').html($(this).text());
+					}
+					else
+						$('.salon-name').html('');						
+			})
+
+			
 			//alert('ok')
 
 			if($(this).attr('id') == 'pa_item_salon')
 			{
 				set_salon($('#pa_item_salon').val())
+				//alert($('#pa_item_salon').val())
+
+				//$('.woocommerce-variation-price').html($('#pa_item_salon').val())
+
 			}
 			
 
@@ -154,12 +178,8 @@
 		   });
 	})
 
-	
 
 	</script>
-
-
-
 
 	</body>
 </html>

@@ -19,6 +19,25 @@ $posts = get_posts( $args );
 ?> 
 <style type="text/css">
 	.grid-news-slider{display: none;}
+
+	.over-text {
+	    display: block;
+	    text-align: center;
+	    font-size: 14px;
+	    text-transform: none;
+	    font-weight: normal;
+	    margin-left: 0;
+	    position: absolute;
+	    bottom: 0;
+	    background: rgba(96, 96, 96, 0.64);
+	    padding: 10px;
+	    color: #fff;
+	    width: 100%;
+
+	    /* background: rgba(96, 96, 96, 0.64); */
+	    /* background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); */
+	    /* background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); */
+	}
 	
 </style>
 <div class="container-fluid grid-news">
@@ -50,9 +69,18 @@ $posts = get_posts( $args );
 				<a href="<?php the_permalink(); ?>">
 					<img class="grid-item-img img-mono" src="<?=makeGrayPic($thumb_url[0])?>">
 					<img class="grid-item-img img-color" src="<?=$thumb_url[0]?>">
+					
+					<?php 
+					if( has_excerpt() ) :?>
+						<div class="over-text"><?php the_excerpt()?></div>
+					<?php endif;?>	
+					
+				</a>	
 
-					<div class="grid-item-name grid-block-button"><?php the_title(); ?></div>	
-				</a>			
+				<div class="grid-item-name grid-block-button" style="position: relative;"><?php the_title(); ?>
+							
+					</div>	
+				
 			</div>
 			<?
 

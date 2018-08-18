@@ -18,6 +18,15 @@ start();
 ?>
 
 <?php
+$arr_s_n = array(
+	'salon_leninsky' => 'в салоне на Ленинском',
+	'salon_bratis' 	 => 'в салоне на Братиславской',
+	'salon_sokol' 	 => 'в салоне на Соколе',
+	'salon_kolom' 	 => 'в салоне на Коломенской',
+	'salon_shodnya'  => 'в салоне на Сходненской',
+	'salon_dom_krasoty' => 'в салоне Дом Красоты'
+	);
+
 $arr_spec = array(
 	'veduschiispetcialist' 	=> 'Индивидуальный специалист',
 	'topstilist' 			=> 'Топ-стилист',
@@ -308,8 +317,34 @@ if(!$_GET['cid'])
 
 $arr = get_c($_GET['cid']);
 
-$list = get_c_elem($arr);
+//printArray($arr);
 
+if(empty($arr)){
+	$arr[] = array(
+		'term_id' => $_GET['cid'],
+		'name' => '',
+		'slug' => '',
+		'parent' => 79,
+		'arr_child' => array()
+
+		);
+	/*
+(
+            [term_id] => 67
+            [name] => Маникюр
+            [slug] => manikjur
+            [parent] => 47
+            [arr_child] => Array
+                (
+                )
+
+        )
+	*/
+}
+//printArray($arr);
+
+$list = get_c_elem($arr);
+//printArray($list);
 ?>
 
 
@@ -330,18 +365,8 @@ $list = get_c_elem($arr);
 									
 								<div>
 									<div class="row-fluid">
-										<div class="col-md-6 col-sm-6 col-xs-12">
-											<?
-											$arr_s_n = array(
-												'salon_leninsky' => 'в салоне на Ленинском',
-												'salon_bratis' 	 => 'в салоне на Братиславской',
-												'salon_sokol' 	 => 'в салоне на Соколе',
-												'salon_kolom' 	 => 'в салоне на Коломенской',
-												'salon_shodnya'  => 'в салоне на Сходненской',
-												'salon_dom_krasoty' => 'в салоне Дом Красоты'
-												);
-											?>
-											<h1>Цены на услуги <?=$arr_s_n[$salon]?> <?php /*the_title();*/?> </h1>	
+										<div class="col-md-6 col-sm-6 col-xs-12">											
+											<h1>Цены на услуги <?=$arr_s_n[$salon]?></h1>	
 										</div>
 											
 										<div class="col-md-6 col-sm-6 col-xs-12">
@@ -363,7 +388,6 @@ $list = get_c_elem($arr);
 													<select id="select-salon" name="salon">
 														<option value="all">Выберите салон</option>											
 														<?php
-
 														foreach ($categories as $k => $v) 
 														{
 															$sel = '';
@@ -400,9 +424,6 @@ $list = get_c_elem($arr);
 									</ul>
 									<div style="clear:both"></div>
 									<!-- /подменю (категории услуг + БУТИК) -->
-
-
-
 									
 
 
@@ -518,14 +539,16 @@ $list = get_c_elem($arr);
 
 											<script language="javascript">
 
-											function set_salon(s)
+											function set_salon2(s)
 											{
+												//alert('set');
 												$.ajax({
 													type: "POST",
 												  	url: '/wp-content/themes/gantil/ajax/set.salon.php',
 												  	data: "salon="+s,
 												  	success: function(data)
 												  	{
+												  		//alert('succes');
 												    	location.reload();
 												  	},
 												  	error: function()
@@ -593,8 +616,11 @@ $list = get_c_elem($arr);
 											    /* смена салона */
 											    $('#select-salon').change(function()
                                                 {//alert($(this).val())
-                                                	if($(this).val() != 'all')                                                	
-                                                		set_salon($(this).val())                                                    
+                                                	if($(this).val() != 'all'){
+                                                		//alert($(this).val())
+                                                		set_salon2($(this).val())
+                                                	}                                                	
+                                                		                                                    
                                                 })
                                                 /* /смена салона */
 											})

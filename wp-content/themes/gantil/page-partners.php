@@ -53,11 +53,11 @@ get_header();
 											<?php the_content();?>
 										</div>
 
-										<div class="partners">
+										<!-- <div class="partners">
 											<?
 											$partners = new WP_Query('cat=131&posts_per_page=-1');
 											//printArray($partners);
-
+										
 											while($partners -> have_posts())
 											{
 												$partners -> the_post();
@@ -65,9 +65,9 @@ get_header();
 												
 												the_post_thumbnail();
 											}
-
+										
 											?>
-										</div>
+										</div> -->
 
 									<?php endwhile; ?>
 									<?php endif; ?>

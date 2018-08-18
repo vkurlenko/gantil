@@ -16,4 +16,22 @@
  * @version     2.0.0
  */
 ?>
+
+<style>
+	.woo-search{
+		padding:10px;
+	}
+	.aws-container .aws-search-form{text-align: center !important;}
+
+	.aws-search-field{width: 500px !important; max-width: 100% !important; display: inline !important;}
+</style>
+
+<?php
+
+if(user_admin()){
+	echo '<div class="woo-search">Поиск по каталогу товаров и услуг: ';
+	echo do_shortcode('[aws_search_form]');
+	echo '</div>';
+}
+?>
 <ul class="products">

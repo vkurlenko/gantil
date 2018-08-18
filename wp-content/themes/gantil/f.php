@@ -1,5 +1,28 @@
 <?
+// Для скриптов
+function my_deregister_javascript () {
+    if ( !is_page ('154') ) {
+    wp_deregister_script ( 'contact-form-7' );
+    }
+}
+add_action ( 'wp_print_scripts', 'my_deregister_javascript', 100 );
 
+// Для стилей
+function my_deregister_styles() {
+    if ( !is_page ('154') ) {
+    wp_deregister_style ( 'contact-form-7' );
+    }
+}
+add_action('wp_print_styles', 'my_deregister_styles', 100);
+//---------
+
+
+function woocommerce_single_variation() {
+        echo '<div class="salon-name"></div>
+        	<div class="woocommerce-variation single_variation">    
+
+        </div>';
+    }
 
 
 function get_master_realname($slug)
@@ -19,18 +42,25 @@ function get_master_realname($slug)
  function user_admin() 
 {
     global $wp_roles;
+
     $current_user = wp_get_current_user();
     $roles = $current_user->roles;
     $role = array_shift($roles);
-    $current_user_role =  $wp_roles->role_names[$role];
 
-    //get_current_user_role();
+    if( $role ) {
+    	$current_user_role =  $wp_roles->role_names[$role];
 
-    //echo 'это администратор';
-	if ($current_user_role == 'Administrator') 
-		return true;		
-	else
-		return false;
+	    //get_current_user_role();
+
+	    //echo 'это администратор';
+		if ($current_user_role == 'Administrator') 
+			return true;		
+		else
+			return false;
+    }
+    else
+    	return false;
+    	
 }
 
 
@@ -53,6 +83,10 @@ function makeGrayPic($filename)
 	$fname = explode('/', $url['path']);
 	$fname = $fname[count($fname) - 1];
 
+	//$file_parts = explode('.', $fpath);
+
+
+
 	// найдем путь к файлу (/wp-content/uploads/2017/06/)
 	$fpath = str_replace($fname, '', $fpath);
 
@@ -61,33 +95,59 @@ function makeGrayPic($filename)
 	$resultName = $_SERVER['DOCUMENT_ROOT'].$fpath.$fmono;
 	
 	
+
 	if(!file_exists($resultName))
 	{
+		// echo 'resultName = '.$resultName.' exists = '.file_exists($resultName).'<br>';
 		// получаем размеры исходного изображения
-		$imgSize = getimagesize($_SERVER['DOCUMENT_ROOT'].$url['path']);
-		$width = $imgSize[0];
-		$height = $imgSize[1];
 
-		// создаем новое изображение
-		$img = imageCreate($width, $height);
+		$original = $_SERVER['DOCUMENT_ROOT'].$url['path'];
 
-		// задаем серую палитру для нового изображения
-		for ($color = 0; $color <= 255; $color++) 
-		{
-			imageColorAllocate($img, $color, $color, $color);
+		if (file_exists( $original )) {
+			$imgSize = getimagesize( $original );
+			$width = $imgSize[0];
+			$height = $imgSize[1];
+
+			//echo $imgSize[2]; die;
+
+			// создаем новое изображение
+			$img = imagecreate($width, $height);
+
+			// задаем серую палитру для нового изображения
+			for ($color = 0; $color <= 255; $color++) 
+			{
+				imagecolorallocate($img, $color, $color, $color);
+			}
+
+			// создаем изображение из исходного
+            switch($imgSize[2]){
+                case 2 :
+                    $img2 = imageCreateFromJpeg($_SERVER['DOCUMENT_ROOT'].$url['path']);
+                    // объединяем исходное изображение и серое
+                    imageCopyMerge($img, $img2,0,0,0,0, $width, $height, 100);
+                    // сохраняем изображение
+                    imagejpeg($img, $resultName);
+                    break;
+
+                case 3 :
+                    $img2 = imageCreateFromPng($_SERVER['DOCUMENT_ROOT'].$url['path']);
+                    // объединяем исходное изображение и серое
+                    imageCopyMerge($img, $img2,0,0,0,0, $width, $height, 100);
+                    // сохраняем изображение
+                    imagepng($img, $resultName);
+                    break;
+            }
+
+			/*// объединяем исходное изображение и серое
+			imageCopyMerge($img, $img2,0,0,0,0, $width, $height, 100);
+
+			// сохраняем изображение
+			imagejpeg($img, $resultName);*/
+
+			// очищаем память
+			imagedestroy($img);		
 		}
-
-		// создаем изображение из исходного
-		$img2 = imageCreateFromJpeg($_SERVER['DOCUMENT_ROOT'].$url['path']);
-
-		// объединяем исходное изображение и серое
-		imageCopyMerge($img,$img2,0,0,0,0, $width, $height, 100);
-
-		// сохраняем изображение
-		imagejpeg($img, $resultName);
-
-		// очищаем память
-		imagedestroy($img);		
+		
 	}
 
 	// /wp-content/uploads/2017/06/len-490x325-mono.jpg
@@ -723,6 +783,11 @@ class ControlPanel
 	 				array(
 	 					'title' =>'Услуги',
 	 					'name' => 'on_main_service',
+	 					'type' => 'checkbox'
+	 					),
+	 				array(
+	 					'title' =>'Дизайнеры',
+	 					'name' => 'on_main_designers',
 	 					'type' => 'checkbox'
 	 					),
 	 				array(

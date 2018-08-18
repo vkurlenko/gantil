@@ -9,7 +9,7 @@
 	'hide_empty'    => false, 
 	'object_ids'    => null, // 
 	'include'       => array(),
-	'exclude'       => array(49, 183),  // исключим 49-студия загара, 183 - имиджконсультирование
+	'exclude'       => array(49),  // исключим 49-студия загара, 183 - имиджконсультирование
 	'exclude_tree'  => array(), 
 	'number'        => '', 
 	'fields'        => 'all', 
@@ -31,6 +31,8 @@
 ); 
 
 $myterms = get_terms( $args );
+
+//printArray($myterms);
 
 foreach( $myterms as $term )
 {
@@ -68,15 +70,18 @@ foreach( $myterms as $term )
 	.grid-service-slider{display: none;}
 </style>
 
-<div class="container-fluid grid-service">
+
+<div class="container-fluid grid-salons">
+
 	<h2 class="frontpage-h2">Наши услуги</h2>
-	<div class="row-fluid grid-service-slider grid-service-slider1">
+
+	<div class="row-fluid grid-salons-slider grid-salons-slick">
 
 		<?
 		foreach($arr as $k => $v)
 		{
 			?>
-			<div class="service-item">
+			<div class="col-md-4 col-sm-6 col-xs-6 salons-item">
 				<a href="<?=$v['link']?>"><?=$v['img']?></a>
 				<div class="service-item-name grid-block-button"><?=$v['name']?></div>
 
@@ -90,63 +95,11 @@ foreach( $myterms as $term )
 			<?
 		}
 		?>
-
+		
 	</div>
 </div>
 
-<!-- Имиджконсультирование -->
 
-<?
-if(get_option('g_options')['on_main_image']) :
-
-$post = get_post(1053); // ID Имиджконсультирование
-
-if(user_admin())
-{
-	/*printArray(get_post_meta(1053));
-	printArray($post);*/
-}
-
-setup_postdata( $post );
-?>
-
-<div class="container-fluid block-image">
-	<div class="row-fluid ">
-		
-		<?
-		$thumb_id = get_post_thumbnail_id();
-		$thumb_url = wp_get_attachment_image_src($thumb_id, 'imageconsult_thumb', true);
-		$thumb_url_mobi = 'http://gantil.ru/wp-content/uploads/2018/01/IMG_5746_2.jpg';
-
-		//$url = get_page_link( $post->ID );
-		$url = '/product-category/service/imidzhkonsultirovanie/';
-		?>
-
-		<a class="image-img" href="<?php echo $url; ?>">
-			<?php //echo the_post_thumbnail('imageconsult_thumb') ?>
-			<img class="desktop" src="<?=makeGrayPic($thumb_url[0])?>">
-			<img class="mobi" src="<?=makeGrayPic($thumb_url_mobi)?>">
-				
-			<!--<img src="/wp-content/uploads/2017/08/image.jpg">-->
-
-		</a>
-		 <div class="image-name grid-block-button">Имиджконсультирование как искусство создания вашего имиджа</div>
-		
-		
-		<div class="image-menu">
-			<ul>
-				<li class="menu-left"><a class="grid-block-button" href="/price/">Цены</a></li>
-				<li class="menu-center"><a class="grid-block-button" href="<?php echo $url; ?>">Подробнее</a></li>
-				<li class="menu-right fancybox-inline"><a class="grid-block-button" onclick="return false;" href="#contact_form_pop_up">Записаться</a></li>
-				<div style="clear:both"></div>
-			</ul>
-		</div> 
-	</div>
-</div>
-<?
-endif;
-?>
-<!-- /Имиджконсультирование -->
 
 <!-- grid SERVICE -->
 	<?php 

@@ -104,14 +104,10 @@
 .pswp__button--arrow--left,
 .pswp__button--arrow--right {
   background: none;
-  top: 50px;
-  /*margin-top: -50px;*/
-  /*top: 0;
-  margin-top: 0;*/
-  /*width: 70px;*/
-  width:30%;
-  /*height: 100px;*/
-  height: 100%;
+  top: 50%;
+  margin-top: -50px;
+  width: 70px;
+  height: 100px;
   position: absolute; }
 
 .pswp__button--arrow--left {

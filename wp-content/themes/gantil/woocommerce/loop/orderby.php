@@ -20,6 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+return;
+
 ?>
 <form class="woocommerce-ordering" method="get">
 	<select name="orderby" class="orderby">

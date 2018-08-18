@@ -16,7 +16,7 @@
 
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/plugin/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/reset.css">
-		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css?v=2">
+		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css?v=5.5">
 		<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/font.css">
 
@@ -30,9 +30,9 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 		<script src="http://code.jquery.com/jquery.min.js"></script>
-		<script src="<?php echo get_template_directory_uri(); ?>/plugin/bootstrap/js/bootstrap.min.js"></script>
-		<script src="<?php echo get_template_directory_uri(); ?>/plugin/bootstrap/js/validator.js"></script>
-		<script type="text/javascript" src="http://malsup.github.io/min/jquery.form.min.js"></script>
+		<!--<script src="<?php echo get_template_directory_uri(); ?>/plugin/bootstrap/js/bootstrap.min.js"></script>-->
+		<!--<script src="<?php echo get_template_directory_uri(); ?>/plugin/bootstrap/js/validator.js"></script>-->
+		<!--<script type="text/javascript" src="http://malsup.github.io/min/jquery.form.min.js"></script>-->
 		
 
 		<!--<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>	-->				

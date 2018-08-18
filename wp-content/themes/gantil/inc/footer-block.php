@@ -13,6 +13,8 @@
 									<li><a href="#">Карта сайта</a></li>
 								</ul>
 							</div> -->
+
+							
 							
 
 							<?php 
@@ -54,6 +56,7 @@
 								</div>
 								</form>
 							</div> -->
+
 
 							<div class="footer-social">				
 

@@ -89,7 +89,8 @@ foreach( $myterms as $term )
 			'name' 	=> $term->name,
 			'slug'	=> $term->slug,
 			'img'	=> $img,
-			'link'	=> $link.$term->slug.'/'
+			'link'	=> $link.$term->slug.'/',
+			'dscr'	=> $term->description
 		);
 	}
 	//printArray($term);	
@@ -110,8 +111,15 @@ foreach( $myterms as $term )
 
 	<div class="row-fluid grid-gallery-slider ">		
 
-		<div class="col-md-8 col-sm-8 col-xs-12 gallery-item video">			
-			<?=$video?>								
+		<div class="col-md-8 col-sm-8 col-xs-12 gallery-item video"  style=" overflow: hidden">
+			<?/*=$video*/?>
+            <a href="/galleries/krasota-i-stil-ot-zhantil/" style="display: block; position: relative; height: 100%">
+                <img src="/wp-content/themes/gantil/img/video_banner_bg.jpg" width="1080" height="515">
+                <div class="video-banner-title" style="position: absolute; bottom:0; width: 100%">
+                    <img src="/wp-content/themes/gantil/img/video_banner_title.png" style="width: 100%;">
+                </div>
+            </a>
+
 		</div>	
 
 		<?
@@ -133,6 +141,11 @@ foreach( $myterms as $term )
 						<img class="icon-yt img-mono" src="/wp-content/themes/gantil/img/yt-mono.png"><?
 					}
 					?>	
+
+					<?php 
+					if( $v['dscr'] ) :?>
+						<div class="over-text"><?=$v['dscr']?></div>
+					<?php endif;?>	
 				</a>
 
 				<div class="service-item-name grid-block-button"><?=$v['name']?></div>
@@ -141,23 +154,42 @@ foreach( $myterms as $term )
 			<?
 		}
 		?>		
-
+<div style="clear: both"></div>
 	</div>
 </div>
 
 <style>
 	
-
+.over-text {
+	    display: block;
+	    text-align: center;
+	    font-size: 14px;
+	    text-transform: none;
+	    font-weight: normal;
+	    margin-left: 0;
+	    position: absolute;
+	    bottom: 0;
+	    background: rgba(96, 96, 96, 0.64);
+	    padding: 10px;
+	    color: #fff;
+	    width: 100%;
+	}
 </style>
 
 <script type="text/javascript">
 function initVideo()
 {//alert('v')
-	$('.video iframe').attr(
+
+   /* $('.video iframe').attr(
 	{			
 		'height' : $('.img0').height(),
-	})
-	//alert($('.gallery-item').eq(1).find('img').height() - 10)
+	})*/
+
+    $('.video').css(
+        {
+            'height' : $('.img0').height(),
+            'overflow' : 'hidden'
+        })
 }
 
 $(document).ready(function(){

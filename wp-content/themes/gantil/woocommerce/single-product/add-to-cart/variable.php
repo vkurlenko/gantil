@@ -31,7 +31,7 @@ $attribute_keys = array_keys( $attributes );
 do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
 <!-- social-block -->
-<?php get_template_part('inc/social/social-block');?>
+<?php /*get_template_part('inc/social/social-block');*/?>
 <!-- /social-block -->
 
 <?php 
@@ -83,7 +83,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 			break;
 	}
 
-	echo '<span class="price-range">'.$range_string.'</span>';
+	//echo '<span class="price-range">'.$range_string.'</span>';
 
 	/* /укажем диапазон цен на услугу */
 	?>
@@ -125,6 +125,9 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
  		<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
 		<div class="single_variation_wrap">
+
+			
+
 			<?php
 				/**
 				 * woocommerce_before_single_variation Hook.
@@ -132,7 +135,9 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
 				do_action( 'woocommerce_before_single_variation' );
 
-
+				?>
+				
+				<?php
 
 				/**
 				 * woocommerce_single_variation hook. Used to output the cart button and placeholder for variation data.
@@ -281,7 +286,7 @@ jQuery(document).ready(function($)
 				$('#pa_item_spec').prop('selectedIndex',0);
 				$('#selectMaster').remove();
 				$('#pa_item_master').attr('value', '');
-
+				//alert('salon')
 				//ajax save salon
 			})
 		}

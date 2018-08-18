@@ -14,6 +14,8 @@ get_header();
 
 						 $this_slug = $current_term->slug;
 						 $this_name = $current_term->name;
+
+						 
 						?>
 						<div class="row-fluid">
 							<div class="container-fluid content">
@@ -129,7 +131,7 @@ get_header();
 											'numberposts' => 1000
 											) );
 
-
+										$i = 0;
 										
 										foreach($arr1 as $k => $v)
 										{
@@ -148,8 +150,8 @@ get_header();
 
 												$thumb_url = wp_get_attachment_image_src($image_id, array(288, 288), true);
 
-												$img = '<img class="salons-item-img img-mono"  src="'.makeGrayPic($thumb_url[0]).'">
-														<img class="salons-item-img img-color" src="'.$thumb_url[0].'">';
+												$img = '<img class=" img-mono"  src="'.makeGrayPic($thumb_url[0]).'">
+														<img class=" img-color" src="'.$thumb_url[0].'">';
 												/*echo $img;
 												die;*/
 												$thumb = $img;
@@ -170,6 +172,8 @@ get_header();
 											$ch = '';
 											if($childrens)
 												$ch = ' ['.count($childrens).']';
+
+											if(get_query_var( 'term' ) != 'video') :
 											?>
 											<div class="news-list-item container-fluid item-<?php echo $i++;?>" style="padding:0">
 												
@@ -181,8 +185,44 @@ get_header();
 													<div class="news-list-text " style="left:0; right:0; bottom:0"><a href="/galleries/<?=$v->post_name;?>/"><?=$v->post_title.$ch?><br><?=$date?></a></div>
 											</div>
 
+                                            <?php
+                                            else:
+                                                ?>
+
+                                            <!-- VIDEO -->
+
+                                            <div class="news_item_2 <? if(($i%2) == 1) echo 'even'?> ">
+                                                <div class="news_item_2_img">
+                                                    <div class="news-list-img row">
+                                                        <a class="col-md-3" style="text-align: left;  padding:0; display:block;" href="/galleries/<?=$v->post_name;?>/"><?=$thumb;?><span></span></a>
+
+                                                        <div class="col-md-9 video-list-title" style=" ">                                                        	
+                                                        	<a class="" href="/galleries/<?=$v->post_name;?>/">			                                                   
+			                                                        <span class="video-date"><?=$date?></span>
+			                                                        <span class="video-title"><?=$v->post_title.$ch?></span>			                                                
+			                                                </a>
+                                                        </div>
+	
+
+                                                        <div style="clear: both"></div>
+                                                    </div>
+                                                </div>
+                                                <!-- <a class="" href="/galleries/<?=$v->post_name;?>/">
+                                                    <div class="news_item_2_text">
+                                                        <span class="news_item_date"><?=$date?></span>
+                                                        <span class="news_item_2_title"><?=$v->post_title.$ch?></span>
+                                                
+                                                    </div>
+                                                </a> -->
+                                            </div>
+
+                                            <!-- /VIDEO -->
+
 											
-											<?php											
+											<?php
+                                            endif;
+
+                                            $i++;
 										}
 
 										
@@ -190,24 +230,47 @@ get_header();
 										?>
 									</div>
 										
-									<script type="text/javascript">
+									<!--<script type="text/javascript">
 									$(document).ready(function(){
 										$('.news-list-img').mouseenter(function()
 											{
-												//$(this).find('.grid-block-button').css('color', '#000')
-												
 												
 												$(this).find('.img-color').show()
 												$(this).find('.img-mono').animate({opacity: 0}, 300);
 											}).mouseleave (function()
 											{
-												//$(this).find('.grid-block-button').css('color', '#606060')
-												
+																								
 												$(this).find('.img-mono').animate({opacity: 1}, 500);		
 											})
 
 									})
+									</script>-->
+
+									<script type="text/javascript">
+									$(document).ready(function()
+									{	
+										/*$('.news-list-img').mouseenter(function()
+										{			
+											$(this).find('.img-color').show()
+											$(this).find('.img-mono').animate({opacity: 0}, 300);
+										}).mouseleave (function()
+										{		
+											$(this).find('.img-mono').animate({opacity: 1}, 500);		
+										})*/
+
+										$('.news-list-img a').mouseenter(function()
+											{												
+												$(this).find('.img-color').animate({opacity: 1, 'z-index':0}, 50);
+												$(this).find('.img-mono').animate({opacity: 0}, 100);
+											}).mouseleave (function()
+											{
+												$(this).find('.img-color').animate({opacity: 0, 'z-index':-1}, 100);
+												$(this).find('.img-mono').animate({opacity: 1}, 300);		
+											})
+									});
 									</script>
+
+
 
 									<!-- /gallery -->
 									

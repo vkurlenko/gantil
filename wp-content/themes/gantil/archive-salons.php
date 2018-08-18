@@ -5,6 +5,20 @@ Template Name: Салоны - главная
 
 get_header(); 
 ?>
+    <style type="text/css">
+        .grid-salons .salons-item-img{/* display: none; */}
+        .salon-since{
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 2px 5px;
+            color: #fff;
+            background: #666;
+            /*font-style: italic;
+            font-weight: bold;*/
+        }
+    </style>
 
 
 						<!-- content -->
@@ -28,23 +42,7 @@ get_header();
 								   		
 								   		<h1><?php the_title();?></h1>	
 										
-
-										<!-- submenu -->
-										<!-- <ul class="submenu">
-										<?php  
-										$arr_menu = wp_list_pages( 
-										    array(
-										        'title_li' => '',
-										        'child_of' => $post->ID,
-										        'depth' => 1,
-										      	'echo' => false
-										    ) 
-										); 
 										
-										echo $arr_menu;
-										
-										?>
-										</ul> -->
 										<div style="clear:both"></div>
 										<!-- /submenu -->
 
@@ -52,7 +50,6 @@ get_header();
 										<div class="content-img-service"><?php the_post_thumbnail();?></div>
 										<div>							
 											<?php the_content();?>
-
 
 
 											<!-- Our salons -->
@@ -66,9 +63,7 @@ get_header();
 												$is_price = true;
 											?>
 
-											<style type="text/css">
-												.grid-salons .salons-item-img{/* display: none; */}
-											</style>
+											
 
 											<div class="container-fluid grid-salons">
 
@@ -96,7 +91,7 @@ get_header();
 													); 
 													$pages = get_pages( $args );
 
-													shuffle($pages);
+													//shuffle($pages);
 
 													$arr_replace_2 = array(
 															'salon_leninsky' 	=> 'Жантиль на Ленинском',
@@ -106,6 +101,15 @@ get_header();
 															'salon_shodnya' 	=> 'Жантиль на Сходненской',
 															'salon_dom_krasoty' => 'Жантиль м.Аэропорт'
 															);
+
+                                                    $arr_since = array(
+                                                        'salon_leninsky' => 2008,
+                                                        'salon_kolom' 	=> 2004,
+                                                        'salon_bratis' => 2005,
+                                                        'salon_sokol' => 2006,
+                                                        'salon_shodnya' => 2002,
+                                                        'salon_dom_krasoty' => 2015
+                                                    );
 
 													
 													foreach( $pages as $post )
@@ -130,20 +134,22 @@ get_header();
 															<?															
 															$link = get_page_link( $post->ID );
 															?>
-															<a href="<?php echo $link ?>">															
+															<a href="<?php echo $link ?>">								
 																			
-															<?
-															$thumb_id = get_post_thumbnail_id();
-															$thumb_url = wp_get_attachment_image_src($thumb_id,'salon_thumb', true);
-															?>
-															<img class="salons-item-img img-mono" src="<?=makeGrayPic($thumb_url[0])?>">
-															<img class="salons-item-img img-color" src="<?=$thumb_url[0]?>">
-																													
-															<div class="salons-item-name grid-block-button"><? echo $arr_replace[$post->post_name];?>					
-																<div class="salons-address"><?=$salon_address_short?></div>
-															</div>	
-															
-														</a>
+																<?
+																$thumb_id = get_post_thumbnail_id();
+																$thumb_url = wp_get_attachment_image_src($thumb_id,'salon_thumb', true);
+																?>
+																<img class="salons-item-img img-mono" src="<?=makeGrayPic($thumb_url[0])?>">
+																<img class="salons-item-img img-color" src="<?=$thumb_url[0]?>">
+
+                                                                <span class="salon-since">Since <? echo $arr_since[$post->post_name];?></span>
+																														
+																<div class="salons-item-name grid-block-button"><? echo $arr_replace[$post->post_name];?>					
+																	<div class="salons-address"><?=$salon_address_short?></div>
+																</div>	
+																
+															</a>
 														
 														
 
@@ -177,20 +183,21 @@ get_header();
 													/*$(this).find('.salons-item-name').animate({bottom: '45px'}, 500);*///addClass('salons-item-name-over')
 													$(this).find('.salons-address').animate({height: 'show'}, 500);//.toggle('slow')
 													
-													$(this).find('.img-color').show()
-													$(this).find('.img-mono').animate({opacity: 0}, 300);
+													//$(this).find('.img-color').show()
+													$(this).find('.img-color').animate({opacity: 1}, 300);
+													$(this).find('.img-mono').animate({opacity: 0}, 100);
 												}).mouseleave (function()
 												{
 													/*$(this).find('.salons-item-name').animate({bottom: '5px'}, 500);*///.removeClass('salons-item-name-over')
 													$(this).find('.salons-address').animate({height: 'hide'}, 500);
 
-													$(this).find('.img-mono').animate({opacity: 1}, 500);		
+													$(this).find('.img-color').animate({opacity: 0}, 100);
+													$(this).find('.img-mono').animate({opacity: 1}, 300);		
 												})
 													
 											});
 
 											</script>
-
 											
 											<!-- /Our salons -->
 										</div>

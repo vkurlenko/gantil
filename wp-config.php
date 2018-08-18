@@ -82,6 +82,8 @@ $table_prefix  = 'gn_';
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
 define('WP_DEBUG', true);
+@ini_set('display_errors', 1);
+
 define( 'WP_DEBUG_DISPLAY', false );
 define( 'WP_DEBUG_LOG', true );
 

@@ -12,6 +12,7 @@ get_header();
 						$post = get_post();
 						setup_postdata($post);
 						
+						
 						//print_r($post);
 						?>
 						<div class="row-fluid">

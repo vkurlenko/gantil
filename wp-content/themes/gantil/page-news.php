@@ -63,7 +63,7 @@ get_header();
 					
 										<!-- список новостей -->
 										<div style="clear:both"></div>
-										<div class="news-list">	
+										<div class="news-list dinamic">
 
 										
 

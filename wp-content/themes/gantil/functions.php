@@ -27,6 +27,8 @@ require_once( 'f.php' );
 
 	require_once( 'posts/masters.php' );
 
+	require_once( 'posts/designers.php' );
+
 	//require_once( 'posts/sertif.php' );
 
 	add_image_size( 'sertif_thumb', 275, 180, true );
