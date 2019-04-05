@@ -24,7 +24,7 @@ Allow: /wp-*.gif
 
 Host: gantil.ru            
 
-Sitemap: http://gantil.ru/xmlsitemap.xml
+Sitemap: https://gantil.ru/xmlsitemap.xml
 #http://gantil.ru/sitemap.xml     
 
 

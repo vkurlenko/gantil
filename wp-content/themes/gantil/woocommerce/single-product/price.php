@@ -24,6 +24,12 @@ global $product;
 
 
 $terms = wc_get_product_terms( $product->id, 'product_cat', array( 'orderby' => 'parent', 'order' => 'DESC' ) );
+
+/*if(user_admin()){
+    printArray($product);
+}*/
+
+
 if ( ! empty( $terms ) ) {
     $main_term = $terms[0];
     $ancestors = get_ancestors( $main_term->term_id, 'product_cat' );

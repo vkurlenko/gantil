@@ -99,6 +99,9 @@ get_header();
                                         	if($v->slug == 'video-na-glavnuyu')
                                                 continue;
 
+                                            if($v->slug == 'instagram')
+                                                $v->name = '<i class="fa fa-instagram" aria-hidden="true"></i> instagram';
+
                                         	if($this_slug == $v->slug)
                                         		$class = 'class="active"';
                                         	else
@@ -122,108 +125,119 @@ get_header();
 
 										<?php 
 
-										$arr1 = array();
-										$arr1 = get_posts( array( 
-											'gallery_category' =>  $this_slug , 
-											'post_type'   => 'stm_gallery', 
-											'orderby' => 'date', 
-											'order' => 'DESC', 
-											'numberposts' => 1000
-											) );
-
-										$i = 0;
-										
-										foreach($arr1 as $k => $v)
-										{
-
-											if($v->post_parent > 0 /*|| get_post_meta( $v->ID, 'on_main_page')*/)
-												continue;
-											
-
-											$thumb = get_the_post_thumbnail( $v->ID, array(288, 288), array("class"=>"alignleft post_thumbnail") );
-
-											/*if(user_admin())
-											{*/
-												//$thumb_url = wp_get_attachment_image_src($v->ID, 'gallery_thumb', true);
-												$post_meta = get_post_meta($v->ID);
-												$image_id = $post_meta['_thumbnail_id'][0];
-
-												$thumb_url = wp_get_attachment_image_src($image_id, array(288, 288), true);
-
-												$img = '<img class=" img-mono"  src="'.makeGrayPic($thumb_url[0]).'">
-														<img class=" img-color" src="'.$thumb_url[0].'">';
-												/*echo $img;
-												die;*/
-												$thumb = $img;
-											/*}*/
-
-											// 2016-04-10 00:00:00
-											$d = explode(' ', $v->post_date);
-											$d = explode('-', $d[0]);
-											$date = $d[2].'.'.$d[1].'.'.$d[0];
-											
-											$childrens = get_children( array( 
-												'post_parent' => $v->ID,
-												'post_type'   => 'stm_gallery', 
-												'numberposts' => -1,
-												'post_status' => 'any'
-											) );
-
-											$ch = '';
-											if($childrens)
-												$ch = ' ['.count($childrens).']';
-
-											if(get_query_var( 'term' ) != 'video') :
-											?>
-											<div class="news-list-item container-fluid item-<?php echo $i++;?>" style="padding:0">
-												
-													<div class="news-list-img">
-													
-														<a class="" href="/galleries/<?=$v->post_name;?>/"><?=$thumb;?></a>
-														
-													</div>
-													<div class="news-list-text " style="left:0; right:0; bottom:0"><a href="/galleries/<?=$v->post_name;?>/"><?=$v->post_title.$ch?><br><?=$date?></a></div>
-											</div>
-
-                                            <?php
-                                            else:
-                                                ?>
-
-                                            <!-- VIDEO -->
-
-                                            <div class="news_item_2 <? if(($i%2) == 1) echo 'even'?> ">
-                                                <div class="news_item_2_img">
-                                                    <div class="news-list-img row">
-                                                        <a class="col-md-3" style="text-align: left;  padding:0; display:block;" href="/galleries/<?=$v->post_name;?>/"><?=$thumb;?><span></span></a>
-
-                                                        <div class="col-md-9 video-list-title" style=" ">                                                        	
-                                                        	<a class="" href="/galleries/<?=$v->post_name;?>/">			                                                   
-			                                                        <span class="video-date"><?=$date?></span>
-			                                                        <span class="video-title"><?=$v->post_title.$ch?></span>			                                                
-			                                                </a>
-                                                        </div>
-	
-
-                                                        <div style="clear: both"></div>
-                                                    </div>
-                                                </div>
-                                                <!-- <a class="" href="/galleries/<?=$v->post_name;?>/">
-                                                    <div class="news_item_2_text">
-                                                        <span class="news_item_date"><?=$date?></span>
-                                                        <span class="news_item_2_title"><?=$v->post_title.$ch?></span>
-                                                
-                                                    </div>
-                                                </a> -->
-                                            </div>
-
-                                            <!-- /VIDEO -->
-
-											
-											<?php
-                                            endif;
-
-                                            $i++;
+										if($this_slug == 'instagram'){
+											echo do_shortcode('[my_instagram]');
+											//echo do_shortcode('[insta-gallery id="1"]');
+											//echo do_shortcode('[ap_instagram_mosaic_lightview]');
 										}
+										else{
+
+											$arr1 = array();
+											$arr1 = get_posts( array( 
+												'gallery_category' =>  $this_slug , 
+												'post_type'   => 'stm_gallery', 
+												'orderby' => 'date', 
+												'order' => 'DESC', 
+												'numberposts' => 1000
+												) );
+
+											$i = 0;
+											
+											foreach($arr1 as $k => $v)
+											{
+
+												if($v->post_parent > 0 /*|| get_post_meta( $v->ID, 'on_main_page')*/)
+													continue;
+												
+
+												$thumb = get_the_post_thumbnail( $v->ID, array(288, 288), array("class"=>"alignleft post_thumbnail") );
+
+												/*if(user_admin())
+												{*/
+													//$thumb_url = wp_get_attachment_image_src($v->ID, 'gallery_thumb', true);
+													$post_meta = get_post_meta($v->ID);
+													$image_id = $post_meta['_thumbnail_id'][0];
+
+													$thumb_url = wp_get_attachment_image_src($image_id, array(288, 288), true);
+
+													$img = '<img class=" img-mono"  src="'.makeGrayPic($thumb_url[0]).'">
+															<img class=" img-color" src="'.$thumb_url[0].'">';
+													/*echo $img;
+													die;*/
+													$thumb = $img;
+												/*}*/
+
+												// 2016-04-10 00:00:00
+												$d = explode(' ', $v->post_date);
+												$d = explode('-', $d[0]);
+												$date = $d[2].'.'.$d[1].'.'.$d[0];
+												
+												$childrens = get_children( array( 
+													'post_parent' => $v->ID,
+													'post_type'   => 'stm_gallery', 
+													'numberposts' => -1,
+													'post_status' => 'any'
+												) );
+
+												$ch = '';
+												if($childrens)
+													$ch = ' ['.count($childrens).']';
+
+												if(get_query_var( 'term' ) != 'video') :
+												?>
+												<div class="news-list-item container-fluid item-<?php echo $i++;?>" style="padding:0">
+													
+														<div class="news-list-img">
+														
+															<a class="" href="/galleries/<?=$v->post_name;?>/"><?=$thumb;?></a>
+															
+														</div>
+														<div class="news-list-text " style="left:0; right:0; bottom:0"><a href="/galleries/<?=$v->post_name;?>/"><?=$v->post_title.$ch?><br><?=$date?></a></div>
+												</div>
+
+	                                            <?php
+	                                            else:
+	                                                ?>
+
+	                                            <!-- VIDEO -->
+
+	                                            <div class="news_item_2 <? if(($i%2) == 1) echo 'even'?> ">
+	                                                <div class="news_item_2_img">
+	                                                    <div class="news-list-img row">
+	                                                        <a class="col-md-3" style="text-align: left;  padding:0; display:block;" href="/galleries/<?=$v->post_name;?>/"><?=$thumb;?><span></span></a>
+
+	                                                        <div class="col-md-9 video-list-title" style=" ">                                                        	
+	                                                        	<a class="" href="/galleries/<?=$v->post_name;?>/">			                                                   
+				                                                        <span class="video-date"><?=$date?></span>
+				                                                        <span class="video-title"><?=$v->post_title.$ch?></span>			                                                
+				                                                </a>
+	                                                        </div>
+		
+
+	                                                        <div style="clear: both"></div>
+	                                                    </div>
+	                                                </div>
+	                                                <!-- <a class="" href="/galleries/<?=$v->post_name;?>/">
+	                                                    <div class="news_item_2_text">
+	                                                        <span class="news_item_date"><?=$date?></span>
+	                                                        <span class="news_item_2_title"><?=$v->post_title.$ch?></span>
+	                                                
+	                                                    </div>
+	                                                </a> -->
+	                                            </div>
+
+	                                            <!-- /VIDEO -->
+
+												
+												<?php
+	                                            endif;
+
+	                                            $i++;
+											}
+
+										}
+
+										
 
 										
 										//wp_reset_postdata(); // сброс

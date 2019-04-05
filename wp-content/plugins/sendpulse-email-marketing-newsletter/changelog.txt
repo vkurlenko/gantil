@@ -34,3 +34,6 @@
 
 = 2.0.1 - 2017-09-25 =
 * Changed: Documentation and help link.
+
+= 2.1.0 - 2017-10-18 =
+* Changed: Down minimal PHP version requirement.

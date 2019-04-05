@@ -2,6 +2,7 @@
 <html lang="ru">
 	<head>
 		<?php get_template_part('inc/google.analitycs');?>
+        <?php get_template_part('inc/social/fb-pixel');?>
 		<!-- <meta charset="UTF-8"> -->
 		<meta http-equiv=Content-Type content="text/html;charset=UTF-8">
 		<title>Жантиль - Дом красоты и моды <?php wp_title(); ?></title>
@@ -10,37 +11,28 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
+
+		<!-- HEAD -->
 		<?php 
 			wp_head();
 		?>
+		<!-- /HEAD -->
 
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/plugin/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/reset.css">
-		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css?v=5.5">
-		<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
-		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/font.css">
-
-		<link rel="stylesheet" href="/wp-content/themes/gantil/plugin/font-awesome-4.7.0/css/font-awesome.min.css">
-
-		<link rel="stylesheet" type="text/css" href="/wp-content/themes/gantil/plugin/slick/slick.css"/>					
-		<link rel="stylesheet" type="text/css" href="/wp-content/themes/gantil/plugin/slick/slick-theme.css"/>
+		<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css?v=5.30">
+        <!--<link rel="stylesheet" href="<?php /*echo get_template_directory_uri(); */?>/css/call_button.css?v=1">-->
 		
 		<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
-		<script src="http://code.jquery.com/jquery.min.js"></script>
-		<!--<script src="<?php echo get_template_directory_uri(); ?>/plugin/bootstrap/js/bootstrap.min.js"></script>-->
-		<!--<script src="<?php echo get_template_directory_uri(); ?>/plugin/bootstrap/js/validator.js"></script>-->
-		<!--<script type="text/javascript" src="http://malsup.github.io/min/jquery.form.min.js"></script>-->
 		
-
-		<!--<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>	-->				
-		<script type="text/javascript" src="/wp-content/themes/gantil/plugin/slick/slick.min.js"></script>
-		<script type="text/javascript" src="/wp-content/themes/gantil/js/script.js"></script>
+		<script src="https://code.jquery.com/jquery.min.js"></script>
 	
 		<?php get_template_part('inc/social/vk');?>
 	</head>
+
 	<body name="top" <?php body_class(); ?>>
 		
 		<?php get_template_part('inc/ya.metrica');?>
@@ -50,6 +42,8 @@
 
 		<!-- main menu fixed -->
 		<div class="container-fluid clone clone-hide" id="fix">
+            
+
 			<div class="row-fluid">
 				
 				<!-- left-block -->
@@ -82,3 +76,4 @@
 	
 
 		<div id="main">
+

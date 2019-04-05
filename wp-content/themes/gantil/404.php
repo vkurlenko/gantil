@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Страница
+Template Name: 404
 */
 
 get_header(); 

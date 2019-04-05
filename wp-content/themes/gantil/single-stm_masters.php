@@ -168,6 +168,9 @@ get_header();
 					</div>
 					<!-- /left-block -->
 
+<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('widget_masters') ) : ?>
+<?php endif; ?>
+
 	<?php
 get_footer()
 ?>

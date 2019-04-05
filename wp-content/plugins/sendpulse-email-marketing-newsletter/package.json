@@ -1,6 +1,6 @@
 {
   "name": "sendpulse",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "SendPulse Email Marketing Newsletter",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "msgfmt": "msgfmt languages/sendpulse-email-marketing-newsletter-ru_RU.po -o languages/sendpulse-email-marketing-newsletter-ru_RU.mo",
     "msgmerge": "msgmerge -vU languages/sendpulse-email-marketing-newsletter-ru_RU.po languages/sendpulse-email-marketing-newsletter.pot",
     "prod": "gulp prod && npm run msgmerge && npm run msgfmt",
-    "pomo" : "npm run msgmerge && npm run msgfmt"
+    "pomo": "npm run msgmerge && npm run msgfmt"
   },
   "repository": {
     "type": "git",

@@ -1,4 +1,7 @@
 <!-- social-button -->
+<?php
+/*
+
 <!-- <div id="social-block">
 	
 	<div id="vk_like" class="social-button"></div>
@@ -21,4 +24,7 @@
 	<div class="fb-like social social-button" style="" data-href="<? the_permalink() ?>" data-width="450" data-layout="button_count" data-show-faces="false" data-send="false"></div>		
 	<div style="clear:both"></div>
 </div> -->
+
+*/
+?>
 <!-- /social-button -->

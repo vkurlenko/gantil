@@ -64,4 +64,3 @@ if ( ! defined( 'ABSPATH' ) ) {
 													<tr>
 														<td valign="top">
 															<div id="body_content_inner">
-																test

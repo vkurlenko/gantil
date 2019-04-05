@@ -342,7 +342,7 @@ else
 <link rel="stylesheet" href="/wp-content/plugins/my_im_ex/lib/css/theme.default.css">
 <link rel="stylesheet" href="/wp-content/plugins/my_im_ex/lib/css/style.css">
 
-<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery.min.js"></script>
 <script src="/wp-content/plugins/my_im_ex/lib/js/jquery.tablesorter.min.js"></script>
 <script src="/wp-content/plugins/my_im_ex/lib/js/script.js"></script>
 
@@ -464,6 +464,7 @@ else
 							   				//$i = 1;
 
 							   				$empty = "Нет услуг";
+                                            echo $prlist->salon;
 
 							   				if($prlist->salon)
 							   				{
@@ -538,10 +539,9 @@ else
 																
 																<?
 																// цены
-                                                                
 
                                                                 
-
+//printArray($pr); die;
 																foreach($pr as $s => $p)
 																{
 																	if($s == '_variation_description')
@@ -549,7 +549,7 @@ else
 																	?>
 																	<td align="center"><? 
                                                                     if(@$p['vid'])
-                                                                        $prlist->getPriceCell($p['vid'], $p['price'], $obj->ID);
+                                                                        $prlist->getPriceCell2($p['vid'], $p['price'], $obj->ID, $s, $a);
                                                                     else
                                                                         echo '';
 
@@ -587,4 +587,96 @@ else
 
 
 </div>
+
+<div class="overlay" title="окно"></div>
+<div class="popup">
+<div class="close_window">x</div>
+<div class="title"><strong>Цены в других салонах:</strong></div>
+<p></p>
+</div>
+
+<style type="text/css">
+.overlay {
+        background-color: rgba(0, 0, 0, 0.7);
+    bottom: 0;
+    cursor: default;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    visibility: hidden;
+    z-index: 99999;
+        -webkit-transition: opacity .5s;
+        -moz-transition: opacity .5s;
+        -ms-transition: opacity .5s;
+        -o-transition: opacity .5s;
+        transition: opacity .5s;
+}
+.popup {
+    background-color: #fff;
+    border: 3px solid #fff;
+    display: inline-block;
+    left: 50%;
+    opacity: 0;
+    padding: 15px;
+    width: 300px;
+    height: 323px;
+    position: fixed;
+    text-align: justify;
+    top: 40%;
+    visibility: hidden;
+    z-index: 999999;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-transition: opacity .5s, top .5s;
+    -moz-transition: opacity .5s, top .5s;
+    -ms-transition: opacity .5s, top .5s;
+    -o-transition: opacity .5s, top .5s;
+    transition: opacity .5s, top .5s;
+    border-radius: 11px;
+}
+.popup .close_window {
+    width: 6px;
+    height: 17px;
+    position: absolute;
+    padding: 1px 9px 4px 9px;
+    top: -15px;
+    right: -15px;
+    cursor: pointer;
+    color: #fff;
+    font-family: 'tahoma', sans-serif;
+    /* background: -webkit-gradient(linear, left top, right top, from(#3d51c8), to(#051fb8));
+    background: -webkit-linear-gradient(top, #3d51c8, #051fb8);
+    background: -moz-linear-gradient(top, #3d51c8, #051fb8);
+    background: -o-linear-gradient(top, #3d51c8, #051fb8);
+    background: -ms-linear-gradient(top, #3d51c8, #051fb8);
+    background: linear-gradient(top, #3d51c8, #051fb8); */
+    background-color: #0073aa;
+    border: 1px solid #0073aa;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+.popup .close_window:hover {
+    /* background: -webkit-gradient(linear, left top, right top, from(#051fb8), to(#3d51c8));
+    background: -webkit-linear-gradient(top, #051fb8, #3d51c8);
+    background: -moz-linear-gradient(top, #ff5f0, #3d51c87);
+    background: -o-linear-gradient(top, #051fb8, #3d51c8);
+    background: -ms-linear-gradient(top, #051fb8, #3d51c8);
+    background: linear-gradient(top, #051fb8, #3d51c8); */
+    background-color: #0073aa;
+    border: 1px solid #0073aa;
+}
+.popup .close_window:active {
+    background: #0073aa;
+}
+</style>
 

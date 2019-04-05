@@ -65,7 +65,13 @@ wp_reset_postdata();
 		<li class="soc"><a target="_blank" href="'.get_option('g_options')['social_fb'].'"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 		<li class="soc"><a target="_blank" href="'.get_option('g_options')['social_vk'].'"><i class="fa fa-vk" aria-hidden="true"></i></a></li>';
 
-		$call = '<li class="li-call menu-item menu-item-type-custom menu-item-object-custom fancybox-inline"><a data-salon="" href="#contact_form_pop_up_4" onclick="return false;" class=" arrow" >Заказать звонок</a></li>';
+		$call = '
+			<li style="margin-right:10px">
+				<a href="/about/">О нас</a>
+			</li>
+			<li class="li-call menu-item menu-item-type-custom menu-item-object-custom fancybox-inline">
+				<a data-salon="" href="#contact_form_pop_up_4" onclick="return false;" class=" arrow" >Заказать звонок</a>
+			</li>';
 		/*if(user_admin())
 		{
 			$call = '<li class="li-call menu-item menu-item-type-custom menu-item-object-custom fancybox-inline"><a data-salon="" href="#contact_form_pop_up_4" onclick="return false;" class=" arrow" >Заказать звонок</a></li>';

@@ -21,7 +21,7 @@
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 //define('DB_NAME', 'gantil_new');
-define('DB_NAME', 'gantil-new');
+define('DB_NAME', 'gantil2');
 
 /** MySQL database username */
 //define('DB_USER', 'gantil_mysql');
@@ -40,6 +40,8 @@ define('DB_CHARSET', 'utf8');
 
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
+
+/*define( 'WPCF7_UPLOADS_TMP_DIR', '/wp-content/uploads/wpcf7_uploads' );*/
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -61,6 +63,8 @@ define('NONCE_SALT',       ':`^V?D1O NYdf N=/1$lewGCaH84cs~+UZ&[VdR#4Z0*5w=~T*ha
 
 /**#@-*/
 
+define( 'AUTOMATIC_UPDATER_DISABLED', true );
+
 /**
  * WordPress Database Table prefix.
  *
@@ -81,16 +85,16 @@ $table_prefix  = 'gn_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', true);
-@ini_set('display_errors', 1);
-
+define('WP_DEBUG', false);
 define( 'WP_DEBUG_DISPLAY', false );
-define( 'WP_DEBUG_LOG', true );
+define( 'WP_DEBUG_LOG', false );
 
-define('WP_HOME','http://gantil-new/');
-define('WP_SITEURL','http://gantil-new/');
-/*define('WP_HOME','');
-define('WP_SITEURL','');*/
+define ('WPCF7_LOAD_JS', true );
+
+/*define('WP_HOME','http://gantil.ru');
+define('WP_SITEURL','http://gantil.ru');*/
+define('WP_HOME','http://gantil2/');
+define('WP_SITEURL','http://gantil2/');
 
 /* That's all, stop editing! Happy blogging. */
 

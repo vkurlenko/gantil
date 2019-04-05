@@ -60,10 +60,16 @@ foreach( $myterms as $term )
 
 	// выводим картинку на экран
 
-	//$img = '<img class="salons-item-img" src="'. $image_url .'" alt="" />';
-
-	$img = '<img class="salons-item-img img-mono img'.$i++.'"  src="'.makeGrayPic($thumb_url[0]).'">
+    if(!wp_is_mobile()){
+        $img = '<img class="salons-item-img img-mono img'.$i++.'"  src="'.makeGrayPic($thumb_url[0]).'">
 			<img class="salons-item-img img-color" onload="initVideo()"  src="'.$thumb_url[0].'">';
+    }
+    else
+    {
+        $img = '<img class="salons-item-img img'.$i++.'"  src="'.makeGrayPic($thumb_url[0]).'">';
+
+    }
+
 
 	
 	if($term->slug == 'video-na-glavnuyu')
@@ -125,8 +131,8 @@ foreach( $myterms as $term )
 		<?
 		foreach($arr as $k => $v)
 		{
-			/*if($v['slug'] == 'video')
-				continue;*/
+			if($v['slug'] == 'instagram')
+				continue;
 			?>
 			<div class="col-md-4 col-sm-4 col-xs-6 gallery-item ">
 				<a href="<?=$v['link']?>">
@@ -154,78 +160,6 @@ foreach( $myterms as $term )
 			<?
 		}
 		?>		
-<div style="clear: both"></div>
+	<div style="clear: both"></div>
 	</div>
 </div>
-
-<style>
-	
-.over-text {
-	    display: block;
-	    text-align: center;
-	    font-size: 14px;
-	    text-transform: none;
-	    font-weight: normal;
-	    margin-left: 0;
-	    position: absolute;
-	    bottom: 0;
-	    background: rgba(96, 96, 96, 0.64);
-	    padding: 10px;
-	    color: #fff;
-	    width: 100%;
-	}
-</style>
-
-<script type="text/javascript">
-function initVideo()
-{//alert('v')
-
-   /* $('.video iframe').attr(
-	{			
-		'height' : $('.img0').height(),
-	})*/
-
-    $('.video').css(
-        {
-            'height' : $('.img0').height(),
-            'overflow' : 'hidden'
-        })
-}
-
-$(document).ready(function(){
-
-	//initVideo()
-	/*$('.img0').bind('load', function (e) 
-	{
-		alert('img')
-	    // Do stuff on load
-	   // initVideo()
-  	});*/
-
-	$('.img0').load(function() 
-	{
-	  initVideo() // действия, в ответ на загрузку изображения
-	});
-
-	$(window).resize(function() 
-	{
-		initVideo()		
-	})
-
-	$('.gallery-item').mouseenter(function()
-	{
-		$(this).find('.grid-block-button').css('color', '#000')
-		
-		
-		$(this).find('.img-color').show()
-		$(this).find('.img-mono').animate({opacity: 0}, 300);
-	}).mouseleave (function()
-	{
-		$(this).find('.grid-block-button').css('color', '#606060')
-		
-		$(this).find('.img-mono').animate({opacity: 1}, 500);		
-	})
-		
-});
-
-</script>

@@ -4,83 +4,80 @@
  * Memcache storage
  * Class Session
  */
-class MemcacheStorage implements TokenStorageInterface
-{
-    /**
-     * @var null | MemcacheStorage
-     */
-    protected $instance = null;
+class MemcacheStorage implements TokenStorageInterface {
+	/**
+	 * @var null | MemcacheStorage
+	 */
+	protected $instance = null;
 
-    /**
-     * 30 days
-     * @var int
-     */
-    protected $keyTtl = 3600;
+	/**
+	 * 30 days
+	 * @var int
+	 */
+	protected $keyTtl = 3600;
 
-    /**
-     * Session constructor.
-     * @param $host
-     * @param $port
-     * @param bool $persistent
-     */
-    public function __construct($host, $port, $persistent = false)
-    {
-        $this->instance = new Memcache();
-        if ($persistent) {
-            $this->instance->pconnect($host, $port);
-        } else {
-            $this->instance->connect($host, $port);
-        }
-    }
+	/**
+	 * Session constructor.
+	 *
+	 * @param $host
+	 * @param $port
+	 * @param bool $persistent
+	 */
+	public function __construct( $host, $port, $persistent = false ) {
+		$this->instance = new Memcache();
+		if ( $persistent ) {
+			$this->instance->pconnect( $host, $port );
+		} else {
+			$this->instance->connect( $host, $port );
+		}
+	}
 
-    /**
-     * @return MemcacheStorage|null
-     */
-    public function getInstance()
-    {
-        return $this->instance;
-    }
+	/**
+	 * @return MemcacheStorage|null
+	 */
+	public function getInstance() {
+		return $this->instance;
+	}
 
-    /**
-     * @return int
-     */
-    public function getKeyTtl()
-    {
-        return $this->keyTtl;
-    }
+	/**
+	 * @return int
+	 */
+	public function getKeyTtl() {
+		return $this->keyTtl;
+	}
 
-    /**
-     * @param int $keyTtl
-     * @return MemcacheStorage
-     */
-    public function setKeyTtl($keyTtl)
-    {
-        $this->keyTtl = $keyTtl;
+	/**
+	 * @param int $keyTtl
+	 *
+	 * @return MemcacheStorage
+	 */
+	public function setKeyTtl( $keyTtl ) {
+		$this->keyTtl = $keyTtl;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * @param $key string
-     * @param $token
-     * @return mixed
-     */
-    public function set($key, $token)
-    {
-        $this->instance->set($key, $token, false, $this->keyTtl);
-    }
+	/**
+	 * @param $key string
+	 * @param $token
+	 *
+	 * @return mixed
+	 */
+	public function set( $key, $token ) {
+		$this->instance->set( $key, $token, false, $this->keyTtl );
+	}
 
-    /**
-     * @param $key string
-     * @return mixed
-     */
-    public function get($key)
-    {
-        $token = $this->instance->get($key);
-        if (!empty($token)) {
-            return $token;
-        }
+	/**
+	 * @param $key string
+	 *
+	 * @return mixed
+	 */
+	public function get( $key ) {
+		$token = $this->instance->get( $key );
+		if ( ! empty( $token ) ) {
+			return $token;
+		}
 
-        return null;
-    }
+		return null;
+	}
 }

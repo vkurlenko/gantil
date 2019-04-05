@@ -275,22 +275,4 @@ function splite_all_settings_link() {
 	add_options_page(__('All Settings'), __('All Settings'), 'administrator', 'options.php');
 }
 
-/////////////////////////////////////////////
-// Test function - to check overriden fields
-/////////////////////////////////////////////
-function splite_check_overriding_for_page_options() {
-	echo '<br/><br/>running0'; 
-	global $post; 	
-	$custom =  get_post_meta( $post->ID, '_splite_page_options', true); 
-	print_r($custom);
-	if( !is_array($custom) ) return; 
-	//if( !$custom['_splite_meta_override'] ) return; 
-	
-	//if( isset($custom['_splite_meta_form_id']) AND !empty($custom['_splite_meta_form_id']) )
-		add_filter( 'splite_dollar_cf7_id', function($cf7_id) { return 103; } );
-
-	echo '<br/><br/>running1'; 
-	return true; 
-}
-
 ?>

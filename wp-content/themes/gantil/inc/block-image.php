@@ -1,15 +1,19 @@
 <?
 $post = get_post(1053);
 setup_postdata( $post );
-
-//printArray($post);
-
 ?>
 
 <div class="container-fluid block-image">
 	<div class="row-fluid ">
-1
+
 		<a class="image-img" href="<?php echo get_page_link( $post->ID ); ?>">
+
+			<!-- 
+			удалено из function.php
+			add_image_size( 'imageconsult_thumb', 1530, 240, true );
+			add_image_size( 'imageconsult_thumb_mobi', 460, 307, true );
+			  -->
+
 			<?php echo the_post_thumbnail('imageconsult_thumb') ?>
 			<!-- <img src="/wp-content/uploads/2017/08/image.jpg"> -->
 		</a>

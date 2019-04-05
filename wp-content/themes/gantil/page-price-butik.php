@@ -2,6 +2,9 @@
 /*
 Template Name: Цены бутика
 */
+require_once 'controllers/priceController.php';
+
+$plist = new priceController;
 
 get_header(); 
 ?>
@@ -266,8 +269,6 @@ if(!@$_GET['cid'])
 $arr = get_c($_GET['cid']);
 
 $list = get_c_elem($arr);
-
-
 ?>
 
 
@@ -284,7 +285,11 @@ $list = get_c_elem($arr);
 								<div class="content-article price-list">
 													
 								   		
-							   		<h1><?php the_title();?></h1>	
+							   		<h1><?php the_title();?></h1>
+
+                                    <?php
+                                    get_template_part('inc/alert-price');
+                                    ?>
 									
 									<ul class="submenu">
 									<?
@@ -334,12 +339,13 @@ $list = get_c_elem($arr);
 														
 														foreach($arr_str as $main_key => $pr)
 														{
+                                                            $link = $plist->getLink($obj->ID, $obj->post_name);
 															?><tr>
 																	<?
 																	if($m != $n)
 																	{
 																		$m = $n;
-																		?><td><?=$i++?></td><td class="item-name"><a href="/product/<?=$obj->post_name?>/"><?=$m?></a></td><?
+																		?><td><?=$i++?></td><td class="item-name"><a href="<?=$link?>"><?=$m?></a></td><?
 																	}
 																	else
 																		echo '<td></td><td></td>';
@@ -353,7 +359,7 @@ $list = get_c_elem($arr);
 																	?>
 																</td>
 																<td><?=$pr?></td>
-																<td><a href="/product/<?=$obj->post_name?>/">заказать</a></td>
+																<td><a href="<?=$link?>">заказать</a></td>
 															
 															</tr><?
 

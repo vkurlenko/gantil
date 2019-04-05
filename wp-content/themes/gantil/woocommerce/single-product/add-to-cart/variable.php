@@ -165,6 +165,8 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 /* поля выбора ДАТЫ и ВРЕМЕНИ */
 jQuery(document).ready(function($) 
 {
+
+    //alert(date.getHours());
 	// выбор даты
 	$('#pa_order_date').replaceWith('<input type="hidden" id="pa_order_date" name="attribute_pa_order_date" placeholder="Выберите дату" style="min-width:75%"><div id="datepicker"></div>');
 
@@ -186,11 +188,19 @@ jQuery(document).ready(function($)
 
 
   	// выбор времени
+    var date = new Date();
+
   	options = '<option value="Любое время"  class="attached enabled" selected>Любое время</option>';
+
   	for(i = 9; i < 22; i++)
   	{
-  		options += '<option value="'+i+'.00" class="attached enabled">'+i+':00</option>';
-  		options += '<option value="'+i+'.30" class="attached enabled">'+i+':30</option>';
+  	    var dis = 'enabled';
+
+  	    if(i <= date.getHours())
+  	        continue;
+
+  		options += '<option value="'+i+'.00" class="attached '+dis+'" >'+i+':00</option>';
+  		options += '<option value="'+i+'.30" class="attached '+dis+'" >'+i+':30</option>';
   	}
 
   	$("#pa_order_time").empty();
@@ -298,8 +308,6 @@ jQuery(document).ready(function($)
 			$(p).next('tr').find('select').addClass('visible');
 		}
 
-		
-
 		// выпадающее поле выбора мастера заменим на скрытый INPUT
 		$('#pa_item_master').replaceWith('<input type="hidden" id="pa_item_master" name="attribute_pa_item_master" data-attribute_name="attribute_pa_item_master" data-show_option_none="yes" placeholder="мастер" style="min-width:75%">');
 
@@ -318,10 +326,16 @@ jQuery(document).ready(function($)
 	#pa_order_time{display: block !important;}
 	.dis{opacity: .35; background-image: none}
 	.item-master{cursor: pointer;}
-	.item-master:hover{background: #eee;}
+	.item-master:hover{background-color: #eee;}
 	.item-master, #wait{list-style-type: none; padding:5px 0 5px 10px; border:1px solid #fff; min-width: 75%;    max-width: 100%;    float: left;}
-	.item-master-selected{border:1px solid #ccc;}
-	.item-master img{border-radius: 50%; cursor: pointer;}
+	.item-master-selected{
+        border:1px solid #ccc;
+        position: relative;
+        background-image: url(/wp-content/themes/gantil/img/icon/up_down.png);
+        background-position: right ;
+        background-repeat: no-repeat;
+    }
+    .item-master img{border-radius: 50%; cursor: pointer;}
 	.master_name{margin-left:10px;}
 	#wait{text-align: center}
 	#wait img{height: 50px} 

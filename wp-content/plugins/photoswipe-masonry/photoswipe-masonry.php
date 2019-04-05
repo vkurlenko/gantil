@@ -4,9 +4,9 @@ Plugin Name: Photoswipe Masonry
 Plugin URI: http://thriveweb.com.au/the-lab/photoswipe/
 Description: This is a image gallery plugin for WordPress built using PhotoSwipe from  Dmitry Semenov.
 <a href="http://photoswipe.com/">PhotoSwipe</a>
-Author: Web Design Gold Coast
+Author: Dean Oakley
 Author URI: http://thriveweb.com.au/
-Version: 1.2.7
+Version: 1.2.4
 Text Domain: photoswipe-masonry
 */
 
@@ -175,8 +175,8 @@ add_action('admin_menu', array('photoswipe_plugin_options', 'update'));
 $options = get_option('photoswipe_options');
 
 //image sizes - No cropping for a nice zoom effect
-add_image_size('photoswipe_thumbnails', (int) $options['thumbnail_width'] * 2 , (int) $options['thumbnail_height'] * 2 , false);
-add_image_size('photoswipe_full', (int) $options['max_image_width'] , (int) $options['max_image_height'] , false);
+add_image_size('photoswipe_thumbnails', $options['thumbnail_width'] * 2, $options['thumbnail_height'] * 2, false);
+add_image_size('photoswipe_full', $options['max_image_width'], $options['max_image_height'], false);
 
 //Admin CSS
 function photoswipe_register_head() {
@@ -204,7 +204,6 @@ function photoswipe_get_attachment_link($link, $id, $size, $permalink, $icon, $t
 
 	return $link;
 }
-
 add_filter( 'wp_get_attachment_link', 'photoswipe_get_attachment_link', 10, 6 );
 
 //Update embeds on save
@@ -317,15 +316,10 @@ function photoswipe_scripts_method() {
 	wp_enqueue_script( 'photoswipe-imagesloaded', 			$photoswipe_wp_plugin_path . '/imagesloaded.pkgd.min.js');
 
 }
-
-add_action('wp_enqueue_scripts', 'photoswipe_scripts_method', 200);
-
-//return do_shortcode('[gallery slick_active="true" ids="19720,19718,19717,19716,19715,19714,19713"]');
-//die;
+add_action('wp_enqueue_scripts', 'photoswipe_scripts_method');
 
 add_shortcode( 'gallery', 'photoswipe_shortcode' );
 add_shortcode( 'photoswipe', 'photoswipe_shortcode' );
-//echo 'ps';
 
 
 function photoswipe_shortcode( $attr ) {
@@ -334,13 +328,6 @@ function photoswipe_shortcode( $attr ) {
 	global $photoswipe_count;
 
 	$options = get_option('photoswipe_options');
-
-	//print_r($attr); return;
-
-	if ( ! empty( $attr['slick_active'] ) ) {
-		/*return do_shortcode('[gallery slick_active="true" ids="19720,19718,19717,19716,19715,19714,19713"]');//echo 'slick_active'; die;
-		exit;*/
-	}
 
 	if ( ! empty( $attr['ids'] ) ) {
 		// 'ids' is explicitly ordered, unless you specify otherwise.

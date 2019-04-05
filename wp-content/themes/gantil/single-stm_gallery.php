@@ -14,16 +14,25 @@ get_header();
 						//printArray($post);
 
 						$cat = get_the_terms($post->ID, 'gallery_category');
-						foreach($cat as $c)
-						{
-							$arr_cat[] = $c->slug;
+						
 
-							$arr_bc[] = array(
-								'is_category' => true,
-								'slug' => $c->slug,
-								'name' => $c->name
-								);
+
+						//printArray($cat);
+
+						if($cat){
+							foreach($cat as $c)
+							{
+								$arr_cat[] = $c->slug;
+
+								$arr_bc[] = array(
+									'is_category' => true,
+									'slug' => $c->slug,
+									'name' => $c->name
+									);
+							}
+
 						}
+						
 
 						if($post->post_parent > 0)
 						{
@@ -133,12 +142,21 @@ get_header();
                                         	if($v->slug == 'video-na-glavnuyu')
                                                 continue;
 
+                                            if($v->slug == 'instagram')
+                                                $v->name = '<i class="fa fa-instagram" aria-hidden="true"></i> instagram';
+
                                             $arr[] = $v->slug;
 
-                                            if(in_array($v->slug, $arr_cat))
-                                                $class='class="active"';
-                                            else
-                                                $class = '';
+											$class = '';
+                                            if($arr_cat){
+												if(in_array($v->slug, $arr_cat))
+	                                                $class='class="active"';
+	                                            else
+	                                                $class = '';
+
+                                            }
+
+                                            
                                             ?><li class="page_item"><a <?=$class?> href="/gallery_category/<?=$v->slug;?>/"><?=$v->name;?></a></li><?
                                         }
 

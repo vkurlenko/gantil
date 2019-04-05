@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			do_action( 'woocommerce_review_order_before_cart_contents' );
 
 			foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-				$_product     = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+				$_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 
 				if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
 					?>
@@ -42,7 +42,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times; %s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); ?>
 							<?php 
 							// получим имя мастера вместо slug
-							$cart_item['variation']['attribute_pa_item_master'] = get_master_realname($cart_item['variation']['attribute_pa_item_master']);
+							if(!empty($cart_item['variation']['attribute_pa_item_master']) && trim($cart_item['variation']['attribute_pa_item_master']) != '')
+									$cart_item['variation']['attribute_pa_item_master'] = get_master_realname($cart_item['variation']['attribute_pa_item_master']);
+								/*else
+									unset($cart_item['variation']['attribute_pa_item_master']);
+
+							$cart_item['variation']['attribute_pa_item_master'] = get_master_realname($cart_item['variation']['attribute_pa_item_master']);*/
+
 							if($cart_item['variation']['attribute_pa_order_time'] == 'lyuboe-vremya')
 									$cart_item['variation']['attribute_pa_order_time'] = 'Любое время';
 							echo WC()->cart->get_item_data( $cart_item ); ?>

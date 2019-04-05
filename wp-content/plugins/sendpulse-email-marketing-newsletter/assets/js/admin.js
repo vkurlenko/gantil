@@ -8,18 +8,18 @@
             $controls = $('.sp-import-controls'),
             $log = $('#sp-import-log'),
             init = function () {
-            $body
-                .on('click', '#sp-import', startImport );
+                $body
+                    .on('click', '#sp-import', startImport);
 
 
             },
             startImport = function (e) {
 
-            var data,
-                value = {
-                book: $('#sp_import_setting\\[import_to_book\\]').val(),
-                role: $('#sp_import_setting\\[import_users_group\\]').val()
-            };
+                var data,
+                    value = {
+                        book: $('#sp_import_setting\\[import_to_book\\]').val(),
+                        role: $('#sp_import_setting\\[import_users_group\\]').val()
+                    };
 
                 e.preventDefault();
 

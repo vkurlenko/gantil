@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<companies>
+    <company>
+        <company-id>salon_leninsky</company-id>
+        <name lang="ru">Дом Красоты и Моды Жантиль</name>
+        <address lang="ru">Москва, Ленинский проспект, 94А</address>
+        <country lang="ru">Россия</country>
+        <phone>
+            <number>+7 (926) 262-48-30</number>
+            <type>phone</type>
+        </phone>        
+        <email>lnn@gantil.ru</email>
+        <url>https://gantil.ru</url>
+        <add-url>https://gantil.ru/salons/salon_leninsky/</add-url>    
+        <add-url>https://www.instagram.com/gantil_official</add-url>    
+        <add-url>https://facebook.com/gantil.official</add-url>    
+        <add-url>https://vk.com/gantil_official</add-url>    
+        <add-url>https://twitter.com/gantilsalon</add-url>    
+        <add-url>https://ok.ru/gantil.salon</add-url>    
+        <add-url>https://www.youtube.com/channel/UCHsR5YlPiR6KFGS3Mw44opA</add-url>      
+        <working-time lang="ru">ежедн. 09:00-22:00</working-time>   
+        <rubric-id>184105814</rubric-id>  
+        <rubric-id>20476284572</rubric-id>  
+        <rubric-id>892508964</rubric-id>     
+    </company>
+
+    <company>
+        <company-id>salon_bratis</company-id>
+        <name lang="ru">Дом Красоты и Моды Жантиль</name>
+        <address lang="ru">Москва, Братиславская улица, 15к1</address>
+        <country lang="ru">Россия</country>
+        <phone>
+            <number>+7 (926) 258-15-68</number>
+            <type>phone</type>
+        </phone>        
+        <email>brt@gantil.ru</email>
+        <url>https://gantil.ru</url>
+        <add-url>https://gantil.ru/salons/salon_bratis/</add-url>    
+        <add-url>https://www.instagram.com/gantil_official</add-url>    
+        <add-url>https://facebook.com/gantil.official</add-url>    
+        <add-url>https://vk.com/gantil_official</add-url>    
+        <add-url>https://twitter.com/gantilsalon</add-url>    
+        <add-url>https://ok.ru/gantil.salon</add-url>    
+        <add-url>https://www.youtube.com/channel/UCHsR5YlPiR6KFGS3Mw44opA</add-url>      
+        <working-time lang="ru">ежедн. 09:00-22:00</working-time>   
+        <rubric-id>184105814</rubric-id>  
+        <rubric-id>20476284572</rubric-id>  
+        <rubric-id>892508964</rubric-id>     
+    </company>
+
+    <company>
+        <company-id>salon_kolom</company-id>
+        <name lang="ru">Дом Красоты и Моды Жантиль</name>
+        <address lang="ru">Москва, проспект Андропова, 19</address>
+        <country lang="ru">Россия</country>
+        <phone>
+            <number>+7 (909) 966-08-19</number>
+            <type>phone</type>
+        </phone>        
+        <email>klm@gantil.ru</email>
+        <url>https://gantil.ru</url>
+        <add-url>https://gantil.ru/salons/salon_kolom/</add-url>    
+        <add-url>https://www.instagram.com/gantil_official</add-url>    
+        <add-url>https://facebook.com/gantil.official</add-url>    
+        <add-url>https://vk.com/gantil_official</add-url>    
+        <add-url>https://twitter.com/gantilsalon</add-url>    
+        <add-url>https://ok.ru/gantil.salon</add-url>    
+        <add-url>https://www.youtube.com/channel/UCHsR5YlPiR6KFGS3Mw44opA</add-url>      
+        <working-time lang="ru">ежедн. 09:00-22:00</working-time>   
+        <rubric-id>184105814</rubric-id>  
+        <rubric-id>20476284572</rubric-id>  
+        <rubric-id>892508964</rubric-id>     
+    </company>
+
+    <company>
+        <company-id>salon_shodnya</company-id>
+        <name lang="ru">Дом Красоты и Моды Жантиль</name>
+        <address lang="ru">Москва, Химкинский бульвар, 17</address>
+        <country lang="ru">Россия</country>
+        <phone>
+            <number>+7 (905) 575-09-10</number>
+            <type>phone</type>
+        </phone>        
+        <email>shd@gantil.ru</email>
+        <url>https://gantil.ru</url>
+        <add-url>https://gantil.ru/salons/salon_shodnya/</add-url>    
+        <add-url>https://www.instagram.com/gantil_official</add-url>    
+        <add-url>https://facebook.com/gantil.official</add-url>    
+        <add-url>https://vk.com/gantil_official</add-url>    
+        <add-url>https://twitter.com/gantilsalon</add-url>    
+        <add-url>https://ok.ru/gantil.salon</add-url>    
+        <add-url>https://www.youtube.com/channel/UCHsR5YlPiR6KFGS3Mw44opA</add-url>      
+        <working-time lang="ru">ежедн. 09:00-22:00</working-time>   
+        <rubric-id>184105814</rubric-id>  
+        <rubric-id>20476284572</rubric-id>  
+        <rubric-id>892508964</rubric-id>     
+    </company>   
+
+</companies>

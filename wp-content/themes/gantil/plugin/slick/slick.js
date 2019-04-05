@@ -2767,8 +2767,6 @@
 
         var _ = this;
 
-        //alert('unload')
-
         $('.slick-cloned', _.$slider).remove();
 
         if (_.$dots) {
@@ -2794,8 +2792,8 @@
 
         var _ = this;
         _.$slider.trigger('unslick', [_, fromBreakpoint]);
-        //alert('unslick')
         _.destroy();
+
     };
 
     Slick.prototype.updateArrows = function() {

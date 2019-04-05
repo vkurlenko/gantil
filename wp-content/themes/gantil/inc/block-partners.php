@@ -18,8 +18,6 @@ foreach($arr1 as $k => $v)
 		'img'	=> get_the_post_thumbnail( $v -> ID, 'partners_thumb', array('class' => 'sertif-item-img') )
 	);
 }
-
-
 ?>
 
 
@@ -27,6 +25,11 @@ foreach($arr1 as $k => $v)
 <div class="container-fluid partners ">
 
 	<div class="row-fluid">
+
+			<!-- 
+			удалено из function.php
+			add_image_size( 'subscr_thumb', 1600, 375, true );
+			  -->
 
 			<div class="partners-banner"><?php echo wp_get_attachment_image( 1064, 'subscr_thumb'); ?><!-- <img src="/wp-content/uploads/2017/08/banner.jpg"> --></div>		
 			

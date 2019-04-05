@@ -29,8 +29,8 @@ get_header();
 										
 
 										<!-- submenu -->
-										<ul class="submenu">
-										<?php  
+										<!--<ul class="submenu">
+										<?php /*
 										$arr_menu = wp_list_pages( 
 										    array(
 										        'title_li' => '',
@@ -41,9 +41,9 @@ get_header();
 										); 
 
 										echo $arr_menu;										
-										?>
+										*/?>
 										</ul>
-										<div style="clear:both"></div>
+										<div style="clear:both"></div>-->
 										<!-- /submenu -->
 
 
@@ -175,7 +175,8 @@ get_header();
 						})
 					})
 					</script>
-
+<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('widget_salon') ) : ?>
+<?php endif; ?>
 	<?php
 get_footer()
 ?>

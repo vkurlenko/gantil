@@ -22,6 +22,12 @@
 						                /*get_template_part( 'template-parts/content', 'taxnews' );*/
 						                ?>
 						                <div class="sertif-item">
+
+											<!-- 
+											удалено из function.php
+											add_image_size( 'sertif_thumb', 275, 180, true );
+											  -->
+
 											<a href="<?php the_permalink(); ?>"><? the_post_thumbnail( 'sertif_thumb', array('class' => 'sertif-item-img') )?> <!-- <img class="sertif-item-img" src="/wp-content/uploads/2017/08/sertif1.jpg"> --></a>
 											<div class="sertif-item-name"><?php the_title(); ?></div>
 											<div class="sertif-item-btn"><a href="<?php the_permalink(); ?>">купить</a></div>

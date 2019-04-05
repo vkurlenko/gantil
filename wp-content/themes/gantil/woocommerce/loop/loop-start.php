@@ -27,11 +27,19 @@
 </style>
 
 <?php
+// price updateing alert
+get_template_part('/inc/alert-price');
+?>
 
-if(user_admin()){
+<?php
+
+//if(user_admin()){
 	echo '<div class="woo-search">Поиск по каталогу товаров и услуг: ';
 	echo do_shortcode('[aws_search_form]');
 	echo '</div>';
-}
+//}
 ?>
+
+
+
 <ul class="products">

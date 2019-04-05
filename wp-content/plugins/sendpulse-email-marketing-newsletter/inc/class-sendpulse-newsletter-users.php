@@ -12,12 +12,12 @@ class Send_Pulse_Newsletter_Users {
 	 */
 	public function __construct() {
 
-		$is_subscribe_after_register = Send_Pulse_Newsletter_Settings::get_option('is_subscribe_after_register','sp_api_setting');
+		$is_subscribe_after_register = Send_Pulse_Newsletter_Settings::get_option( 'is_subscribe_after_register', 'sp_api_setting' );
 
-		add_action( 'user_register', [ $this, 'save_user_ip' ], 20 );
+		add_action( 'user_register', array( $this, 'save_user_ip' ), 20 );
 
-		if ('on' == $is_subscribe_after_register) {
-			add_action( 'user_register', [ $this, 'subscribe_after_register' ], 30 );
+		if ( 'on' == $is_subscribe_after_register ) {
+			add_action( 'user_register', array( $this, 'subscribe_after_register' ), 30 );
 		}
 
 	}
@@ -28,7 +28,7 @@ class Send_Pulse_Newsletter_Users {
 	 * @param int $user_id User ID.
 	 */
 	public function save_user_ip( $user_id ) {
-		if ( !is_admin() ) {
+		if ( ! is_admin() ) {
 			update_user_meta( $user_id, '_sp_user_ip', self::define_user_ip() );
 		}
 
@@ -59,15 +59,14 @@ class Send_Pulse_Newsletter_Users {
 		$api = new Send_Pulse_Newsletter_API();
 
 
-
-		$emails = [
-			[
-				'email' => $user->user_email,
-				'variables' => [
+		$emails = array(
+			array(
+				'email'     => $user->user_email,
+				'variables' => array(
 					'name' => $user->display_name
-				]
-			]
-		];
+				)
+			)
+		);
 
 		if ( $user_ip ) {
 			$emails[0]['variables']['subscribe_ip'] = $user_ip;
@@ -75,10 +74,10 @@ class Send_Pulse_Newsletter_Users {
 
 		$result = $api->addEmails( $api->default_book, $emails );
 
-		if (isset($result->is_error) && $result->is_error) {
-			$msg = isset($result->message) ? $result->message : __('Something went wrong', 'sendpulse-email-marketing-newsletter');
+		if ( isset( $result->is_error ) && $result->is_error ) {
+			$msg = isset( $result->message ) ? $result->message : __( 'Something went wrong', 'sendpulse-email-marketing-newsletter' );
 
-			error_log('SendPulse Newsletter: ' . $msg );
+			error_log( 'SendPulse Newsletter: ' . $msg );
 		}
 	}
 
@@ -104,7 +103,6 @@ class Send_Pulse_Newsletter_Users {
 
 		return $ip;
 	}
-
 
 
 }

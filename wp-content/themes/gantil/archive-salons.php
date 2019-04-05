@@ -81,8 +81,8 @@ get_header();
 														'meta_key'     => '',
 														'meta_value'   => '',
 														'authors'      => '',
-														'child_of'     => 117,
-														'parent'       => -1,
+														'child_of'     => 0,
+														'parent'       => 117,
 														'exclude_tree' => '',
 														'number'       => '',
 														'offset'       => 0,
@@ -90,6 +90,8 @@ get_header();
 														'post_status'  => 'publish',
 													); 
 													$pages = get_pages( $args );
+
+													//printArray($pages);
 
 													//shuffle($pages);
 
@@ -212,6 +214,9 @@ get_header();
 						<!-- /content -->
 					</div>
 					<!-- /left-block -->
+
+<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('widget_salon') ) : ?>
+<?php endif; ?>
 
 	<?php
 get_footer()

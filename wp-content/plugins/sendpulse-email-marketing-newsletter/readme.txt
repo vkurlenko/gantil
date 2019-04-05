@@ -3,7 +3,7 @@ Contributors: SendPulse
 Tags: newsletter, newsletters, mailchimp, mail chimp, sendgrid, autoresponder, email newsletter, email newsletters, email subscription, email signup, mandrill, subscription, subscription form, subscribe widget, newsletter widget, mailpoet, sumome, email, icontact, constant contact, aweber, convertkit, hubspot, mailjet, getresponse, mailing list, email marketing, bulk email
 Requires at least: 4.4
 Tested up to: 4.8.2
-Stable tag: 2.0.1
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,7 +45,7 @@ SendPulse is an e-mail marketing service that maximizes the newsletter open rate
 4. For display subscription form use shortcode (like `[sendpulse-form id="..."]` where "..." is form id) in editor or place `<?php echo do_shortcode('[sendpulse-form id="..."]')?>` in your theme's file.
 
 = Requirement =
-* PHP version >= 5.6
+* PHP version >= 5.2.4+ ([Recommended](https://wordpress.org/about/requirements/) >= 5.6)
 
 
 == Installation ==
@@ -69,10 +69,6 @@ Shortcode can be used anywhere in the theme templates via do_shortcode function.
 
 == Changelog ==
 
-= 1.4.0 - 2017-07-25 =
-* Changed: Save and post to api subscribers ip.
-* Changed: Update dependencies.
-
 = 1.5.0 - 2017-08-22 =
 * Changed: Ability to use the constructor code from SendPulse dashboard.
 * Fixed: Support several forms on the page.
@@ -83,6 +79,9 @@ Shortcode can be used anywhere in the theme templates via do_shortcode function.
 
 = 2.0.1 - 2017-09-25 =
 * Changed: Documentation and help link.
+
+= 2.1.0 - 2017-10-18 =
+* Changed: Down minimal PHP version requirement.
 
 == Upgrade Notice ==
 In version 2.0.0 of SendPulse Email Marketing Newsletter removed plugin generated subscribe form in favor constructor code from SendPulse dashboard. Its breaking change! Please use link https://login.sendpulse.com/emailservice/forms/constructor/ to generate new forms.

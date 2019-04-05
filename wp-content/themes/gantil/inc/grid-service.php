@@ -32,8 +32,6 @@
 
 $myterms = get_terms( $args );
 
-//printArray($myterms);
-
 foreach( $myterms as $term )
 {
 	/*$arr_skip = array('studija-zagara', 'imidzhkonsultirovanie');
@@ -108,44 +106,4 @@ foreach( $myterms as $term )
 	endif;
 	?>	
 <!-- /grid SERVICE -->
-
-
-
-<script type="text/javascript">
-$(document).ready(function(){
-  $('.grid-service-slider').show().slick({
-    dots: true,
-    infinite: false,				        
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    arrows: false,
-    responsive: [
-    {
-      breakpoint: 980,
-      settings: {slidesToShow: 3, slidesToScroll: 3, dots: true }
-    },
-    {
-      breakpoint: 680,
-      settings: {slidesToShow: 2, slidesToScroll: 2, arrows: true }
-    },
-    {
-      breakpoint: 480,
-      settings: { slidesToShow: 1, slidesToScroll: 1, arrows: true }
-    }]
-    // prevArrow : '<button type="button" class="slick-prev slick-prev-my">Prev</button>',
-    
-  });
-
-  	max = 0;
-	$('.service-item-name').each(function()
-	{
-		//alert($(this).height())
-
-		if($(this).height() > max)
-			max = $(this).height()
-	})
-	$('.service-item-name').height(max)
-
-});
-</script>
 

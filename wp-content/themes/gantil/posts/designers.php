@@ -19,7 +19,7 @@
 				'pluralTitle'	=> __('Дизайнеры'),
 				'public'		=> true,
 				'rewrite'		=> array('slug' => 'designers'),
-				'supports'		=> array('title', 'thumbnail', 'editor', 'custom-fields', 'page-attributes')/*,
+				'supports'		=> array('title', 'thumbnail', 'editor', 'custom-fields')/*,
 				'taxonomies'	=> array('post_tag')*/
 			));
 			

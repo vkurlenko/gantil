@@ -1,0 +1,4 @@
+Исправлено для php 7.2
+
+Warning: count(): Parameter must be an array or an object that implements Countable in /home/gantil/gantil.nichost.ru/docs/wp-includes/kses.php on line 831
+

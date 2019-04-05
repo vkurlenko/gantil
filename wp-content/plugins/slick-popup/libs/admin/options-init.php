@@ -246,8 +246,8 @@
 					'desc'          => __( '', 'sp-lite-txt-domain' ),
 					'options'  => array(
 								'everywhere' => 'Everywhere',
-								//'onselected' => 'Only Selected Pages',
-								//'notonselected' => __('Not On Selected Pages', 'sp-lite-txt-domain' ),
+								'onselected' => 'Only Selected Pages',
+								'notonselected' => __('Not On Selected Pages', 'sp-lite-txt-domain' ),
 							),
 					'default'  => 'everywhere'
 				),
@@ -326,12 +326,12 @@
 							'options'  => array(								
 								'centered' => array(
 									'alt' => __('Centered Layout', 'sp-lite-txt-domain' ),
-									'img' => ReduxFramework::$_url . '../img/layout-centered.png',
+									'img' => SPLITE_PLUGIN_IMG_URL . '/layout-centered.png',
 									'title' => __('Centered', 'sp-lite-txt-domain' ),
 								),
 								'full' => array(
 									'alt' => __('Full Height', 'sp-lite-txt-domain' ),
-									'img' => ReduxFramework::$_url . '../img/layout-full.png',
+									'img' => SPLITE_PLUGIN_IMG_URL . '/layout-full.png',
 									'title' => __('Full Height', 'sp-lite-txt-domain' ),
 								),
 							),
@@ -380,32 +380,32 @@
 							'options'  => array(
 								'master_red' => array(
 									'alt' => __('Master Red', 'sp-lite-txt-domain' ),
-									'img' => ReduxFramework::$_url . '../img/scheme-master-red.png',
+									'img' => SPLITE_PLUGIN_IMG_URL . '/scheme-master-red.png',
 									'title' => __('Master Red', 'sp-lite-txt-domain' ),
 								),
 								'creamy_orange' => array(
 									'alt' => __('Creamy Orange', 'sp-lite-txt-domain' ),
-									'img' => ReduxFramework::$_url . '../img/scheme-creamy-orange.png',
+									'img' => SPLITE_PLUGIN_IMG_URL . '/scheme-creamy-orange.png',
 									'title' => __('Creamy Orange', 'sp-lite-txt-domain' ),
 								),
 								'light_blue' => array(
 									'alt' => __('Light Blue', 'sp-lite-txt-domain' ),
-									'img' => ReduxFramework::$_url . '../img/scheme-light-blue.png',
+									'img' => SPLITE_PLUGIN_IMG_URL . '/scheme-light-blue.png',
 									'title' => __('Light Blue', 'sp-lite-txt-domain' ),
 								),
 								'cool_green' => array(
 									'alt' => __('Cool Green', 'sp-lite-txt-domain' ),
-									'img' => ReduxFramework::$_url . '../img/scheme-cool-green.png',
+									'img' => SPLITE_PLUGIN_IMG_URL . '/scheme-cool-green.png',
 									'title' => __('Cool Green', 'sp-lite-txt-domain' ),
 								),						
 								'dark' => array(
 									'alt' => __('Classic Grey', 'sp-lite-txt-domain' ),
-									'img' => ReduxFramework::$_url . '../img/scheme-classic-grey.png',
+									'img' => SPLITE_PLUGIN_IMG_URL . '/scheme-classic-grey.png',
 									'title' => __('Classic Grey', 'sp-lite-txt-domain' ),
 								),
 								'custom_theme' => array(
 									'alt' => __('Set Your Own', 'sp-lite-txt-domain' ),
-									'img' => ReduxFramework::$_url . '../img/scheme-custom-theme.png',
+									'img' => SPLITE_PLUGIN_IMG_URL . '/scheme-custom-theme.png',
 									'title' => __('Set Your Own', 'sp-lite-txt-domain' ),
 								),
 							),
@@ -910,12 +910,12 @@
 					'options'  => array(
 						'1' => array(
 							'alt' => __('Demo 1', 'sp-lite-txt-domain' ),
-							'img' => ReduxFramework::$_url . '../img/scheme-master-red.png',
+							'img' => SPLITE_PLUGIN_IMG_URL . '/scheme-master-red.png',
 							'title' => __('Demo 1', 'sp-lite-txt-domain' ),
 						),
 						'2' => array(
 							'alt' => __('Creamy Orange', 'sp-lite-txt-domain' ),
-							'img' => ReduxFramework::$_url . '../img/scheme-creamy-orange.png',
+							'img' => SPLITE_PLUGIN_IMG_URL . '/scheme-creamy-orange.png',
 							'title' => __('Creamy Orange', 'sp-lite-txt-domain' ),
 						),
 					),

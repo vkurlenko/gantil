@@ -350,7 +350,7 @@ die;*/
 <link rel="stylesheet" href="/wp-content/plugins/my_im_ex/lib/css/theme.default.css">
 <link rel="stylesheet" href="/wp-content/plugins/my_im_ex/lib/css/style.css">
 
-<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery.min.js"></script>
 <script src="/wp-content/plugins/my_im_ex/lib/js/jquery.tablesorter.min.js"></script>
 <script src="/wp-content/plugins/my_im_ex/lib/js/script.js"></script>
 
@@ -535,8 +535,8 @@ die;*/
 																		continue;
 																	?>
 																	<td align="center"><? 
-                                                                     if(@$p['vid'])
-                                                                        $prlist->getPriceCell($p['vid'], $p['price'], $obj->ID);
+                                                                     if(isset($p['vid']))
+                                                                        $prlist->getPriceCell(@$p['vid'], @$p['price'], $obj->ID);
                                                                     else
                                                                         echo '';
                                                                     ?></td>

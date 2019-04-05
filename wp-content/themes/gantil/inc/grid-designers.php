@@ -6,6 +6,7 @@ $designers = new Designer();
 $arr = array();
 
 $param = array(
+    //'posts_per_page' => 1000,
     'posts_per_page' => 1000,
     'post_type' => ST_Designers::POST_TYPE,
     'orderby'   => 'rand',
@@ -60,7 +61,7 @@ foreach( $myterms as $term )
 }
 
 $arr = $designers->sortDesigners($arr, 'DESC');
-
+array_splice($arr, 8);
 
 ?>
 
@@ -77,13 +78,11 @@ $arr = $designers->sortDesigners($arr, 'DESC');
                 <a href="<?=$v['link']?>">
                     
                     <?php 
-                    /*if ( $designers->getImage($v['id'])) {
-                        echo $designers->getImage($v['id']);
-                    }*/
+
                     if ($v['image_url']) {
                         ?>
-                        <img class="salons-item-img img-mono" src="<?=makeGrayPic($v['image_url'])?>">
-                        <img class="salons-item-img img-color" src="<?=$v['image_url']?>">
+                        <!--<img class="salons-item-img img-mono" src="<?/*=makeGrayPic($v['image_url'])*/?>" data-imgcolor="<?/*=$v['image_url']*/?>">-->
+                        <img class="salons-item-img <?=wp_is_mobile() ? '' : 'img-mono';?>" src="<?=makeGrayPic($v['image_url'])?>" alt="<?php the_title(); ?>" data-imgcolor="<?=wp_is_mobile() ? '' : $v['image_url'];?>">
                         <?php
                     }
                     else
@@ -107,42 +106,6 @@ $arr = $designers->sortDesigners($arr, 'DESC');
     </div>
 
 </div>
-
-<script language="javascript">
-
-$(document).ready(function(){
-
-    /*$('.grid-designers').slick({
-    dots: false,
-    infinite: false,                        
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    arrows: true,
-    mobileFirst: true,
-    responsive: [                   
-        {
-          breakpoint: 980,
-          settings: {slidesToShow: 3, slidesToScroll: 3, dots: false }
-        },
-        {
-          breakpoint: 680,
-          settings: {slidesToShow: 2, slidesToScroll: 2, arrows: true }
-        },
-        {
-          breakpoint: 480,
-          settings: { slidesToShow: 1, slidesToScroll: 1, arrows: true }
-        },
-        {
-          breakpoint: 300,
-          settings: { slidesToShow: 1, slidesToScroll: 1, arrows: true }
-        }
-    ]
-    // prevArrow : '<button type="button" class="slick-prev slick-prev-my">Prev</button>',
-    
-  });*/
-})
-
-</script>
 
 
 

@@ -11,8 +11,8 @@ foreach($arr as $k) {
 	<div class="col-xs-6 grid-promo-item grid-item-news" >
 		<div>
 			<a href="<?=$k['link']?>">
-				<img class="img-mono" src="<?=makeGrayPic($k['img_src'])?>">
-				<img class="img-color" src="<?=$k['img_src']?>">
+				<img class="grid-item-img img-mono" src="<?=makeGrayPic($k['img_src'])?>" data-imgcolor="<?=$k['img_src']?>">
+				<!-- <img class="img-color" src="<?=$k['img_src']?>"> -->
 				<!-- <?=$k['img']?> -->
 			</a>
 			<span><?=$k['name']?></span>
@@ -26,16 +26,3 @@ foreach($arr as $k) {
 }
 
 ?>
-<script type="text/javascript">
-$(document).ready(function()
-{	
-	$('.grid-promo-item, .banner-align-left, .banner-align-right').mouseenter(function()
-	{			
-		$(this).find('.img-color').show()
-		$(this).find('.img-mono').animate({opacity: 0}, 300);
-	}).mouseleave (function()
-	{		
-		$(this).find('.img-mono').animate({opacity: 1}, 500);		
-	})
-});
-</script>

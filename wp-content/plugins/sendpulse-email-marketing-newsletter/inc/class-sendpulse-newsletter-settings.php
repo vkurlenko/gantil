@@ -32,14 +32,14 @@ class Send_Pulse_Newsletter_Settings {
 	 * Send_Pulse_Newsletter constructor.
 	 */
 	public function __construct() {
-		$this->settings_api = new WeDevs_Settings_API;
+		$this->settings_api = new WeDevs_Settings_API();
 
-		add_action( 'admin_init', array($this, 'admin_init') );
-		add_action( 'admin_menu', array($this, 'admin_menu') );
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 
-		add_action( 'wsa_form_top_sp_import_setting', array($this, 'start_import_controls'));
+		add_action( 'wsa_form_top_sp_import_setting', array( $this, 'start_import_controls' ) );
 
-		add_action( 'wsa_form_bottom_sp_import_setting', array($this, 'end_import_controls'));
+		add_action( 'wsa_form_bottom_sp_import_setting', array( $this, 'end_import_controls' ) );
 
 	}
 
@@ -50,11 +50,11 @@ class Send_Pulse_Newsletter_Settings {
 		try {
 			$this->api = new Send_Pulse_Newsletter_API();
 
-			if ( 'on' == $this->api->get_option('is_subscribe_after_register') && empty($this->api->default_book) ) {
-				$this->error = __('Select book for new users and save options', 'sendpulse-email-marketing-newsletter');
+			if ( 'on' == $this->api->get_option( 'is_subscribe_after_register' ) && empty( $this->api->default_book ) ) {
+				$this->error = __( 'Select book for new users and save options', 'sendpulse-email-marketing-newsletter' );
 			}
 
-		} catch (Exception $exception ) {
+		} catch ( Exception $exception ) {
 			$this->error = $exception->getMessage();
 		}
 	}
@@ -72,11 +72,11 @@ class Send_Pulse_Newsletter_Settings {
 		//initialize settings
 		$this->settings_api->admin_init();
 
-		if ($this->error
-		    && isset($_GET['page'])
-		    && ($this->page == $_GET['page'])
+		if ( $this->error
+		     && isset( $_GET['page'] )
+		     && ( $this->page == $_GET['page'] )
 		) {
-			add_settings_error('general', 'settings_updated', $this->error, 'error');
+			add_settings_error( 'general', 'settings_updated', $this->error, 'error' );
 
 		}
 	}
@@ -91,7 +91,7 @@ class Send_Pulse_Newsletter_Settings {
 			__( 'Settings' ),
 			'delete_posts',
 			'send_pulse_settings',
-			array($this, 'plugin_page')
+			array( $this, 'plugin_page' )
 		);
 	}
 
@@ -109,8 +109,10 @@ class Send_Pulse_Newsletter_Settings {
 				'title' => __( 'Import', 'sendpulse-email-marketing-newsletter' )
 			)
 		);
+
 		return $sections;
 	}
+
 	/**
 	 * Returns all the settings fields
 	 *
@@ -153,10 +155,10 @@ class Send_Pulse_Newsletter_Settings {
 
 		$books = $this->get_lists_address_book();
 
-		if ( !empty($books) ) {
-			$options = array_combine(wp_list_pluck($books, 'id'), wp_list_pluck($books, 'name'));
+		if ( ! empty( $books ) ) {
+			$options = array_combine( wp_list_pluck( $books, 'id' ), wp_list_pluck( $books, 'name' ) );
 
-			$settings_fields['sp_api_setting'][] = 	array(
+			$settings_fields['sp_api_setting'][] = array(
 				'name'    => 'default_book',
 				'label'   => __( 'Address Book for new users', 'sendpulse-email-marketing-newsletter' ),
 				'desc'    => __( 'Address Book for subscribe user after register', 'sendpulse-email-marketing-newsletter' ),
@@ -167,16 +169,14 @@ class Send_Pulse_Newsletter_Settings {
 		}
 
 
-
-
-		if ( !empty($books) ) {
+		if ( ! empty( $books ) ) {
 
 			$editable_roles = array_reverse( get_editable_roles() );
 
 			$role_options = array();
 
 			foreach ( $editable_roles as $role => $details ) {
-				$role_options[ $role ] = translate_user_role($details['name'] );
+				$role_options[ $role ] = translate_user_role( $details['name'] );
 			}
 
 
@@ -209,7 +209,7 @@ class Send_Pulse_Newsletter_Settings {
 	 */
 	function plugin_page() {
 
-	    settings_errors();
+		settings_errors();
 
 		echo '<div class="wrap">';
 		$this->settings_api->show_navigation();
@@ -232,8 +232,8 @@ class Send_Pulse_Newsletter_Settings {
 
 		$options = get_option( $section );
 
-		if ( isset( $options[$option] ) ) {
-			return $options[$option];
+		if ( isset( $options[ $option ] ) ) {
+			return $options[ $option ];
 		}
 
 		return $default;
@@ -247,30 +247,35 @@ class Send_Pulse_Newsletter_Settings {
 	 */
 	protected function get_lists_address_book() {
 
-	    $books = [];
+		$books = array();
 
-	    if ( $this->api ) {
-		    $response = $this->api->listAddressBooks();
+		if ( $this->api ) {
+			$response = $this->api->listAddressBooks();
 
-		    if ( is_array( $response ) ) {
-			    $books = $response;
-		    } else {
-		        $this->error = __('Error API. Please try again later', 'sendpulse-email-marketing-newsletter');
-            }
-	    }
+			if ( is_array( $response ) ) {
+				$books = $response;
+			} else {
+				$this->error = __( 'Error API. Please try again later', 'sendpulse-email-marketing-newsletter' );
+			}
+		}
+
 		return $books;
 	}
 
 	public function start_import_controls() { ?>
-		<div class="sp-import-controls">
+        <div class="sp-import-controls">
 	<?php }
 
 	public function end_import_controls() {
 
-		echo get_submit_button(__('Start import', 'sendpulse-email-marketing-newsletter'), 'primary large', 'sp-import', true, array('data-_ajax_nonce' => wp_create_nonce('sendpulse_import'), 'data-action' => 'sendpulse_import')); ?>
+		echo get_submit_button( __( 'Start import', 'sendpulse-email-marketing-newsletter' ), 'primary large', 'sp-import', true, array(
+			'data-_ajax_nonce' => wp_create_nonce( 'sendpulse_import' ),
+			'data-action'      => 'sendpulse_import'
+		) ); ?>
 
-		<textarea rows="5" cols="55" class="sp-import-log"  id="sp-import-log" title="<?php _e('Import Log', 'sendpulse-email-marketing-newsletter'); ?>"></textarea>
-		</div>
+        <textarea rows="5" cols="55" class="sp-import-log" id="sp-import-log"
+                  title="<?php _e( 'Import Log', 'sendpulse-email-marketing-newsletter' ); ?>"></textarea>
+        </div>
 
 	<?php }
 

@@ -101,7 +101,7 @@ class Designer
 	public function getDesigners($sort_by_rating = false, $sort_dir = 'DESC') {
 		
 		$arr = [];
-		$rating_parent_cat = 510; //id родительской категории Рейтинг дизайнера 
+		$rating_parent_cat = 530; //id родительской категории Рейтинг дизайнера 
 
 		foreach( $this->getAll(true) as $k => $v) {
 
@@ -163,7 +163,7 @@ class Designer
 	public function getRating($id = null){
 
 		if ($id) {			
-			$rating_parent_cat = 510;
+			$rating_parent_cat = 530;
 			$cats = get_the_terms( $id , ST_Designers::CATEGORY_TAXONOMY_SLUG);
 			$rating = '';
 

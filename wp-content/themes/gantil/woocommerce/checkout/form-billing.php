@@ -34,6 +34,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php endif; ?>
 
+	
+
 	<?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
 
 	<div class="woocommerce-billing-fields__field-wrapper">

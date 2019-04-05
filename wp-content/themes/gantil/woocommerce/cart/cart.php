@@ -20,9 +20,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-wc_print_notices();
+//wc_print_notices();
 
-do_action( 'woocommerce_before_cart' ); ?>
+//do_action( 'woocommerce_before_cart' ); 
+?>
 
 <form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 	<?php do_action( 'woocommerce_before_cart_table' ); ?>
@@ -103,9 +104,14 @@ do_action( 'woocommerce_before_cart' ); ?>
 								}
 
 								// получим имя мастера вместо slug
+
+								//echo 'attribute_pa_item_master = '.$cart_item['variation']['attribute_pa_item_master'];
+								//echo get_master_realname($cart_item['variation']['attribute_pa_item_master']);
 								
-								if(!empty($cart_item['variation']['attribute_pa_item_master']))
+								if(!empty($cart_item['variation']['attribute_pa_item_master']) && trim($cart_item['variation']['attribute_pa_item_master']) != '')
 									$cart_item['variation']['attribute_pa_item_master'] = get_master_realname($cart_item['variation']['attribute_pa_item_master']);
+								/*else
+									unset($cart_item['variation']['attribute_pa_item_master']);*/
 
 								if($cart_item['variation']['attribute_pa_order_time'] == 'lyuboe-vremya')
 									$cart_item['variation']['attribute_pa_order_time'] = 'Любое время';
@@ -192,7 +198,15 @@ do_action( 'woocommerce_before_cart' ); ?>
 </form>
 
 <div class="cart-collaterals">
-	<?php do_action( 'woocommerce_cart_collaterals' ); ?>
+	<?php do_action( 'woocommerce_cart_collaterals' ); 
+	/*do_action( 'woocommerce_before_cart' );*/
+
+	?>
+	<!-- <div class="woocommerce-message"><a href="//gantil.ru/services/" class="button wc-forward">Продолжить покупки</a></div> -->
 </div>
 
+
+
 <?php do_action( 'woocommerce_after_cart' ); ?>
+
+

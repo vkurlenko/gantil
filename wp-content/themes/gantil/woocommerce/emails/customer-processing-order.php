@@ -27,8 +27,7 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
 <p><?php _e( "Your order has been received and is now being processed. Your order details are shown below for your reference:", 'woocommerce' ); ?></p>
 <p>После оформления заявки с вами свяжется администратор салона для уточнения деталей заказа.<br>
-ЗАЯВКА НЕ СЧИТАЕТСЯ ОФОРМЛЕННОЙ, БЕЗ ПОДТВЕРЖДЕНИЯ АДМИНИСТРАТОРОМ САЛОНА!</p>
-
+<strong>ЗАЯВКА НЕ СЧИТАЕТСЯ ОФОРМЛЕННОЙ, БЕЗ ПОДТВЕРЖДЕНИЯ АДМИНИСТРАТОРОМ САЛОНА!</strong></p>
 <?php
 
 /**

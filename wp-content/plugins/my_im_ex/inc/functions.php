@@ -7,7 +7,7 @@ add_action('admin_menu', function()
 
 
 
-add_action('init', 'test');
+//add_action('init', 'test');
 
 
 

@@ -31,22 +31,16 @@ require_once( 'f.php' );
 
 	//require_once( 'posts/sertif.php' );
 
-	add_image_size( 'sertif_thumb', 275, 180, true );
+	//add_image_size( 'sertif_thumb', 275, 180, true );
 	add_image_size( 'news_thumb_b', 515, 515, true );
-	add_image_size( 'news_thumb_s', 485, 185, true );
-	add_image_size( 'news_thumb_m', 485, 290, true );
-
+	//add_image_size( 'news_thumb_s', 485, 185, true );
+	//add_image_size( 'news_thumb_m', 485, 290, true );
 	add_image_size( 'salon_thumb', 490, 325, true );
-
-	add_image_size( 'imageconsult_thumb', 1530, 240, true );
-	add_image_size( 'imageconsult_thumb_mobi', 460, 307, true );
-
+	//add_image_size( 'imageconsult_thumb', 1530, 240, true );
+	//add_image_size( 'imageconsult_thumb_mobi', 460, 307, true );
 	add_image_size( 'gallery_thumb', 490, 490, true );
-
-	add_image_size( 'partners_thumb', 210, 250, true );
-
-	add_image_size( 'subscr_thumb', 1600, 375, true );
-
+	//add_image_size( 'partners_thumb', 210, 250, true );
+	//add_image_size( 'subscr_thumb', 1600, 375, true );
 	add_image_size( 'master_thumb', 211, 211, true );
 
 	//add_image_size( 'shop_catalog', 353, 253, true );
@@ -72,6 +66,31 @@ require_once( 'f.php' );
 		'before_title' => '',
 		'after_title' => '',
 		));
+
+	register_sidebar( array( 
+		'id' => 'widget_masters',
+		'name' => 'Виджеты для мастеров') 
+	);
+
+	register_sidebar( array( 
+		'id' => 'widget_call',
+		'name' => 'Виджет заказать звонок') 
+	);
+
+	register_sidebar( array( 
+		'id' => 'widget_salon',
+		'name' => 'Виджет записаться в салон') 
+	);
+
+	register_sidebar( array( 
+		'id' => 'widget_subscribe',
+		'name' => 'Виджет подписаться на новости') 
+	);
+
+	register_sidebar( array( 
+		'id' => 'widget_action',
+		'name' => 'Виджет заявка по условиям акции') 
+	);
 
 
 
@@ -201,7 +220,7 @@ function wpse_enqueue_datepicker() {
     wp_enqueue_script( 'jquery-ui-datepicker' );
 
     // You need styling for the datepicker. For simplicity I've linked to Google's hosted jQuery UI CSS.
-    wp_register_style( 'jquery-ui', 'http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css' );
+    wp_register_style( 'jquery-ui', 'https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css' );
     wp_enqueue_style( 'jquery-ui' );  
 }
 add_action( 'wp_enqueue_scripts', 'wpse_enqueue_datepicker' );

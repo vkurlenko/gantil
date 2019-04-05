@@ -20,14 +20,14 @@ get_header();
     
                                 <div class="content-article">
 
-                                    <h1><?php the_title();?></h1>
+                                    <h1>&nbsp;<?php /*the_title();*/?></h1>
                                     
                                     <?
                                     $post = get_post();
                                     ?>
 
                                     
-                                    <h3 style="text-align:center">Спасибо за заказ!</h3>
+                                    <h1 style="text-align:center">Спасибо за заказ!</h1>
                                    
                                     <?php echo $post -> post_content;?>
 

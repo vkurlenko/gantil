@@ -5,12 +5,12 @@ Plugin URI:   http://www.omaksolutions.com
 Description:  A lightweight plugin that converts a Contact Form 7 form into a customizable pop-up form which is slick, beautiful and responsive to different screen-sizes.
 Author URI:   http://www.omaksolutions.com 
 Author:       Om Ak Solutions 
-Version:      1.4.1
+Version:      1.4.4
 Text Domain: sp-pro-txt-domain
 */
 
 
-define( 'SPLITE_VERSION', '1.4.1' );
+define( 'SPLITE_VERSION', '1.4.4' );
 
 define( 'SPLITE_REQUIRED_WP_VERSION', '3.0.1' );
 
@@ -21,6 +21,10 @@ define( 'SPLITE_PLUGIN_BASENAME', plugin_basename( SPLITE_PLUGIN ) );
 define( 'SPLITE_PLUGIN_NAME', trim( dirname( SPLITE_PLUGIN_BASENAME ), '/' ) );
 
 define( 'SPLITE_PLUGIN_DIR', untrailingslashit( dirname( SPLITE_PLUGIN ) ) );
+
+define( 'SPLITE_PLUGIN_URL', plugins_url( '' , __FILE__ ) );
+
+define( 'SPLITE_PLUGIN_IMG_URL', SPLITE_PLUGIN_URL . '/libs/admin/img' );
 
 define ( 'SPLITE_DEBUG', FALSE );
 
@@ -161,9 +165,6 @@ function splite_slick_popup_loaded(){
 				break; 
 			default: break; 
 		}
-
-		/*if($current_post_id != 181)
-			$show = false;*/
 	}	
 	
 	$show = apply_filters( 'splite_dollar_show', $show );

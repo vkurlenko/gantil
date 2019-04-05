@@ -73,6 +73,16 @@
 				</select>
 				<a class="button bulk_edit do_variation_action"><?php _e( 'Go', 'woocommerce' ); ?></a>
 
+                <a class="button correct">Исправить</a>
+
+                <!--<script>
+                    $(document).ready(function(){
+                        $('.correct').click(function(){
+                            alert('correct')
+                        })
+                    })
+                </script>-->
+
 				<div class="variations-pagenav">
 					<span class="displaying-num"><?php printf( _n( '%s item', '%s items', $variations_count, 'woocommerce' ), $variations_count ); ?></span>
 					<span class="expand-close">
@@ -102,6 +112,11 @@
 				echo htmlspecialchars( json_encode( wc_list_pluck( $variation_attributes, 'get_data' ) ) );
 			?>" data-total="<?php echo $variations_count; ?>" data-total_pages="<?php echo $variations_total_pages; ?>" data-page="1" data-edited="false">
 			</div>
+
+            <?php
+            //echo htmlspecialchars( json_encode( wc_list_pluck( $variation_attributes, 'get_data' ) ) );
+            //printArray(wc_list_pluck( $variation_attributes, 'get_data' ) );
+            ?>
 
 			<div class="toolbar">
 				<button type="button" class="button-primary save-variation-changes" disabled="disabled"><?php _e( 'Save changes', 'woocommerce' ); ?></button>
@@ -134,3 +149,7 @@
 		<?php endif; ?>
 	</div>
 </div>
+
+<?php
+$src = '/wp-content/plugins/woocommerce/assets/js/admin/my-correct.js?ver=1';
+wp_enqueue_script( 'correct', $src );

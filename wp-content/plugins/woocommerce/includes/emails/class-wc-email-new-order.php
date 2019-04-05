@@ -99,19 +99,20 @@ class WC_Email_New_Order extends WC_Email {
 		
 		fwrite($f, $str);
 
+		// если включена опция 'Отправлять только админам'
 		if(get_option('g_options')['mail_to_admin_only'])
-			$mail_to = 'vkurlenko@yandex.ru';
+			$mail_to = get_option('g_options')['email_admin'];
 
-		//fwrite($f, $mail_to."\r\n");
+		
 		/* CURL */
 		// продублируем сообщение кроме почты еще и на сервер
-		$this -> send_by_curl($this->get_content(), $this->get_subject());
+		if(!get_option('g_options')['mail_to_admin_only'])
+			$this -> send_by_curl($this->get_content(), $this->get_subject());
 		/* CURL */
 
 		$this->send( $mail_to, $this->get_subject(), str_replace(array( '[h1]', '[/h1]' ), array( '', '' ), $this->get_content()), $this->get_headers(), $this->get_attachments() );
 		/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-		//$this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
 	}
 
 	/********************************************************/

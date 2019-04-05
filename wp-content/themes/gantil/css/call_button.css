@@ -1,0 +1,580 @@
+/*CALLBACK-FORM*/
+/* FOR MOBILE WITHOUT VIEWPORT*/
+#callback-expecto {
+    position: fixed;
+    /*bottom: 0px;*/
+    width: 30%;
+    font-size: 14px;
+    height: auto;
+    left: 50%;
+    margin-left: -15%;
+    z-index: 100;
+}
+/*#callback-expecto.opened {
+    bottom: 0px;
+    height: auto;
+}
+#callback-expecto.opened .callback-form {
+    height: 100%;
+}
+#callback-expecto.opened .callback-form-body {
+    height: 100%;
+    display: inline-block;
+    right: 0px;
+    bottom: 0px;
+}*/
+#callback-expecto .callback-btn {
+    display: inline-block;
+    cursor: pointer;
+    width: 100%;
+    position: relative;
+    bottom: 0px;
+}
+#callback-expecto .callback-btn:before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+#callback-expecto .callback-btn-overlay {
+    border-radius: 50%;
+    box-sizing:border-box;
+    position: absolute;
+    bottom: -20px;
+}
+#callback-expecto .callback-btn-overlay.step1 {
+    width: 100%;
+}
+#callback-expecto .callback-btn-overlay.step2 {
+    width: 90%;
+    margin: 5.5%;
+}
+#callback-expecto .callback-btn-overlay.step3 {
+    width: 80%;
+    margin: 11%;
+}
+#callback-expecto .callback-btn-overlay.callback-ico {
+    width: 65%;
+    margin: 18%;
+}
+#callback-expecto .callback-btn img {
+    width: 100%;
+    display: inline-block;
+}
+#callback-expecto.opened .callback-form .callback-btn {
+    display: inline-block;
+}
+#callback-expecto .callback-form .btn {
+    width: 150px;
+    height: 150px;
+    background-color: #85c413;
+    border-radius: 50%;
+    color: white;
+    font-family: "Open Sans", "Arial", sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 24px;
+    cursor: pointer;
+    margin: 15px 0 25px;
+    border: none;
+}
+#callback-expecto .callback-form .btn.res {
+    float: right;
+    font-size: 22px;
+}
+
+#callback-expecto .callback-form {
+    left: 0;
+    text-align: center;
+    width: 100%;
+}
+.callback-form-body {
+    width: 100%;
+    box-shadow: 0 8px 25px rgba(118, 118, 118, 0.5);
+    display: none;
+    position: relative;
+    padding: 30px 30px 10px;
+    box-sizing: border-box;
+    bottom: 18px;
+    right: 18px;
+    transition: .2s linear;
+    -webkit-transition: .2s linear;
+    background: #fff;
+}
+#callback-expecto .callback-form #resault {
+    display: none;
+    color: #535353;
+    font-family: "Open Sans", 'Arial', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 16px 0;
+}
+#callback-expecto .callback-form .close-btn {
+    color: #CBCBCB;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    font-size: 22px;
+    line-height: 15px;
+    text-align: center;
+    right: 30px;
+    top: 30px;
+    cursor: pointer;
+    border: 1px solid #fff;
+    transition: all 0.3s ease;
+}
+#callback-expecto .callback-form .close-btn img {
+    width: 100%;
+}
+#callback-expecto .callback-form .title {
+    color: #535353;
+    font-family: "Open Sans", 'Arial', sans-serif;
+    font-size: 38px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+#callback-expecto .callback-form .row {
+    position: relative;
+    margin: 25px 0 25px;
+}
+#callback-expecto .callback-form .row label {
+    display: none;
+    position: absolute;
+    font-family: 'Open Sans', 'Arial', sans-serif;
+    font-size: 1.8em;
+    margin: 2px 20px;
+    color: #B3B3B3;
+}
+#callback-expecto .callback-form #for-input {
+    width: 100%;
+    height: 150px;
+    background: #fff;
+    padding-left: 20px;
+    color: #a3a3a3;
+    font-family: "Open Sans", "Arial", sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+    border: 1px solid;
+}
+/*FOR DESKTOP*/
+/* 	@media (min-width: 992px) { */
+#callback-expecto {
+    text-align: right;
+    right: 100px;
+    /*bottom: 60px;*/
+    top:60%;
+    left:auto;
+    margin: 0;
+}
+/*#callback-expecto.opened {
+    bottom: 60px;
+    height: 105px;
+    width: auto;
+}
+#callback-expecto .callback-form {
+    text-align: right;
+    bottom: 23px;
+}
+#callback-expecto.opened .callback-form-body {
+    bottom: 23px;
+}*/
+#callback-expecto .callback-btn {
+    bottom: 0px;
+    right: 0px;
+    left: auto;
+    margin: 0px;
+}
+#callback-expecto .callback-btn {
+    position: absolute;
+    height: 153px;
+    width: 153px;
+    display: inline-block;
+}
+#callback-expecto .callback-form .btn {
+    width: 75px;
+    height: 75px;
+    font-size: 14px;
+    margin: 0;
+}
+#callback-expecto .callback-btn-overlay {
+    border-radius: 50%;
+    box-sizing:border-box;
+    position: absolute;
+}
+#callback-expecto .callback-btn-overlay.step1 {
+    height: 153px;
+    width: 153px;
+    border-radius: 50%;
+    top: 0;
+}
+#callback-expecto .callback-btn-overlay.step2 {
+    height: 124px;
+    width: 124px;
+    top: 50%;
+    left: 50%;
+    margin-top: -61px;
+    margin-left: -61px;
+}
+#callback-expecto .callback-btn-overlay.step3 {
+    height: 99px;
+    width: 99px;
+    top: 50%;
+    left: 50%;
+    margin-top: -49px;
+    margin-left: -49px;
+}
+#callback-expecto .callback-btn-overlay.callback-ico {
+    width: 75px;
+    height: 75px;
+    top: 50%;
+    left: 50%;
+    margin-top: -36.5px;
+    margin-left: -36.5px;
+    position: absolute;
+}
+#callback-expecto .callback-form .callback-form-body {
+    width: 110px;
+    padding: 15px 20px;
+    text-align: left;
+    border-radius: 100px;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+}
+#callback-expecto.opened .callback-form .callback-form-body {
+    width: auto;
+    right: 19px;
+    height: auto;
+}
+#callback-expecto .callback-form .close-btn {
+    position: relative;
+    display: inline-block;
+    float: left;
+    right: 0;
+    top: 0;
+    vertical-align: super;
+    margin: 29px 35px 29px 20px;
+    width: 15px;
+    height: 15px;
+    line-height: 19px;
+}
+#callback-expecto .callback-form .title {
+    display: inline-block;
+    float: left;
+    width: 200px;
+    font-size: 14px;
+    padding: 18px 0;
+    margin-right: 20px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+#callback-expecto .callback-form .row {
+    display: inline-block;
+    float: left;
+    margin: 0 20px 0 0;
+    padding: 7px 0;
+}
+#callback-expecto .callback-form #for-input {
+    width: 279px;
+    height: 60px;
+    font-size: 12px;
+}
+#callback-expecto .callback-form .row label {
+    font-size: 12px;
+}
+#callback-expecto .callback-content {
+    display: inline-block;
+    float: left;
+}
+/* 	} */
+
+@media (max-width: 850px) {
+
+    #callback-expecto {
+
+        bottom: 60px;
+
+
+    }
+
+    #callback-expecto.opened {
+        min-width: 750px;
+        left: 0;
+        right: 0;
+    }
+}
+
+
+
+/*ANIMATE*/
+/*ERROR*/
+
+@-webkit-keyframes shake {
+    0%, 100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+
+    10%, 30%, 50%, 70%, 90% {
+        -webkit-transform: translateX(-10px);
+        transform: translateX(-10px);
+    }
+
+    20%, 40%, 60%, 80% {
+        -webkit-transform: translateX(10px);
+        transform: translateX(10px);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
+    }
+
+    10%, 30%, 50%, 70%, 90% {
+        -webkit-transform: translateX(-10px);
+        -ms-transform: translateX(-10px);
+        transform: translateX(-10px);
+    }
+
+    20%, 40%, 60%, 80% {
+        -webkit-transform: translateX(10px);
+        -ms-transform: translateX(10px);
+        transform: translateX(10px);
+    }
+}
+
+
+.shake {
+    -webkit-animation-name: shake;
+    animation-name: shake;
+    -webkit-animation-duration:.4s;
+    animation-duration:.4s;
+    border-width: 1px;
+    color: rgb(239, 68, 68);
+    border-style: solid;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 5px 2px rgba(239, 68, 68, 0.75);
+}
+
+/*BLINK BTN*/
+
+@keyframes blink1 {
+    0% {
+        -webkit-transform: scale(.0);
+        opacity: .0;
+    }
+    10% {
+        -webkit-transform: scale(.1);
+        opacity: .1;
+    }
+    20% {
+        -webkit-transform: scale(.2);
+        opacity: .2;
+    }
+    30% {
+        -webkit-transform: scale(.3);
+        opacity: .3;
+    }
+    40% {
+        -webkit-transform: scale(.4);
+        opacity: .4;
+    }
+    50% {
+        -webkit-transform: scale(.5);
+        opacity: .5;
+    }
+    60% {
+        -webkit-transform: scale(.6);
+        opacity: .6;
+    }
+    70% {
+        -webkit-transform: scale(.7);
+        opacity: .7;
+    }
+    80% {
+        -webkit-transform: scale(.8);
+        opacity: 1;
+    }
+    90% {
+        -webkit-transform: scale(.9);
+        opacity: .5;
+    }
+    100% {
+        -webkit-transform: scale(1);
+        opacity: 0;
+    }
+}
+@-webkit-keyframes blink1 {
+    0% {
+        -webkit-transform: scale(.0);
+        opacity: .0;
+    }
+    10% {
+        -webkit-transform: scale(.1);
+        opacity: .1;
+    }
+    20% {
+        -webkit-transform: scale(.2);
+        opacity: .2;
+    }
+    30% {
+        -webkit-transform: scale(.3);
+        opacity: .3;
+    }
+    40% {
+        -webkit-transform: scale(.4);
+        opacity: .4;
+    }
+    50% {
+        -webkit-transform: scale(.5);
+        opacity: .5;
+    }
+    60% {
+        -webkit-transform: scale(.6);
+        opacity: .6;
+    }
+    70% {
+        -webkit-transform: scale(.7);
+        opacity: .7;
+    }
+    80% {
+        -webkit-transform: scale(.8);
+        opacity: 1;
+    }
+    90% {
+        -webkit-transform: scale(.9);
+        opacity: .5;
+    }
+    100% {
+        -webkit-transform: scale(1);
+        opacity: 0;
+    }
+}
+@-moz-keyframes blink1 {
+    0% {
+        -webkit-transform: scale(.0);
+        opacity: .0;
+    }
+    10% {
+        -webkit-transform: scale(.1);
+        opacity: .1;
+    }
+    20% {
+        -webkit-transform: scale(.2);
+        opacity: .2;
+    }
+    30% {
+        -webkit-transform: scale(.3);
+        opacity: .3;
+    }
+    40% {
+        -webkit-transform: scale(.4);
+        opacity: .4;
+    }
+    50% {
+        -webkit-transform: scale(.5);
+        opacity: .5;
+    }
+    60% {
+        -webkit-transform: scale(.6);
+        opacity: .6;
+    }
+    70% {
+        -webkit-transform: scale(.7);
+        opacity: .7;
+    }
+    80% {
+        -webkit-transform: scale(.8);
+        opacity: 1;
+    }
+    90% {
+        -webkit-transform: scale(.9);
+        opacity: .5;
+    }
+    100% {
+        -webkit-transform: scale(1);
+        opacity: 0;
+    }
+}
+
+.blink1{
+    -webkit-animation: blink1 2.5s linear infinite;
+    -moz-animation: blink1 2.5s linear infinite;
+    animation: blink1 2.5s linear infinite;
+}
+/*ANIMATE PHONE ICO*/
+@-webkit-keyframes tada {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    10%, 20% {
+        -webkit-transform: rotate3d(0, 0, 1, -3deg);
+        transform: rotate3d(0, 0, 1, -3deg);
+    }
+
+    30%, 50%, 70%, 90% {
+        -webkit-transform: rotate3d(0, 0, 1, 3deg);
+        transform: rotate3d(0, 0, 1, 3deg);
+    }
+
+    40%, 60%, 80% {
+        -webkit-transform: rotate3d(0, 0, 1, -3deg);
+        transform: rotate3d(0, 0, 1, -3deg);
+    }
+
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes tada {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    10%, 20% {
+        -webkit-transform:  rotate3d(0, 0, 1, -3deg);
+        transform:  rotate3d(0, 0, 1, -3deg);
+    }
+
+    30%, 50%, 70%, 90% {
+        -webkit-transform:  rotate3d(0, 0, 1, 3deg);
+        transform:  rotate3d(0, 0, 1, 3deg);
+    }
+
+    40%, 60%, 80% {
+        -webkit-transform:  rotate3d(0, 0, 1, -3deg);
+        transform: rotate3d(0, 0, 1, -3deg);
+    }
+
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.tada {
+    -webkit-animation-name: tada;
+    animation-name: tada;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+/*#callback-expecto .callback-btn-overlay.step1 {
+    Â Â Â Â;
+}*/
+/* End */
+
+
+/* Start:/bitrix/templates/smsdiscount/styles.css?15483214222*/
+
+
+/* End */

@@ -79,8 +79,12 @@ get_header();
                                         {
                                             if($v->slug == 'video-na-glavnuyu')
                                                 continue;
+
+                                            if($v->slug == 'instagram')
+                                                $v->name = '<i class="fa fa-instagram" aria-hidden="true"></i> instagram';
                                             
                                             $arr[] = $v->slug;
+
                                             if($v->slug == $arr[0])
                                                 $class='class="active"';
                                             else
@@ -89,7 +93,6 @@ get_header();
                                         }
 
                                         wp_reset_postdata();
-                                        //printArray($myterms);
                                     ?>
                                     </ul>
                                     
@@ -99,70 +102,77 @@ get_header();
 
                                     <!-- archive-stm_gallery.php -->
 
-                                                                     
-                                    
+
                                     
                                     <!-- gallery -->
 
                                     <div style="clear:both"></div>
                                     <div class="news-list"> 
 
-                                    <?php 
+                                    <?php
 
-                                    $arr1 = array();
-                                    $arr1 = get_posts( array( 
-                                        'gallery_category' =>  $arr[0] , 
-                                        'post_type'   => 'stm_gallery', 
-                                        'orderby' => 'date', 
-                                        'order' => 'DESC', 
-                                        'numberposts' => 1000
-                                        ) );
+                                    if($arr[0] == 'instagram'){
+                                        //echo do_shortcode('[ap_instagram_mosaic_lightview]');
+                                        echo do_shortcode('[my_instagram]');
+                                    }
+                                    else {
+
+                                        $arr1 = array();
+                                        $arr1 = get_posts(array(
+                                            'gallery_category' => $arr[0],
+                                            'post_type' => 'stm_gallery',
+                                            'orderby' => 'date',
+                                            'order' => 'DESC',
+                                            'numberposts' => 1000
+                                        ));
 
 
-                                    
-                                    foreach($arr1 as $k => $v)
-                                        {
+                                        foreach ($arr1 as $k => $v) {
 
-                                            if($v->post_parent > 0)
+                                            if ($v->post_parent > 0)
                                                 continue;
                                             /*printArray($v);
 
                                             die;*/
 
-                                            $thumb = get_the_post_thumbnail( $v->ID, array(288, 288), array("class"=>"alignleft post_thumbnail") );
+                                            $thumb = get_the_post_thumbnail($v->ID, array(288, 288), array("class" => "alignleft post_thumbnail"));
 
                                             // 2016-04-10 00:00:00
                                             $d = explode(' ', $v->post_date);
                                             $d = explode('-', $d[0]);
-                                            $date = $d[2].'.'.$d[1].'.'.$d[0];
-                                            
-                                            $childrens = get_children( array( 
+                                            $date = $d[2] . '.' . $d[1] . '.' . $d[0];
+
+                                            $childrens = get_children(array(
                                                 'post_parent' => $v->ID,
-                                                'post_type'   => 'stm_gallery', 
+                                                'post_type' => 'stm_gallery',
                                                 'numberposts' => -1,
                                                 'post_status' => 'any'
-                                            ) );
+                                            ));
 
                                             $ch = '';
-                                            if($childrens)
-                                                $ch = ' ['.count($childrens).']';
+                                            if ($childrens)
+                                                $ch = ' [' . count($childrens) . ']';
                                             ?>
-                                            <div class="news-list-item container-fluid item-<?php echo $i++;?>">
-                                                
-                                                    <div class="news-list-img">
-                                                    
-                                                        <a class="" href="/galleries/<?=$v->post_name;?>/"><?=$thumb;?></a>
-                                                        
-                                                    </div>
-                                                    <div class="news-list-text "><a href="/galleries/<?=$v->post_name;?>/"><?=$v->post_title.$ch?><br><?=$date?></a></div>
+                                            <div class="news-list-item container-fluid item-<?php echo $i++; ?>">
+
+                                                <div class="news-list-img">
+
+                                                    <a class=""
+                                                       href="/galleries/<?= $v->post_name; ?>/"><?= $thumb; ?></a>
+
+                                                </div>
+                                                <div class="news-list-text "><a
+                                                            href="/galleries/<?= $v->post_name; ?>/"><?= $v->post_title . $ch ?>
+                                                        <br><?= $date ?></a></div>
                                             </div>
 
-                                            
+
                                             <?php
 
-                                            if($i > 9) $i = 1;
+                                            if ($i > 9) $i = 1;
                                         }
 
+                                    }
                                     
                                     //wp_reset_postdata(); // сброс
                                     ?>

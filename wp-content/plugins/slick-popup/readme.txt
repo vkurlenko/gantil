@@ -1,9 +1,9 @@
 === Slick Popup Lite ===
 Contributors: ak.singla,manish9034
-Tags: popup, cf7 compatible, contact form 7, popup form, WordPress Popup Plugin, modal window form, query form, quotation form
+Tags: contact form 7, popup, cf7, popup form, wordPress popup plugin, contact form popup, popup contact form 7, submit form
 Requires at least: 3.0.1
-Tested up to: 4.8
-Stable tag: 1.4.1
+Tested up to: 4.9.1
+Stable tag: 1.4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,7 +11,11 @@ A lightweight plugin that converts a Contact Form 7 form into a customizable pop
 
 == Description ==
 
-Slick Popup Lite is a lightweight plugin which converts a Contact Form 7 form into a responsive popup form. With a robust option panel you can change color scheme, animations and layout of the popup. Popup forms can encourage visitors to contact you. 
+Best WordPress Popup plugin for Contact Form 7
+
+Our WordPress Popup Plugin helps you create a beautiful and responsive popup with any Contact Form 7 form. Easy customization to style with your theme. 
+
+Perfect for any website with a single product or service. Place a form on all pages of your website and get ready to get more leads.
 
 [[Check out the Demo](https://www.slickpopup.com/slick-popup-wordpress-popup-plugin-free-version/?utm_source=splite&utm_medium=wporg&utm_campaign=OmAkSols&utm_term=litedemolink)] [[Pro Version Demo](https://www.slickpopup.com/?utm_source=splite&utm_medium=wporg&utm_campaign=OmAkSols&utm_term=prodemolink)]
 
@@ -103,6 +107,16 @@ For any doubts or queries, please read our F.A.Q section. If it doesn't come out
 4. Side button position on smaller screens. 
 
 == Changelog ==
+
+= 1.4.4 =
+* Minor fix
+
+= 1.4.3 =
+* Pro Feature added
+* Select specific pages to hide/show popup
+
+= 1.4.2 =
+* Minor fix in plugin options
 
 = 1.4.1 =
 * Tested with WP 4.7 and CF7 4.6

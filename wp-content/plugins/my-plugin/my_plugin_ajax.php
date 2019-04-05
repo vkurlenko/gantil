@@ -16,9 +16,9 @@ function say_hello()
 	$html = '';
 
    
-    if(!empty($_GET['spec']) && !empty($_GET['salon']))
+    if(!empty($_GET['spec']) && !empty($_GET['salon']) && !empty($_GET['product']))
     {        
-        make_list($_GET['spec'], $_GET['salon']);
+        make_list($_GET['spec'], $_GET['salon'], $_GET['product']);
     }        
     else
     {
@@ -29,8 +29,10 @@ function say_hello()
         	
 }
 
-function make_list($spec, $salon)
+function make_list($spec, $salon, $product)
 {
+     global $wpdb;
+
     $slug = array();
     $slug[] = $spec;
     $slug[] = $salon;
@@ -97,8 +99,26 @@ function make_list($spec, $salon)
     $posts = get_posts( $args1 );
 
     $master_color = 'watch-all';
+
     foreach($posts as $k)
     {
+        /**************************************/
+        /* проверим привязку услуги к мастеру */
+        /**************************************/
+        $table = 'gn_master_service';
+        $query = 'SELECT * FROM '.$table.' 
+                    WHERE master_id = '.$k->ID;
+        $row = $wpdb->get_row($query, ARRAY_A , 0);
+        if($row){
+            $str = unserialize($row['service_arr']);
+
+            if(is_array($str) && !in_array($product, $str))
+                continue;
+        }
+        /***************************************/
+        /* /проверим привязку услуги к мастеру */
+        /***************************************/
+
         //$arr[] = array('title' => $k->post_name, 'name' => $k->post_name);
         //$html .= '<option value="'.$k->post_title.'"  class="attached enabled">'.$k->post_title.'</option>';
         $thumbnail = get_the_post_thumbnail( $k->ID, array(50, 50), '' );

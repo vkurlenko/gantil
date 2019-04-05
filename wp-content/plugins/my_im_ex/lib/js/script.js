@@ -109,10 +109,48 @@ function del_var(vid)
     }                                                
 }
 
+// сделаем редактируемым поле цены
+function do_editable(vid, copy_price, save)
+{
+    var obj = $('#'+vid).find('.var-price')
+
+    // цена в активной ячейке
+    var price = $(obj).text()
+
+    // id вариации
+    var vid   = $(obj).parent('div').find('.var-id').val()
+
+    //remove_edit_controls(vid) 
+
+    // удалим иконку OK, если ранее уже было успешное сохранение
+    $(obj).parent('div').find('.icon-ok').remove()                                                                                         
+    
+    // добавим в активную ячейку поле ввода и иконку SAVE и скроем текстовое поле цены
+    var icon_save   = '<a class="icon-save icon" title="Сохранить" href="" onclick="save_price('+vid+'); return false"><img src="/wp-content/themes/gantil/img/icon/save.png"></a>';
+    var icon_cancel = '<a class="icon-cancel icon" title="Отменить" href="" onclick="remove_edit_controls('+vid+'); return false"><img src="/wp-content/themes/gantil/img/icon/cancel.png"></a>';
+
+    $('#'+vid+' input.var-edit').remove();
+
+    if(copy_price)
+        price = copy_price;
+
+    $(obj).parent('div').append('<input class="var-edit" type="text" size=5 value="'+price+'">'+icon_save+icon_cancel).find('.var-edit').select()
+
+    $(obj).hide()  
+
+    if(save){
+        save_price(vid);
+        close_popup();
+    }
+}
+
+function close_popup(){
+    $('.popup, .overlay').css({'opacity': 0, 'visibility': 'hidden'});
+}
+
 
 $(document).ready(function()
 {			
-
 
 	/* редактирование цены вариации */
 	
@@ -125,7 +163,7 @@ $(document).ready(function()
         $(this).append('<a class="icon-del icon" title="Удалить вариацию" href="" onclick="del_var('+vid+'); return false"><img src="/wp-content/themes/gantil/img/icon/del.png" ></a>')
     })
 
-    // при навеении на ячейку таблицы покажем иконку УДАЛИТЬ
+    // при наведении на ячейку таблицы покажем иконку УДАЛИТЬ
     $('.var-cell').mouseover(function(){
         $(this).find('.icon-del').show()
     }).mouseout(function(){
@@ -135,7 +173,9 @@ $(document).ready(function()
 	// при клике на цену в ячейке
 	$('.var-price').click(function ()
 	{
-		// цена в активной ячейке
+        var vid = $(this).parent('div.var-cell').attr('id');
+        do_editable(vid, null, false);
+		/*// цена в активной ячейке
 		var price = $(this).text()
 
         // id вариации
@@ -150,8 +190,50 @@ $(document).ready(function()
         var icon_save   = '<a class="icon-save icon" title="Сохранить" href="" onclick="save_price('+vid+'); return false"><img src="/wp-content/themes/gantil/img/icon/save.png"></a>';
         var icon_cancel = '<a class="icon-cancel icon" title="Отменить" href="" onclick="remove_edit_controls('+vid+'); return false"><img src="/wp-content/themes/gantil/img/icon/cancel.png"></a>';
 		$(this).parent('div').append('<input class="var-edit" type="text" size=5 value="'+price+'">'+icon_save+icon_cancel).find('.var-edit').select()
-		$(this).hide()														
+		$(this).hide()	*/													
 	})
+
+   
+    /* popup окно с ценами в других салонах */
+    $('.popup .close_window, .overlay').click(function (){
+        $('.popup, .overlay').css({'opacity': 0, 'visibility': 'hidden'});
+    });
+
+    $('.var-otherprice').click(function (e){
+        $('.popup, .overlay').css({'opacity': 1, 'visibility': 'visible'});
+        e.preventDefault();
+
+        var salons = new Array('salon_leninsky', 'salon_kolom', 'salon_bratis', 'salon_sokol', 'salon_shodnya', 'salon_dom_krasoty');
+        var names = new Array('на Ленинском', 'на Коломенской', 'на Братиславской', 'на Соколе', 'на Сходненской', 'на м.Аэропорт');
+
+        var string = '<table>';
+
+        for( i = 0; i < salons.length; i++ ){
+
+            var price = $(this).data(salons[i]);
+
+            var vid = $(this).data('vid');
+            var obj = $('#'+vid).find('.var-price');
+
+            string += '<tr><td>'
+                +names[i]
+                +'</td><td>'
+                +price+'</td>'
+                +'<td>';
+
+            if( price != '-' ){
+                string += '<a class="copy" onclick="do_editable('+vid+', '+price+', true); return false;" href="#" data-price="'+price+'">скопировать</a>';
+            }
+                string += '</td></tr>';
+        }
+
+        string += '</table>';
+
+        $('.popup p').html(string);        
+    });
+    /* /popup окно с ценами в других салонах */
+
+   
 
 	/* /редактирование цены вариации */
 
@@ -191,7 +273,7 @@ $(document).ready(function()
 	$("#table-prlist tr:odd").addClass("odd");
 	/* /подсветка строк */
 
-    $('.price-list table').show()
+    $('.price-list > table').show()
 
 
     /* смена салона */

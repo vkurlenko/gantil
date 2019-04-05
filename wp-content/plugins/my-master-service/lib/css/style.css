@@ -1,0 +1,7 @@
+ul, li{padding: 0 0 0 10px}
+ul.parent > li{list-style: square; font-weight:bold}
+ul.parent1 > li{text-transform: uppercase}
+ul.child{display:none}
+ul.child > li{font-weight:normal; text-transform: none}
+.header span{cursor: pointer}
+.visible{display: block !important}

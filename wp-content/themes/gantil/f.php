@@ -1,19 +1,28 @@
 <?
+
+//require_once "plugin/Mobile_Detect.php";
+
+//echo 'wp_is_mobile = '.wp_is_mobile();
+
+add_shortcode( 'promo', array( 'Promo', 'renderBanner' ) );
+
+add_shortcode( 'referal', array( 'Referal', 'renderForm' ) );
+
 // Для скриптов
 function my_deregister_javascript () {
     if ( !is_page ('154') ) {
-    wp_deregister_script ( 'contact-form-7' );
+        wp_deregister_script ( 'contact-form-7' );
     }
 }
-add_action ( 'wp_print_scripts', 'my_deregister_javascript', 100 );
+//add_action ( 'wp_print_scripts', 'my_deregister_javascript', 100 );
 
 // Для стилей
 function my_deregister_styles() {
     if ( !is_page ('154') ) {
-    wp_deregister_style ( 'contact-form-7' );
+        wp_deregister_style ( 'contact-form-7' );
     }
 }
-add_action('wp_print_styles', 'my_deregister_styles', 100);
+//add_action('wp_print_styles', 'my_deregister_styles', 100);
 //---------
 
 

@@ -22,7 +22,8 @@ $categories = get_categories($args);
 					if(isset($_SESSION['salon']) && $_SESSION['salon'] == $v->slug) 
 						$sel = 'active-salon';
 					?>
-					<li><a href="#" class="<?=$sel?>" data-name="<?=$v->slug?>"><?=$v->name?></a></li>
+					<!--<li><a href="#" class="<?/*=$sel*/?>" data-name="<?/*=$v->slug*/?>"><?/*=$v->name*/?></a></li>-->
+                    <li><a href="?salon=<?=$v->slug?>" class="<?=$sel?>" data-name="<?=$v->slug?>"><?=$v->name?></a></li>
 					<?	
 				}
 	    	?>

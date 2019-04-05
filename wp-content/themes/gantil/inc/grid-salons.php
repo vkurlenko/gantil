@@ -5,33 +5,6 @@ $post_name = $post->post_name;
 $is_price = false;
 if(@$post_name && $post_name == 'price')
 	$is_price = true;
-
-$arr_replace = array(
-	'salon_leninsky' => 'На Ленинском',
-	'salon_kolom' 	=> 'На Коломенской',
-	'salon_bratis' => 'На Братиславской',
-	'salon_sokol' => 'На Соколе',
-	'salon_shodnya' => 'На Сходненской',
-	'salon_dom_krasoty' => 'На м.Аэропорт'
-	);
-
-$arr_replace_2 = array(
-	'salon_leninsky' => 'Жантиль на Ленинском',
-	'salon_kolom' 	=> 'Жантиль на Коломенской',
-	'salon_bratis' => 'Жантиль на Братиславской',
-	'salon_sokol' => 'Жантиль на Соколе',
-	'salon_shodnya' => 'Жантиль на Сходненской',
-	'salon_dom_krasoty' => 'Жантиль м.Аэропорт'
-	);
-
-$arr_since = array(
-    'salon_leninsky' => 2008,
-    'salon_kolom' 	=> 2004,
-    'salon_bratis' => 2005,
-    'salon_sokol' => 2006,
-    'salon_shodnya' => 2002,
-    'salon_dom_krasoty' => 2015
-);
 ?>
 
 <style type="text/css">
@@ -68,8 +41,10 @@ $arr_since = array(
 			'meta_key'     => '',
 			'meta_value'   => '',
 			'authors'      => '',
-			'child_of'     => 117,
-			'parent'       => -1,
+			/*'child_of'     => 117,
+			'parent'       => -1,*/
+            'child_of'     => 0,
+            'parent'       => 117,
 			'exclude_tree' => '',
 			'number'       => '',
 			'offset'       => 0,
@@ -78,6 +53,7 @@ $arr_since = array(
 		); 
 		$pages = get_pages( $args );
 		//shuffle($pages);
+        //printArray($pages);
 
 		foreach( $pages as $post )
 		{
@@ -86,7 +62,32 @@ $arr_since = array(
 			$meta = get_metadata( 'post', $post->ID, 'salon_address', true);
 			$salon_address_short = get_metadata( 'post', $post->ID, 'salon_address_short', true);
 			
-			
+			$arr_replace = array(
+				'salon_leninsky' => 'На Ленинском',
+				'salon_kolom' 	=> 'На Коломенской',
+				'salon_bratis' => 'На Братиславской',
+				'salon_sokol' => 'На Соколе',
+				'salon_shodnya' => 'На Сходненской',
+				'salon_dom_krasoty' => 'На м.Аэропорт'
+				);
+
+			$arr_replace_2 = array(
+				'salon_leninsky' => 'Жантиль на Ленинском',
+				'salon_kolom' 	=> 'Жантиль на Коломенской',
+				'salon_bratis' => 'Жантиль на Братиславской',
+				'salon_sokol' => 'Жантиль на Соколе',
+				'salon_shodnya' => 'Жантиль на Сходненской',
+				'salon_dom_krasoty' => 'Жантиль м.Аэропорт'
+				);
+
+            $arr_since = array(
+                'salon_leninsky' => 2008,
+                'salon_kolom' 	=> 2004,
+                'salon_bratis' => 2005,
+                'salon_sokol' => 2006,
+                'salon_shodnya' => 2002,
+                'salon_dom_krasoty' => 2015
+            );
 
 			// формат вывода
 			?>
@@ -101,8 +102,10 @@ $arr_since = array(
 					$thumb_id = get_post_thumbnail_id();
 					$thumb_url = wp_get_attachment_image_src($thumb_id,'salon_thumb', true);
 					?>
-					<img class="salons-item-img img-mono" src="<?=makeGrayPic($thumb_url[0])?>">
-					<img class="salons-item-img img-color" src="<?=$thumb_url[0]?>">
+					<!--<img class="salons-item-img img-mono" src="<?/*=makeGrayPic($thumb_url[0])*/?>" data-imgcolor="<?/*=$thumb_url[0]*/?>">-->
+                    <img class="salons-item-img <?=wp_is_mobile() ? '' : 'img-mono';?>" src="<?=makeGrayPic($thumb_url[0])?>" alt="<?php the_title(); ?>" data-imgcolor="<?=wp_is_mobile() ? '' : $thumb_url[0];?>">
+
+                    <!-- <img class="salons-item-img img-color" src="<?=$thumb_url[0]?>"> -->
 
 	                <span class="salon-since">Since <? echo $arr_since[$post->post_name];?></span>
 					
@@ -158,89 +161,3 @@ $arr_since = array(
 		
 	</div>
 </div>
-
-
-<script type="text/javascript">
-
-
-
-$(document).ready(function(){
-
-	//make_gallery_slick();
-
-	/*$('.salons-item').mouseenter(function()
-	{
-		
-		$(this).find('.salons-address').animate({height: 'show'}, 500);
-		
-		$(this).find('.img-color').show()
-		$(this).find('.img-mono').animate({opacity: 0}, 300);
-	}).mouseleave (function()
-	{
-		
-		$(this).find('.salons-address').animate({height: 'hide'}, 500);
-
-		$(this).find('.img-mono').animate({opacity: 1}, 500);		
-	})*/
-
-//slick_salon();
-
-$(window).on('resize', function(event) {
-	$('.grid-salons-slick').slick('resize');	
-})
-
-$('.grid-salons-slick').slick({
-    dots: false,
-    infinite: false,				        
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    arrows: true,
-    mobileFirst: true,
-    responsive: [	 
-    	{
-	      breakpoint: 1024,
-	      settings: "unslick"
-	    },    	  
-	    {
-	      breakpoint: 980,
-	      settings: {slidesToShow: 3, slidesToScroll: 3, dots: false }
-	    },
-	    {
-	      breakpoint: 680,
-	      settings: {slidesToShow: 2, slidesToScroll: 2, arrows: true }
-	    },
-	    {
-	      breakpoint: 480,
-	      settings: { slidesToShow: 1, slidesToScroll: 1, arrows: true }
-	    },
-	    {
-	      breakpoint: 300,
-	      settings: { slidesToShow: 1, slidesToScroll: 1, arrows: true }
-	    }
-	]
-    // prevArrow : '<button type="button" class="slick-prev slick-prev-my">Prev</button>',
-    
-  });
-
-
-
-$('.salons-item').mouseenter(function()
-	{
-		/*$(this).find('.salons-item-name').animate({bottom: '45px'}, 500);*///addClass('salons-item-name-over')
-		$(this).find('.salons-address').animate({height: 'show'}, 500);//.toggle('slow')
-		
-		//$(this).find('.img-color').show()
-		$(this).find('.img-color').animate({opacity: 1}, 300);
-		$(this).find('.img-mono').animate({opacity: 0}, 100);
-	}).mouseleave (function()
-	{
-		/*$(this).find('.salons-item-name').animate({bottom: '5px'}, 500);*///.removeClass('salons-item-name-over')
-		$(this).find('.salons-address').animate({height: 'hide'}, 500);
-
-		$(this).find('.img-color').animate({opacity: 0}, 100);
-		$(this).find('.img-mono').animate({opacity: 1}, 300);		
-	})
-		
-});
-
-</script>

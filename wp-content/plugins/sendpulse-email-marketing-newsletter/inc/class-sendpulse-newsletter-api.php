@@ -20,12 +20,12 @@ class Send_Pulse_Newsletter_API extends SendpulseApi {
 	 */
 	public function __construct() {
 
-		$user_id = $this->get_option('client_id');
-		$secret = $this->get_option('client_secret');
+		$user_id = $this->get_option( 'client_id' );
+		$secret  = $this->get_option( 'client_secret' );
 
 		parent::__construct( $user_id, $secret, new FileStorage() );
 
-		$this->default_book = $this->get_option('default_book');
+		$this->default_book = $this->get_option( 'default_book' );
 
 	}
 
@@ -37,7 +37,7 @@ class Send_Pulse_Newsletter_API extends SendpulseApi {
 	 * @return string Option value
 	 */
 	public function get_option( $name ) {
-		return Send_Pulse_Newsletter_Settings::get_option($name, 'sp_api_setting');
+		return Send_Pulse_Newsletter_Settings::get_option( $name, 'sp_api_setting' );
 	}
 
 }

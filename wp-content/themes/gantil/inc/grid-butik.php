@@ -48,7 +48,7 @@ foreach( $myterms as $term )
 	
 	if($image) 
 	{
-		$img = '<img class="service-item-img" src="' . $image . '" alt="" />';
+		$img = '<img class="service-item-img" src="' . $image . '" alt="'.$term->name.'" />';
 	}
 
 	$arr[] = array(

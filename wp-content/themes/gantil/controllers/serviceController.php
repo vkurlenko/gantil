@@ -1,9 +1,10 @@
 <?php
-//echo 'service';
+
 class Service
 {
 
-	public function getServiceCat()
+	// получим все КОРНЕВЫЕ КАТЕГОРИИ услуг (за исключением $exclude - массив ID категорий)
+	public function getServiceCat($exclude = [49, 183, 558])
 	{
 		$arr = array();
 
@@ -14,7 +15,7 @@ class Service
 			'hide_empty'    => false, 
 			'object_ids'    => null, // 
 			'include'       => array(),
-			'exclude'       => array(49, 183, 517),  // исключим 49-студия загара, 183 - имиджконсультирование
+			'exclude'       => $exclude, //array(49, 183, 558),  // исключим 49-студия загара, 183 - имиджконсультирование
 			'exclude_tree'  => array(), 
 			'number'        => '', 
 			'fields'        => 'all', 

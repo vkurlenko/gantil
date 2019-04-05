@@ -333,6 +333,63 @@ class PRLIST
 		return $arr2;
 	}
 
+	// получим вариацию продукта
+	public function getVariation($product_id, $arrSpec, $spec, $salon, $main_key)
+	{
+		global $wpdb;
+
+		//printArray($arrSpec); die;
+		
+		$sql = "SELECT * FROM `gn_postmeta` where post_id=".$product_id."
+				AND meta_key = '_sku'";
+		
+		$res = $wpdb->get_results($sql);
+
+		$sku = $res[0]->meta_value;		
+
+		$sql = "SELECT * FROM `gn_postmeta` 
+				WHERE post_id IN (SELECT post_id 
+					FROM gn_postmeta 
+					WHERE post_id IN (SELECT ID 
+						FROM gn_posts 
+						WHERE post_parent = ".$product_id.") 
+					AND meta_value = '".$salon."') 
+				AND meta_key IN ('_regular_price', 'attribute_pa_main-key', 'attribute_pa_item_spec', 'attribute_pa_item_salon')";
+				//echo $sql; die;
+		$res = $wpdb->get_results($sql);
+		/*printArray($res);
+		echo $res; die;*/
+		
+		$arr1 = $arr2 = array();
+
+
+		foreach ($res as $row) 
+		{
+			if($row->meta_key == 'attribute_pa_main-key' && $row->meta_value == $main_key)	
+			{				
+				$arr2[$row->meta_value] = $arrSpec;
+			}								
+
+			$arr1[$row->post_id][$row->meta_key] = $row->meta_value;
+			$arr1[$row->post_id]['variation_id'] = $row->post_id;				
+		}
+
+		foreach($arr1 as $var => $param)
+		{
+			// пропустим других специалистов и другие ключевые параметры
+			if($param['attribute_pa_item_spec'] != $spec || $param['attribute_pa_main-key'] != $main_key)
+				continue;
+
+			$arr2[$param['attribute_pa_main-key']][$param['attribute_pa_item_spec']] = array(
+				'vid' 	=> $param['variation_id'], 
+				'price' => $param['_regular_price']
+			);					
+		}
+
+
+		return $arr2;
+	}
+
 
 
 	// получим все вариации продукта (Бутик)
@@ -461,9 +518,81 @@ class PRLIST
 		<div id="'.$vid.'" data-pid="'.$pid.'" class="var-cell">
 			<input class="var-id" type="hidden"  value="'.$vid.'">
 			<span class="var-id-span">vid='.$vid.'</span>
-			<span class="var-price">'.$price.'</span>			
+			<span class="var-price">'.$price.'</span>		
 		</div>';
 	}
+
+	// ячейка таблицы с ценой вариации
+	// getPriceCell(id вариации продукта, цена вариации, id продукта)
+	public function getPriceCell2($vid, $price, $pid, $spec, $a)
+	{
+		if(!$price)
+			$price = '-';
+
+		if($vid)
+			echo '
+		<div id="'.$vid.'" data-pid="'.$pid.'" class="var-cell">
+			<input class="var-id" type="hidden"  value="'.$vid.'">
+			<span class="var-id-span">vid='.$vid.'</span>
+			<span class="var-price">'.$price.'</span>	
+			<span class="var-otherprice" '.self::getOtherPrice($vid, $pid, $spec, $a).'><img src="/wp-content/themes/gantil/img/icon/filecopy.png"></span>			
+		</div>';
+	}
+
+	public function getOtherPrice($vid, $pid, $spec, $a){
+		$arr = [];
+		$salons = self::getSalons();	
+		$rows = []	;
+
+		foreach($salons as $s){		
+			$all = self::getVariation($pid, $arr_spec, $spec, $s->slug, $a->slug);	
+
+			$rows[$s->slug] = $all[$a->slug][$spec]['price'];
+		}
+
+		return self::printOtherPriceData($vid, $rows); //printArray($row);
+	}
+
+/*	public function printOtherPrice($arr){
+
+		$html = '';
+
+		if( !empty($arr) ){
+			$html .= '<table>';
+
+			foreach ( $arr as $s => $p ){
+				$s = str_replace('Жантиль', '', self::getSalonName($s));
+				$html .= "
+				<tr>
+					<td>$s</td>
+					<td>$p</td>
+				</tr>";
+			}
+
+			$html .= '</table>';
+		}
+
+		return $html;
+	}*/
+
+	public function printOtherPriceData($vid, $arr){
+
+		$html = '';
+
+		if( !empty($arr) ){		
+			$html .= " data-vid='$vid' ";	
+
+			foreach ( $arr as $s => $p ){
+				if(!$p)
+					$p = '-';
+
+				$html .= " data-$s='$p' ";
+			}			
+		}
+
+		return $html;
+	}
+
 
 
 	/* полный список категорий корневого раздела (все УСЛУГИ, весь БУТИК) */
